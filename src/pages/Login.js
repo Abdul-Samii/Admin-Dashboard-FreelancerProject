@@ -26,7 +26,7 @@ const Login = () =>{
             <div className='flex items-center '>
             <img
                 src={logo}
-                className="h-16 w-32 ml-6 -mt-1"
+                className="h-16 w-32 ml-8 -mt-1"
             />
         </div>
             
