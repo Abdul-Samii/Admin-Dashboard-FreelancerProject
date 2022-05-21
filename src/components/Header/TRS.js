@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ICONS } from '../constants';
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
@@ -16,10 +16,20 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   }));
 
 
+
+
 const TRS=()=>{
-    return(
+
+  const [open,setOpen] = useState(false)
+
+  const toogleTooltip=()=>{
+    setOpen(!open)
+  }
+
+  return(
         <HtmlTooltip
         // disableTouchListener
+        open={open}
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>
@@ -39,11 +49,16 @@ const TRS=()=>{
           </React.Fragment>
         }
       >
-        <div className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white space-x-2 p-3 rounded-full">
-            <ICONS.ViewBoardsIconO className="h-8"/>
-            <h2 className="text-xl">TRS</h2>
+
+
+        <div onClick={()=>toogleTooltip()} className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white space-x-2 
+            p-3 -mt-1 md:mt-0 md:rounded-full">
+            <ICONS.ViewBoardsIconO className="md:h-8 h-5 mt-[1.5px] md:mt-0"/>
+            <h2 className="md:text-xl">TRS</h2>
             <ICONS.ChevronDownIconO className="h-3 mt-2"/>
         </div>
+
+
       </HtmlTooltip>
     )
 }

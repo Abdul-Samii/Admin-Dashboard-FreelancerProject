@@ -53,7 +53,7 @@ const Header = () =>{
 
 {/* MOBILE */}
         <div>
-            <nav className=' justify-center md:hidden flex h-14 bg-slate-200 border-blue-200  space-x-6'>
+            <nav className=' justify-center md:hidden flex h-10 bg-slate-200 border-blue-200  space-x-2'>
         
                 <Recursos/>
                 <TRS/>
