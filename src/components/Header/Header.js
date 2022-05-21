@@ -1,9 +1,6 @@
 import React from "react";
-import logo from '../../assets/Panel.png'
-import { ICONS } from "../constants";
+import logo from '../../assets/logo.png'
 import CCTV from "./CCTV";
-import DDrawer from "./Menu";
-import RightMenu from "./Menu";
 import Notification from "./Notification";
 import Recursos from "./Recursos";
 import RightImage from "./RightImage";

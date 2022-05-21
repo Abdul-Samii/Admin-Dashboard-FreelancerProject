@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { ICONS } from '../components/constants'
 import authImage from '../assets/auth-image.jpg'
 import authDecorator from '../assets/auth-decoration.png'
-import logo from '../assets/Panel.png'
+import logo from '../assets/logo.png'
 import { useNavigate } from 'react-router-dom'
 const Login = () =>{
 
