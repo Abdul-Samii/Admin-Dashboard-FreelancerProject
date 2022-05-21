@@ -1,7 +1,10 @@
 import React from 'react';
 import { ICONS } from '../constants';
+import user from '../../assets/user.jpg'
 import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -16,7 +19,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   }));
 
 
-const TRS=()=>{
+const RightMenu=()=>{
     return(
         <HtmlTooltip
         // disableTouchListener
@@ -39,13 +42,11 @@ const TRS=()=>{
           </React.Fragment>
         }
       >
-        <div className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white space-x-2 p-3 rounded-full">
-            <ICONS.ViewBoardsIconO className="h-8"/>
-            <h2 className="text-xl">TRS</h2>
-            <ICONS.ChevronDownIconO className="h-3 mt-2"/>
+        <div className="md:hidden mt-3">
+             <ICONS.MenuAlt1IconO className="h-8"/>
         </div>
       </HtmlTooltip>
     )
 }
 
-export default TRS
+export default RightMenu

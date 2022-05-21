@@ -2,6 +2,8 @@ import React from "react";
 import logo from '../../assets/Panel.png'
 import { ICONS } from "../constants";
 import CCTV from "./CCTV";
+import DDrawer from "./Menu";
+import RightMenu from "./Menu";
 import Notification from "./Notification";
 import Recursos from "./Recursos";
 import RightImage from "./RightImage";
@@ -12,7 +14,7 @@ import TRS from "./TRS";
 const Header = () =>{
     return(
         
-
+<div>
         <div className='flex sticky top-0 z-50 h-20 bg-white items-center p-2 lg:px-5 shadow-md'>
 
 {/* Left */}
@@ -27,7 +29,7 @@ const Header = () =>{
 
 
 {/* Center */}
-<nav className='justify-start flex h-14 rounded-full border-blue-200 ml-14 space-x-6'>
+<nav className='hidden justify-start md:flex h-14 rounded-full border-blue-200 ml-14 space-x-6'>
         
         <Recursos/>
         <TRS/>
@@ -41,15 +43,28 @@ const Header = () =>{
         
             <Notification/>
             <RightImage/>
-
-        <div className="md:hidden mt-3">
-             <ICONS.MenuAlt1IconO className="h-8"/>
-        </div>
              
         </div>
 
 
         </div>
+
+
+
+{/* MOBILE */}
+        <div>
+            <nav className=' justify-center md:hidden flex h-14 bg-slate-200 border-blue-200  space-x-6'>
+        
+                <Recursos/>
+                <TRS/>
+                <CCTV/>
+
+            </nav>
+        </div>
+
+
+
+    </div>
 
     )
 }

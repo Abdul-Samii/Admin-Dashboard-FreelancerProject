@@ -1,10 +1,7 @@
 import React from 'react';
 import { ICONS } from '../constants';
-import user from '../../assets/user.jpg'
 import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />

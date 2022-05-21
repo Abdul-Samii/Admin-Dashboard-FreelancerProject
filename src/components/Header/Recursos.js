@@ -1,11 +1,7 @@
 import React from 'react';
 import { ICONS } from '../constants';
-import user from '../../assets/user.jpg'
 import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -63,11 +59,11 @@ const Recursos=()=>{
           </React.Fragment>
         }
       >
-        <Link to="/login" className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white space-x-2 p-3 rounded-full ">
+        <div className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white space-x-2 p-3 rounded-full ">
             <ICONS.HomeIconO className="h-8"/>
             <h2 className="text-xl">Recursos</h2>
             <ICONS.ChevronDownIconO className="h-3 mt-2"/>
-        </Link>
+        </div>
       </HtmlTooltip>
     )
 }
