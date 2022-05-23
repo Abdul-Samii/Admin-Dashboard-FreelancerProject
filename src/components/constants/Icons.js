@@ -26,6 +26,7 @@ import User2 from "@heroicons/react/solid/UserIcon"
 import PencilAltIcon2 from "@heroicons/react/solid/PencilAltIcon"
 import CogIcon2 from "@heroicons/react/solid/CogIcon"
 import SparklesIcon2 from "@heroicons/react/solid/SparklesIcon"
+import XCircleIcon2 from "@heroicons/react/solid/XCircleIcon"
 
 
 
@@ -56,6 +57,7 @@ const UserS = (props) => <User2 {...props}/>
 const PencilAltIconS = (props) => <PencilAltIcon2 {...props}/>
 const CogIconS = (props) => <CogIcon2 {...props}/>
 const SparklesIconS = (props) => <SparklesIcon2 {...props}/>
+const XCircleIconS = (props) => <XCircleIcon2 {...props}/>
 
 
 export default {
@@ -84,5 +86,6 @@ export default {
     UserS,
     PencilAltIconS,
     CogIconS,
-    SparklesIconS
+    SparklesIconS,
+    XCircleIconS
 }
