@@ -1,19 +1,26 @@
 import React from 'react'
-import { Header, Piechart, TRSTable } from '../components'
+import { CCTVTable, Header, ICONS, Piechart, TRSTable } from '../components'
 
 const Dashboard = () =>{
     return(
-        <>
+        <div className='bg-white'>
             <Header/>
-            <div className=' pt-9  grid md:grid-cols-3 grid-cols-none  gap-20 md:pl-20 '>
+            
+            <div className='flex items-center bg-slate-50 shadow-sm py-2'>
+                 <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
+            </div>
+
+            
+            <div className=' pt-4  grid md:grid-cols-3 grid-cols-none  gap-20 md:pl-28 '>
                 <div className=''>
                     <Piechart/>
                 </div>
-                <div className='w-full'>
+                <div className='md:w-fit w-screen space-y-4'>
                     <TRSTable/>
+                    <CCTVTable/>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

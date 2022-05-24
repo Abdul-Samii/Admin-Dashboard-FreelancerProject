@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ICONS } from '../constants';
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { useNavigate } from 'react-router-dom';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -18,6 +19,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const Recursos=()=>{
 
+let navigate = useNavigate()
 
   const [open,setOpen] = useState(false)
 
@@ -35,7 +37,8 @@ const Recursos=()=>{
           <React.Fragment>
             <ul className=" w-44 space-y-4">
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/ejecutivos')} className="flex space-x-4 hover:cursor-pointer 
+                  hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Ejecutivos</p>
                 </li>
@@ -69,7 +72,7 @@ const Recursos=()=>{
           </React.Fragment>
         }
       >
-        <div onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)} tabIndex={0} 
+        <div onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)} 
           className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white 
             space-x-2 p-3 -mt-1 md:mt-0 md:rounded-full ">
             <ICONS.HomeIconO className="md:h-8 h-5 mt-[1.5px] md:mt-0"/>

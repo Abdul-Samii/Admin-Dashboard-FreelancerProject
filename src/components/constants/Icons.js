@@ -11,6 +11,8 @@ import MenuAlt1Icon1 from "@heroicons/react/outline/MenuAlt1Icon"
 import LogoutIcon1 from "@heroicons/react/outline/LogoutIcon"
 import BookOpenIcon1 from "@heroicons/react/outline/BookOpenIcon"
 import ViewBoardsIcon1 from "@heroicons/react/outline/ViewBoardsIcon"
+import ChevronRightIcon1 from "@heroicons/react/outline/ChevronRightIcon"
+import ChevronDoubleRightIcon1 from "@heroicons/react/outline/ChevronDoubleRightIcon"
 
 
 
@@ -27,6 +29,7 @@ import PencilAltIcon2 from "@heroicons/react/solid/PencilAltIcon"
 import CogIcon2 from "@heroicons/react/solid/CogIcon"
 import SparklesIcon2 from "@heroicons/react/solid/SparklesIcon"
 import XCircleIcon2 from "@heroicons/react/solid/XCircleIcon"
+import  HomeIcon2  from "@heroicons/react/solid/HomeIcon"
 
 
 
@@ -43,6 +46,8 @@ const MenuAlt1IconO = (props) => <MenuAlt1Icon1 {...props}/>
 const LogoutIconO = (props) => <LogoutIcon1 {...props}/>
 const BookOpenIconO = (props) => <BookOpenIcon1 {...props}/>
 const ViewBoardsIconO = (props) => <ViewBoardsIcon1 {...props}/>
+const ChevronRightIconO = (props) => <ChevronRightIcon1 {...props}/>
+const ChevronDoubleRightIconO = (props) => <ChevronDoubleRightIcon1 {...props}/>
 
 
 const FlagIconS = (props) => <FlagIcon2 {...props}/>
@@ -58,6 +63,7 @@ const PencilAltIconS = (props) => <PencilAltIcon2 {...props}/>
 const CogIconS = (props) => <CogIcon2 {...props}/>
 const SparklesIconS = (props) => <SparklesIcon2 {...props}/>
 const XCircleIconS = (props) => <XCircleIcon2 {...props}/>
+const HomeIconS = (props) => <HomeIcon2 {...props}/>
 
 
 export default {
@@ -74,6 +80,8 @@ export default {
     LogoutIconO,
     BookOpenIconO,
     ViewBoardsIconO,
+    ChevronRightIconO,
+    ChevronDoubleRightIconO,
 
     FlagIconS,
     PlayIconS,
@@ -87,5 +95,6 @@ export default {
     PencilAltIconS,
     CogIconS,
     SparklesIconS,
-    XCircleIconS
+    XCircleIconS,
+    HomeIconS,
 }

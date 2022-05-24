@@ -47,7 +47,7 @@ const rows = [
 
 ];
 
-export default function TRSTable() {
+export default function CCTVTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -67,7 +67,7 @@ export default function TRSTable() {
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={12} >
-                <h3 className='font-semibold text-left'>CONSIGNAS ESPECIALES PENDIENTES TRS</h3>
+                <h3 className='font-semibold text-left'>CONSIGNAS ESPECIALES PENDIENTES CCTV</h3>
               </TableCell>
               
             </TableRow>

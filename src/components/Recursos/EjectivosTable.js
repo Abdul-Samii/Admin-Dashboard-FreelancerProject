@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
 
 interface Column {
-  id: 'FECHA' | 'CONSIGNAS' | 'ESTADO';
+  id: 'Ejectivos' | 'Alias' | 'Creado' | 'Opciones';
   label: string;
   minWidth?: number;
   align?: 'right';
@@ -18,36 +18,40 @@ interface Column {
 }
 
 const columns: Column[] = [
-  { id: 'FECHA', label: 'FECHA/HORA', minWidth: 200 },
-  { id: 'CONSIGNAS', label: 'CONSIGNAS', minWidth: 450 },
-  { id: 'ESTADO', label: 'ESTADO', minWidth: 100 },
+  { id: 'Ejectivos', label: 'Ejectivos', minWidth: 300 },
+  { id: 'Alias', label: 'Alias', minWidth: 250 },
+  { id: 'Creado', label: 'Creado', minWidth: 200 },
+  { id: 'Opciones', label: 'Opciones', minWidth: 300 },
  
 ];
 
 interface Data {
-  FECHA: string,
-  CONSIGNAS: string,
-  ESTADO: string,
+    Ejectivos: string,
+    Alias: string,
+    Creado: string,
+    Opciones: string,
+
 }
 
 function createData(
-  FECHA: string,
-  CONSIGNAS: string,
-  ESTADO: string,
+    Ejectivos: string,
+    Alias: string,
+    Creado: string,
+    Opciones: string,
 ): Data {
-  return { FECHA, CONSIGNAS, ESTADO };
+  return { Ejectivos, Alias, Creado,Opciones };
 }
 
 const rows = [
-  createData('13/05/2022-15:24',"Entregar llaves a cliente porque se olvido, pero regresa la siguiente semana."),
-  createData('13/05/2022-15:24',"Entregar llaves a cliente porque se olvido, pero regresa la siguiente semana."),
-  createData('13/05/2022-15:24',"Entregar llaves a cliente porque se olvido, pero regresa la siguiente semana."),
-  createData('13/05/2022-15:24',"Entregar llaves a cliente porque se olvido, pero regresa la siguiente semana."),
-  createData('13/05/2022-15:24',"Entregar llaves a cliente porque se olvido, pero regresa la siguiente semana."),
+  createData('staging',"TR1",'22/11/2021 10:35'),
+  createData('abhin/repo/api/allow_repo_updates',"TR2",'22/11/2021 10:35'),
+  createData('zdavis/BBCDEV-1577',"TR3",'22/11/2021 10:35'),
+  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'22/11/2021 10:35'),
+  createData('jmooring/BBDEV-1603',"TG2",'22/11/2021 10:35'),
 
 ];
 
-export default function TRSTable() {
+export default function EjectivosTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -61,22 +65,18 @@ export default function TRSTable() {
   };
 
   return (
+
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 300 }}>
+      <TableContainer sx={{ maxHeight: 700 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
-            <TableRow>
-              <TableCell align="center" colSpan={12} >
-                <h3 className='font-semibold text-left'>CONSIGNAS ESPECIALES PENDIENTES TRS</h3>
-              </TableCell>
-              
-            </TableRow>
+            
             <TableRow>
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth,backgroundColor:'#F8F9FA' }}
+                  style={{ top: 0, minWidth: column.minWidth,backgroundColor:'#F8F9FA' }}
                 >
                   {column.label}
                 </TableCell>
