@@ -32,6 +32,7 @@ let navigate = useNavigate()
     return(
         <HtmlTooltip
         open={open}
+        onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)}  tabIndex={0}
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>
@@ -72,7 +73,7 @@ let navigate = useNavigate()
           </React.Fragment>
         }
       >
-        <div onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)} 
+        <div  
           className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white 
             space-x-2 p-3 -mt-1 md:mt-0 md:rounded-full ">
             <ICONS.HomeIconO className="md:h-8 h-5 mt-[1.5px] md:mt-0"/>

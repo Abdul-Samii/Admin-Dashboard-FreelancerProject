@@ -8,7 +8,7 @@ import TRS from "./TRS";
 
   
 
-const Header = () =>{
+const Header = ({items}) =>{
     return(
         
 <div>
@@ -28,9 +28,9 @@ const Header = () =>{
 {/* Center */}
 <nav className='hidden justify-start md:flex h-14 rounded-full border-blue-200 ml-14 space-x-6'>
         
-        <Recursos/>
-        <TRS/>
-        <CCTV/>
+        {(items=="all"||items=="recursos")&&<Recursos item={items}/>}
+        {(items=="all"||items=="trs")&&<TRS item={items}/>}
+        {(items=="all"||items=="cctv")&&<CCTV item={items}/>}
 </nav>
 
 

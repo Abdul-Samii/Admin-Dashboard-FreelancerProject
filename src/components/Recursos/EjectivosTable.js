@@ -76,7 +76,7 @@ export default function EjectivosTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ top: 0, minWidth: column.minWidth,backgroundColor:'#F8F9FA' }}
+                  style={{ top: 0, minWidth: column.minWidth,backgroundColor:'#F8F9FA',fontWeight:'bold' }}
                 >
                   {column.label}
                 </TableCell>
@@ -94,8 +94,13 @@ export default function EjectivosTable() {
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
-                            [column.id] == 'ESTADO'?
-                            <ICONS.XCircleIconS className="h-6 hover:cursor-pointer" color="red"/>
+                            [column.id] == 'Opciones'?
+                            <div className='flex gap-2 -ml-2'>
+                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
+                                <ICONS.PencilIconS className="h-5 hover:cursor-pointer " color="#86AD6C" />
+                                <ICONS.ArchiveIconS className="h-5 hover:cursor-pointer" color="#A70045"/>
+
+                            </div>
                             :
                             value
                           }

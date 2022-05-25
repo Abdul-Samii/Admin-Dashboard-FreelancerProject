@@ -47,7 +47,7 @@ const rows = [
 
 ];
 
-export default function CCTVTable() {
+export default function CCTVTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -62,7 +62,7 @@ export default function CCTVTable() {
 
   return (
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 300 }}>
+      <TableContainer sx={{ maxHeight: props.height }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -76,7 +76,7 @@ export default function CCTVTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth,backgroundColor:'#F8F9FA' }}
+                  style={{ top: 57, minWidth: column.minWidth,backgroundColor:'#F8F9FA',fontWeight:'bold' }}
                 >
                   {column.label}
                 </TableCell>

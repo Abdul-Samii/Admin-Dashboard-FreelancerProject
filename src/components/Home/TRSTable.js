@@ -76,7 +76,7 @@ export default function TRSTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth,backgroundColor:'#F8F9FA' }}
+                  style={{ top: 57, minWidth: column.minWidth,backgroundColor:'#F8F9FA',fontWeight:'bold' }}
                 >
                   {column.label}
                 </TableCell>

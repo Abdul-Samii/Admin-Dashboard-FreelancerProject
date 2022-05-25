@@ -3,10 +3,10 @@ import { CCTVTable, Header, ICONS, Piechart, TRSTable } from '../components'
 
 const Dashboard = () =>{
     return(
-        <div className='bg-white'>
-            <Header/>
+        <div className=''>
+            <Header items="all"/>
             
-            <div className='flex items-center bg-slate-50 shadow-sm py-2'>
+            <div className='flex items-center bg-slate-100 shadow-sm py-2'>
                  <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
             </div>
 
@@ -17,7 +17,7 @@ const Dashboard = () =>{
                 </div>
                 <div className='md:w-fit w-screen space-y-4'>
                     <TRSTable/>
-                    <CCTVTable/>
+                    <CCTVTable height={300}/>
                 </div>
             </div>
         </div>

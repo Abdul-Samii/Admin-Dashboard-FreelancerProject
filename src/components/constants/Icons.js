@@ -29,7 +29,10 @@ import PencilAltIcon2 from "@heroicons/react/solid/PencilAltIcon"
 import CogIcon2 from "@heroicons/react/solid/CogIcon"
 import SparklesIcon2 from "@heroicons/react/solid/SparklesIcon"
 import XCircleIcon2 from "@heroicons/react/solid/XCircleIcon"
-import  HomeIcon2  from "@heroicons/react/solid/HomeIcon"
+import HomeIcon2  from "@heroicons/react/solid/HomeIcon"
+import CheckCircleIcon2  from "@heroicons/react/solid/CheckCircleIcon"
+import PencilIcon2 from "@heroicons/react/solid/PencilIcon"
+import ArchiveIcon2 from "@heroicons/react/solid/ArchiveIcon"
 
 
 
@@ -64,6 +67,9 @@ const CogIconS = (props) => <CogIcon2 {...props}/>
 const SparklesIconS = (props) => <SparklesIcon2 {...props}/>
 const XCircleIconS = (props) => <XCircleIcon2 {...props}/>
 const HomeIconS = (props) => <HomeIcon2 {...props}/>
+const CheckCircleIconS = (props) => <CheckCircleIcon2 {...props}/>
+const PencilIconS = (props) => <PencilIcon2 {...props}/>
+const ArchiveIconS = (props) => <ArchiveIcon2 {...props}/>
 
 
 export default {
@@ -97,4 +103,7 @@ export default {
     SparklesIconS,
     XCircleIconS,
     HomeIconS,
+    CheckCircleIconS,
+    PencilIconS,
+    ArchiveIconS,
 }

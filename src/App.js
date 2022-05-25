@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Dashboard, Login, LoginOption } from './pages';
 import { Routes, Route, Link } from "react-router-dom";
 import Ejecutivos from './pages/Recursos/Ejecutivos';
+import { CCTVDashboard } from './pages/CCTVDashboard';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path='ejecutivos' element={<Ejecutivos/>} />
+        
+
+        <Route path='cctvdashboard' element={<CCTVDashboard/>} />
+
       </Routes>
     </div>
   );
