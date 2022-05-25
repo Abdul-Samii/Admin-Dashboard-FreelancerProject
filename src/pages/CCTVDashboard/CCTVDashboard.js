@@ -10,8 +10,8 @@ const CCTVDashboard = () =>{
             </div>
 
 
-            <div className='flex justify-evenly'>
-                    <div className='w-1/2 '>
+            <div className='md:flex md:justify-evenly'>
+                    <div className='md:w-1/2 '>
                         <div className=' space-x-4 '>
                             <div className=' bg-white mt-4 md:ml-24 shadow-sm rounded-md'>
                                 <LineChart/>
