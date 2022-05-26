@@ -2,9 +2,16 @@ import React from 'react';
 import { ICONS } from '../constants';
 import user from '../../assets/user.jpg'
 import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
+import 'reactjs-popup/dist/index.css';
+import { RelieveModal } from '../modals';
+
+
+
+
+
+
+
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -19,7 +26,22 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   }));
 
 
-const RightImage=()=>{
+
+
+
+
+const RightImage=({handleModal})=>{
+
+
+const Popup=()=>{
+  return(
+    <div className='h-96 w-full bg-yellow-50 mt-56'>
+            <h3 className="font-bold text-lg z-50  bg-red-500">Model Text Here</h3>
+            
+        </div>
+  )
+}
+  
     return(
         <HtmlTooltip
         // disableTouchListener
@@ -33,7 +55,7 @@ const RightImage=()=>{
                     <p className="text-sm mt-3 ml-3">Edit Profile</p>
                 </li>
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>handleModal()} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/>
                     <p className="text-sm mt-3 ml-3">Sign Out</p>
                 </li>
