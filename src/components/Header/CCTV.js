@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ICONS } from '../constants';
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { useNavigate } from 'react-router-dom';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -18,6 +19,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const CCTV=({item})=>{
 
+  const navigate = useNavigate()
 
   const [open,setOpen] = useState(false)
   const [subopen,setSubOpen] = useState(false)
@@ -38,7 +40,7 @@ const CCTV=({item})=>{
           <React.Fragment>
             <ul className=" w-80 space-y-4">
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/cctv/historial')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm  mt-3 ml-3">Historial entrega y recepción de Turno</p>
                 </li>
@@ -60,13 +62,13 @@ const CCTV=({item})=>{
           <React.Fragment>
             <ul className=" w-80 space-y-4">
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/cctv/diurno')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm  mt-3 ml-3">Diurno</p>
                 </li>
                 {
                   item=="cctv"&&
-                  <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                  <li onClick={()=>navigate('/cctv/nocturno')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                        <p className="text-sm  mt-3 ml-3">Nocturno</p>
                   </li>
                 }

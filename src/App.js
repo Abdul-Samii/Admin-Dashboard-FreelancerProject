@@ -4,7 +4,7 @@ import { Header } from './components/Header';
 import { Dashboard, Login, LoginOption } from './pages';
 import { Routes, Route, Link } from "react-router-dom";
 import Ejecutivos from './pages/Recursos/Ejecutivos';
-import { CCTVDashboard } from './pages/CCTVDashboard';
+import { CCTVDashboard, Diurno, Historial, Nocturno } from './pages/CCTV';
 
 function App() {
   return (
@@ -18,12 +18,15 @@ function App() {
 
     
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login/>} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path='ejecutivos' element={<Ejecutivos/>} />
         
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />
+        <Route path='cctv/diurno' element={<Diurno/>} />
+        <Route path='cctv/nocturno' element={<Nocturno/>}/>
+        <Route path='cctv/historial' element={<Historial/>}/>
 
       </Routes>
     </div>

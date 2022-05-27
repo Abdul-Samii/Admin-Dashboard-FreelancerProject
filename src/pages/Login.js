@@ -4,7 +4,11 @@ import authImage from '../assets/auth-image.jpg'
 import authDecorator from '../assets/auth-decoration.png'
 import logo from '../assets/logo.png'
 import { useNavigate } from 'react-router-dom'
-const Login = () =>{
+import { connect } from 'react-redux'
+import { UserLogin } from '../store/actions'
+
+
+const Login = (props) =>{
 
     const [username,setUsername] = useState()
     const [password, setPassword] = useState()
@@ -13,8 +17,17 @@ const Login = () =>{
     let navigate = useNavigate()
 
     const handleLogin=()=>{
-        username&&password?navigate('/dashboard'):alert("Fill all fields!")
+        const obj={
+            username,
+            password
+        }
+        username&&password?props.UserLogin(obj)
+        
+        :alert("Fill all fields!")
+    
     }
+
+
 
 
     return(
@@ -81,4 +94,13 @@ const Login = () =>{
     )
 }
 
-export default Login
+
+const mapStateToProps=(props)=>{
+    return{
+        isLoading:props.auth.isLoading
+    }
+}
+
+
+
+export default connect(mapStateToProps,{UserLogin}) (Login)
