@@ -32,7 +32,7 @@ let navigate = useNavigate()
     return(
         <HtmlTooltip
         open={open}
-        onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)}  tabIndex={0}
+        onClick={()=>toogleTooltip()}   tabIndex={0}
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>

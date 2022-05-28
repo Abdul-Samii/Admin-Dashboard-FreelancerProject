@@ -6,11 +6,12 @@ const initialState = {
 };
 
 export default (state = initialState, {type,payload}) => {
+
   switch (type) {
     case types.LOGIN_START:
       return { ...state, isLoading: true }
   case types.LOGIN_SUCCESS:
-      // console.log(payload)
+      console.log("jkjkjkjkjkjkjkjkjkj")
       return { ...state, isLoading: false , user:payload}
   case types.LOGIN_FAILED:
       return { ...state, isLoading: false }

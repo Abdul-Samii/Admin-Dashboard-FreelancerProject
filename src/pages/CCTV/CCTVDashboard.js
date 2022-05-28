@@ -1,9 +1,19 @@
 import React from 'react'
-import { CCTVTable, Header, ICONS, LineChart } from '../../components'
+import { CCTVAuthorized, CCTVTable, Header, ICONS, LineChart, RedirectWithoutLogin } from '../../components'
 
 const CCTVDashboard = () =>{
+    console.log("CCTV ",CCTVAuthorized())
     return(
         <div className='h-full w-full'>
+            <RedirectWithoutLogin/>
+            
+            {
+                CCTVAuthorized()==-1?
+                <div className='z-50 h-screen bg-white flex flex-col justify-center'>
+                    <h1 className='font-bold text-3xl text-center'>No tiene permisos para acceder a esta página</h1>
+                </div>
+            :
+            <div>
             <Header items="cctv"/>
             <div className='flex items-center bg-slate-100 shadow-sm py-2'>
                  <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
@@ -46,8 +56,9 @@ const CCTVDashboard = () =>{
                         </div>
                 </div>
 
-
-
+            </div>
+            }
+            
         </div>
     )
 }

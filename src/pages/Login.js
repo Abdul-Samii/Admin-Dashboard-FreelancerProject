@@ -1,30 +1,56 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { ICONS } from '../components/constants'
 import authImage from '../assets/auth-image.jpg'
 import authDecorator from '../assets/auth-decoration.png'
 import logo from '../assets/logo.png'
-import { useNavigate } from 'react-router-dom'
+import { Route, useNavigate,Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { UserLogin } from '../store/actions'
-
+import { setToast, UserLogin } from '../store/actions'
+import { RedirectWithLogin } from '../components'
 
 const Login = (props) =>{
 
     const [username,setUsername] = useState()
     const [password, setPassword] = useState()
 
-
     let navigate = useNavigate()
 
-    const handleLogin=()=>{
+    var token
+    var tipo
+
+
+    const handleLogin=async()=>{
+        
+
         const obj={
             username,
             password
         }
-        username&&password?props.UserLogin(obj)
-        
-        :alert("Fill all fields!")
-    
+        if(username&&password)
+        {
+            await props.UserLogin(obj)
+            token = window.localStorage.getItem('token')
+            tipo = window.localStorage.getItem('tipo')
+
+            if(token)
+            {
+                if(tipo==='1')
+                {
+
+                    navigate('/dashboard')
+                }
+                else if(tipo==='2')
+                {
+                    navigate('/cctvdashboard')
+                }
+                else if(tipo==='3'){
+                    navigate('/cctvdashboard')
+                }
+            }
+        }
+        else{
+            await props.setToast("Fill all fields")
+        }
     }
 
 
@@ -32,7 +58,7 @@ const Login = (props) =>{
 
     return(
         <div className='bg-white flex h-screen w-screen lg:justify-end justify-center overflow-hidden'>
-            
+            <RedirectWithLogin />
             {/* LOGIN CARD */}
             <div className='flex ml lg:px-52 -mt-32 md:mt-0   flex-col justify-center'>
             
@@ -103,4 +129,4 @@ const mapStateToProps=(props)=>{
 
 
 
-export default connect(mapStateToProps,{UserLogin}) (Login)
+export default connect(mapStateToProps,{UserLogin,setToast}) (Login)

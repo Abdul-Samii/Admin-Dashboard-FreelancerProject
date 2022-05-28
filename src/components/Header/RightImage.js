@@ -33,13 +33,9 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 const RightImage=({handleModal})=>{
 
 
-const Popup=()=>{
-  return(
-    <div className='h-96 w-full bg-yellow-50 mt-56'>
-            <h3 className="font-bold text-lg z-50  bg-red-500">Model Text Here</h3>
-            
-        </div>
-  )
+const handleLogout=()=>{
+  window.localStorage.clear()
+  handleModal()
 }
   
     return(
@@ -55,7 +51,7 @@ const Popup=()=>{
                     <p className="text-sm mt-3 ml-3">Edit Profile</p>
                 </li>
                 
-                <li onClick={()=>handleModal()} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>handleLogout()} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/>
                     <p className="text-sm mt-3 ml-3">Sign Out</p>
                 </li>

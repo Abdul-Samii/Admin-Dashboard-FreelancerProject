@@ -1,21 +1,28 @@
 import './App.css';
-import {RoutesComponent } from './components';
-import { Header } from './components/Header';
+import {RedirectWithoutLogin } from './components';
 import { Dashboard, Login, LoginOption } from './pages';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Ejecutivos from './pages/Recursos/Ejecutivos';
 import { CCTVDashboard, Diurno, Historial, Nocturno } from './pages/CCTV';
+import {clearToast} from './store/actions'
+import { Toast } from './components';
+import { connect } from 'react-redux';
 
-function App() {
+function App(props) {
+
+
   return (
     <div className="bg-slate-100 h-full ">
-      
+      {props.isToastShowing && <Toast 
+                    {...props.toastConfig} 
+                    isToastShowing={props.isToastShowing}
+                    clearToast={() => props.clearToast()} 
+                    />}
     {/* HEADER */}
     {/* <Header/> */}
     {/* <LoginOption/> */}
     {/* <Login/> */}
     
-
     
       <Routes>
         <Route path="/" element={<Login/>} />
@@ -33,4 +40,13 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = props =>{
+  // // console.log(" props===========================", props)
+  return{
+    isToastShowing :props.toast.isToastShowing,
+    toastConfig:props.toast.config
+
+  }
+}
+
+export default connect(mapStateToProps, {clearToast})(App)

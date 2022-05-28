@@ -1,15 +1,21 @@
 import React from 'react'
-import { Header, ICONS } from '../../components'
+import { Header, ICONS, RedirectWithoutLogin,CCTVAuthorized } from '../../components'
 import logo from '../../assets/logo.png'
 import { MetaTags } from 'react-meta-tags'
 const Nocturno = () =>{
     return(
         <div className='bg-slate-50 h-full'>
-            <Header items="cctv"/>
             
-            <MetaTags>
-                <meta name="viewport" content="width=1200, initial-scale=1" />
-            </MetaTags>
+            <RedirectWithoutLogin/>
+
+            {
+                CCTVAuthorized()==-1?
+                <div className='z-50 h-screen bg-white flex flex-col justify-center'>
+                    <h1 className='font-bold text-3xl text-center'>No tiene permisos para acceder a esta página</h1>
+                </div>
+            :
+            <div>
+            <Header items="cctv"/>
 
             <div className='flex items-center bg-slate-100 shadow-sm py-2'>
                     <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
@@ -127,6 +133,8 @@ const Nocturno = () =>{
 
                 </div>
             </div>
+            </div>
+        }
         </div>
     )
 }
