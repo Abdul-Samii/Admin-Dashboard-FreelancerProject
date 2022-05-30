@@ -7,7 +7,9 @@ import ProgressBar from "@badrap/bar-of-progress";
 
 export const UserLogin = (data) => async dispatch => {
     var response
-    const progress =new ProgressBar()
+    const progress =new ProgressBar({
+        size:4
+    })
 
     try {
         
@@ -48,6 +50,7 @@ export const UserLogin = (data) => async dispatch => {
             console.log(err.request.response)
             dispatch(setToast('error',err.request.response))
         })
+        progress.finish()
         dispatch({type:types.LOGIN_FAILED})
     }
    
