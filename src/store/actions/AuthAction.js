@@ -45,9 +45,9 @@ export const UserLogin = (data) => async dispatch => {
         response = await httpRequest.post('/login/', data,{
             headers: { "content-type": 'multipart/form-data' }
         }).catch((err)=>{
+            console.log(err.request.response)
             dispatch(setToast('error',err.request.response))
         })
-        progress.finish()
         dispatch({type:types.LOGIN_FAILED})
     }
    

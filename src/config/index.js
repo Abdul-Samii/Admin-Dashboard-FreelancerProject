@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { store } from '../store/store'
 
-const baseURL = 'http://45.141.122.243/api/1.0';
+const baseURL = 'https://cloudbitakor.com/api/1.0';
 
 export const httpRequest = axios.create({
     baseURL:baseURL,

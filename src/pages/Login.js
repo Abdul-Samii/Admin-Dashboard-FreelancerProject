@@ -31,7 +31,6 @@ const Login = (props) =>{
             await props.UserLogin(obj)
             token = window.localStorage.getItem('token')
             tipo = window.localStorage.getItem('tipo')
-
             if(token)
             {
                 if(tipo==='1')
