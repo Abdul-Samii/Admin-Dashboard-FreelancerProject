@@ -61,7 +61,7 @@ export default function CCTVTable(props) {
   };
 
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Paper sx={{ width: '100%'}}>
       <TableContainer sx={{ maxHeight: props.height }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -71,7 +71,7 @@ export default function CCTVTable(props) {
               </TableCell>
               
             </TableRow>
-            <TableRow>
+            <TableRow >
               {columns.map((column) => (
                 <TableCell
                   key={column.id}

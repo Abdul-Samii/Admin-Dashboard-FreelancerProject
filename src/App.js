@@ -1,7 +1,7 @@
 import './App.css';
 import {RedirectWithoutLogin } from './components';
-import { Dashboard, Login, LoginOption } from './pages';
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Dashboard, Login, Registration } from './pages';
+import { Routes, Route } from "react-router-dom";
 import Ejecutivos from './pages/Recursos/Ejecutivos';
 import { CCTVDashboard, Diurno, Historial, Nocturno } from './pages/CCTV';
 import {clearToast} from './store/actions'
@@ -26,6 +26,7 @@ function App(props) {
     
       <Routes>
         <Route path="/" element={<Login/>} />
+        <Route path="register" element={<Registration/>} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path='ejecutivos' element={<Ejecutivos/>} />
         

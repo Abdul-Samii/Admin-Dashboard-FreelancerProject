@@ -47,7 +47,7 @@ const rows = [
 
 ];
 
-export default function TRSTable() {
+export default function TRSTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -62,7 +62,7 @@ export default function TRSTable() {
 
   return (
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 300 }}>
+      <TableContainer sx={{ maxHeight: props.height }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

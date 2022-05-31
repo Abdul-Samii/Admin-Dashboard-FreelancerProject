@@ -101,7 +101,8 @@ const Login = (props) =>{
 
                 <div className='flex space-x-2 mt-10'>
                     <p className='text-gray-600'>¿No tienes una cuenta?</p>
-                    <p className='text-blue-600 font-medium hover:cursor-pointer hover:text-blue-700'>Regístrate</p>
+                    <p onClick={()=>navigate('/register')} className='text-blue-600 font-medium hover:cursor-pointer hover:text-blue-700'>
+                        Regístrate</p>
                 </div>
             </div>
             </div>
