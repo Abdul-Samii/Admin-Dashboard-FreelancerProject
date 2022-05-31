@@ -78,7 +78,8 @@ export default function CCTVTable(props) {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ top: 57, maxWidth: '90vh',backgroundColor:'#F8F9FA',fontWeight:'bold' }}
+                  style={column.id=="ESTADO"?{ top: 57, maxWidth: '90vh',textAlign:'end',paddingRight:'4vh',backgroundColor:'#F8F9FA',fontWeight:'bold' }
+                  :{ top: 57, maxWidth: '90vh',backgroundColor:'#F8F9FA',fontWeight:'bold' }}
                 >
                   {column.label}
                 </TableCell>
