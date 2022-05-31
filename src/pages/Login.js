@@ -56,17 +56,17 @@ const Login = (props) =>{
 
 
     return(
-        <div className='bg-white flex h-screen w-screen lg:justify-end justify-center overflow-hidden'>
+        <div className='bg-white  flex h-screen w-screen justify-center overflow-hidden'>
             <RedirectWithLogin />
             {/* LOGIN CARD */}
-            <div className='flex ml lg:px-52 -mt-32 md:mt-0   flex-col justify-center'>
+            <div className='flex bg-white shadow-md border-2 lg:px-52 -mt-32 md:mt-0   flex-col justify-center'>
             
-            <div className='flex items-center '>
+            <div className=''>
             <img
                 src={logo}
-                className="h-16 w-32 ml-8 -mt-1"
+                className="h-24 flex ml-28 -mt-1"
             />
-        </div>
+            </div>
             
             
             <div className='items-center mx-8'>
@@ -107,13 +107,6 @@ const Login = (props) =>{
             </div>
 
 
-            {/* RIGHT IMAGE */}
-            <div className='hidden lg:flex' >
-                <img src={authImage} className="h-[150vh] w-[170vh] pb-36"/>
-                <div className='absolute -ml-28 flex flex-col justify-center items-center h-[100%]'>
-                    <img src={authDecorator} className="h-[35%]  "/>
-                </div>
-            </div>
 
         </div>
     )

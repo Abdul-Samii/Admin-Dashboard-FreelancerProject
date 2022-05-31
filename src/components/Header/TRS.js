@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ICONS } from '../constants';
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -22,6 +23,11 @@ const TRS=()=>{
 
   const [open,setOpen] = useState(false)
 
+
+  const wrapperRef = useRef(null);
+  ClickOutSide(wrapperRef,setOpen);
+
+
   const toogleTooltip=()=>{
     setOpen(!open)
   }
@@ -33,7 +39,7 @@ const TRS=()=>{
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>
-            <ul className=" w-80 space-y-4">
+            <ul className=" w-80 space-y-4" ref={wrapperRef}>
                 
                 <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
@@ -51,7 +57,7 @@ const TRS=()=>{
       >
 
 
-        <div onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)} tabIndex={0}
+        <div onClick={()=>toogleTooltip()} 
            className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white space-x-2 
             p-3 -mt-1 md:mt-0 md:rounded-full">
             <ICONS.ViewBoardsIconO className="md:h-8 h-5 mt-[1.5px] md:mt-0"/>

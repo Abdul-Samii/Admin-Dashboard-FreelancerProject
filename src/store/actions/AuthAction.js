@@ -8,7 +8,8 @@ import ProgressBar from "@badrap/bar-of-progress";
 export const UserLogin = (data) => async dispatch => {
     var response
     const progress =new ProgressBar({
-        size:4
+        size:4,
+        color:'blue'
     })
 
     try {
