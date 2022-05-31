@@ -3,7 +3,7 @@ import { AdminAuthorized, CCTVTable, Header, ICONS, Piechart, RedirectWithoutLog
 
 const Dashboard = () =>{
     return(
-        <div className=''>
+        <div className='h-screen'>
             <RedirectWithoutLogin/>
             {
                 
@@ -20,13 +20,13 @@ const Dashboard = () =>{
             </div>
 
             
-            <div className=' grid md:grid-cols-3 grid-cols-none -mt-4  gap-20 md:pl-28 '>
+            <div className=' flex  -mt-4 justify-center space-x-4'>
                 <div className=''>
                     <Piechart/>
                 </div>
                 <div className='md:w-fit w-screen space-y-1'>
-                    <TRSTable height={'35vh'}/>
-                    <CCTVTable height={'35vh'}/>
+                    <TRSTable height={'19vh'}/>
+                    <CCTVTable height={'19vh'}/>
                 </div>
             </div>
             </div>

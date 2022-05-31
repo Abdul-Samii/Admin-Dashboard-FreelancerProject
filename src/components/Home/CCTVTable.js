@@ -61,10 +61,41 @@ export default function CCTVTable(props) {
   };
 
   return (
-    <Paper sx={{ width: '100%'}}>
+    <Paper sx={{ width: '90vh'}}>
+
+
+
+    <Table>
+    <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={12} >
+                <h3 className='font-semibold text-left'>CONSIGNAS ESPECIALES PENDIENTES CCTV</h3>
+              </TableCell>
+              
+            </TableRow>
+            <TableRow >
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={column.align}
+                  style={{ top: 57, maxWidth: '90vh',backgroundColor:'#F8F9FA',fontWeight:'bold' }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+    </Table>
+
+
+
+
+
+
+
       <TableContainer sx={{ maxHeight: props.height }}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
+          {/* <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={12} >
                 <h3 className='font-semibold text-left'>CONSIGNAS ESPECIALES PENDIENTES CCTV</h3>
@@ -82,7 +113,7 @@ export default function CCTVTable(props) {
                 </TableCell>
               ))}
             </TableRow>
-          </TableHead>
+          </TableHead> */}
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

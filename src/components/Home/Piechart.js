@@ -5,7 +5,7 @@ import Period from "./Period";
 
 const Piechart = () =>{
     return(
-        <div className="h-[100vh] md:h-[85vh] w-full bg-white shadow-sm border-[1px] ">
+        <div className="h-[100vh] md:h-[85vh] w-[90vh] bg-white  shadow-sm border-[1px] ">
         <h3 className=" px-5 pt-5 font-semibold">CONSIGNAS PENDIENTES TRS Y CCTV</h3>
         
         <Period/>

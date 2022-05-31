@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ICONS } from '../constants';
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -22,6 +23,9 @@ const Period=()=>{
   const [open,setOpen] = useState(false)
   const [selectedPeriod, setSelectedPeriod] = useState("Ultimo Día")
 
+  const wrapperRef = useRef(null);
+  ClickOutSide(wrapperRef,setOpen);
+
   const toogleTooltip=()=>{
     setOpen(!open)
   }
@@ -37,10 +41,10 @@ const Period=()=>{
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>
-            <ul className=" w-40 space-y-4">
+            <ul className=" w-40 space-y-4" useRef={wrapperRef}>
                 
                 <li onClick={()=>{
-                    setSelectedPeriod("Hoy dia")
+                    handlePeriod("Hoy dia")
                     toogleTooltip()
                 }
                 } className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
@@ -48,7 +52,7 @@ const Period=()=>{
                 </li>
 
                 <li onClick={()=>{
-                    setSelectedPeriod("Ultimo Día")
+                    handlePeriod("Ultimo Día")
                     toogleTooltip()
                 }
                 } className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
@@ -61,8 +65,8 @@ const Period=()=>{
       >
 
 
-        <div onClick={()=>toogleTooltip()} onBlur={()=>setOpen(false)} tabIndex={0}
-             className="ml-72 flex mt-20 hover:cursor-pointer">
+        <div onClick={()=>toogleTooltip()}
+             className="ml-72 justify-end pr-20 flex mt-20 hover:cursor-pointer">
             <h3 className="text-xs text-gray-600">{selectedPeriod}</h3>
             <ICONS.ChevronDownIconO className="h-3 ml-1 mt-0.5 text-gray-600"/>
         </div>
