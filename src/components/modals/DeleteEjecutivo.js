@@ -18,7 +18,7 @@ const DeleteEjecutivo = (props) =>{
                 <div className="flex flex-row items-end justify-center -mt-10 w-full z-50">
                 <div className="mt-10 h-fit pb-8 rounded-md bg-white border-2 shadow-lg py-10 z-50 lg:w-1/3 absolute">
                     <div className="border-b-[1px] z-50  pb-4 -mt-4 flex justify-between">
-                        <ICONS.ExclamationIconS className="h-6 hover:cursor-pointer pr-8 text-orange-600 " onClick={()=>handleCancel()}/>
+                        <ICONS.ExclamationIconS className="h-6 hover:cursor-pointer pl-4 text-orange-600 "/>
                         <h3 className="font-bold pl-7 text-xl">Crear Ejecutivo</h3>
                         <ICONS.XCircleIconS className="h-6 hover:cursor-pointer pr-4" onClick={()=>handleCancel()}/>
                     </div>
