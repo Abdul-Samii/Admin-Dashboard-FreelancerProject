@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,9 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
+import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
 
 interface Column {
-  id: 'Ejectivos' | 'Alias' | 'Creado' | 'Opciones';
+  id: 'Ejectivos' | 'Alias' | '# Familiares' | 'Opciones';
   label: string;
   minWidth?: number;
   align?: 'right';
@@ -20,7 +21,7 @@ interface Column {
 const columns: Column[] = [
   { id: 'Ejectivos', label: 'Ejectivos', minWidth: 300 },
   { id: 'Alias', label: 'Alias', minWidth: 250 },
-  { id: 'Creado', label: 'Creado', minWidth: 200 },
+  { id: 'Familiares', label: '# Familiares', minWidth: 200 },
   { id: 'Opciones', label: 'Opciones', minWidth: 300 },
  
 ];
@@ -36,24 +37,30 @@ interface Data {
 function createData(
     Ejectivos: string,
     Alias: string,
-    Creado: string,
+    Familiares: string,
     Opciones: string,
 ): Data {
-  return { Ejectivos, Alias, Creado,Opciones };
+  return { Ejectivos, Alias, Familiares,Opciones };
 }
 
 const rows = [
-  createData('staging',"TR1",'22/11/2021 10:35'),
-  createData('abhin/repo/api/allow_repo_updates',"TR2",'22/11/2021 10:35'),
-  createData('zdavis/BBCDEV-1577',"TR3",'22/11/2021 10:35'),
-  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'22/11/2021 10:35'),
-  createData('jmooring/BBDEV-1603',"TG2",'22/11/2021 10:35'),
+  createData('staging',"TR1",'0'),
+  createData('abhin/repo/api/allow_repo_updates',"TR2",'1'),
+  createData('zdavis/BBCDEV-1577',"TR3",'2'),
+  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'0'),
+  createData('jmooring/BBDEV-1603',"TG2",'4'),
 
 ];
 
 export default function EjectivosTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+
+  const [Create,setCreate] = useState(false)
+  const [Edit,setEdit] = useState(false)
+  const [Delete,setDelete] = useState(false)
+
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -65,7 +72,7 @@ export default function EjectivosTable() {
   };
 
   return (
-
+    <div>
     <Paper sx={{ width: '100%' }}>
       <TableContainer sx={{ maxHeight: 700 }}>
         <Table stickyHeader aria-label="sticky table">
@@ -96,9 +103,10 @@ export default function EjectivosTable() {
                           {
                             [column.id] == 'Opciones'?
                             <div className='flex gap-2 -ml-2'>
-                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.PencilIconS className="h-5 hover:cursor-pointer " color="#86AD6C" />
-                                <ICONS.ArchiveIconS className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                <ICONS.CheckCircleIconS onClick={()=>setCreate(true)} className="h-5 hover:cursor-pointer" color="red"/>
+                                <ICONS.userAddIconO onClick={()=>setCreate(true)} className="h-5 hover:cursor-pointer " color="black" />
+                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
+                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
                             :
@@ -123,6 +131,19 @@ export default function EjectivosTable() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+     
+     <div className='justify-start bg-red-500 flex flex-col'>
+      {
+        Create&&<CreateEjecutivo Create={Create}  setCreate={setCreate}/>
+      }
+      {
+        Edit&&<EditEjecutivo Edit={Edit}  setEdit={setEdit}/>
+      }
+      {
+        Delete&&<DeleteEjecutivo Delete={Delete} setDelete={setDelete} />
+      }
+    </div>
+    </div>
   );
 }
              
