@@ -103,7 +103,7 @@ export default function EjectivosTable() {
                           {
                             [column.id] == 'Opciones'?
                             <div className='flex gap-2 -ml-2'>
-                                <ICONS.CheckCircleIconS onClick={()=>setCreate(true)} className="h-5 hover:cursor-pointer" color="red"/>
+                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
                                 <ICONS.userAddIconO onClick={()=>setCreate(true)} className="h-5 hover:cursor-pointer " color="black" />
                                 <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
                                 <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
