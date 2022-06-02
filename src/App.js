@@ -11,6 +11,7 @@ import GrupoFamiliar from './pages/Recursos/GrupoFamiliar';
 import VehicleEjectivos from './pages/Recursos/VehicleEjectivos';
 import Protectores from './pages/Recursos/Protectores';
 import VehicleProtectores from './pages/Recursos/VehicleProtectores';
+import Lugares from './pages/Recursos/Lugares';
 
 function App(props) {
 
@@ -37,6 +38,7 @@ function App(props) {
         <Route path='vehiculosejecutivos' element={<VehicleEjectivos/>}/>
         <Route path='protectores' element={<Protectores/>}/>
         <Route path='vehiculosprotectores' element={<VehicleProtectores/>}/>
+        <Route path='lugares' element={<Lugares/>}/>
         
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />

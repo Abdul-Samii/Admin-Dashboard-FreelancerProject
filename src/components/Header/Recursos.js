@@ -76,7 +76,7 @@ const wrapperRef = useRef(null);
                     <p className="text-sm mt-3 ml-3">Vehículos de Protectores</p>
                 </li>
 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/lugares')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Lugares</p>
                 </li>
