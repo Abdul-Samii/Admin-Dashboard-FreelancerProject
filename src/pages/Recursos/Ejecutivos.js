@@ -1,10 +1,10 @@
 import React from 'react'
-import { AdminAuthorized, CreateEjecutivo, EjectivosTable, Header, ICONS, RedirectWithoutLogin } from '../../components'
+import { AdminAuthorized, EjectivosTable, Header, ICONS, RedirectWithoutLogin } from '../../components'
 
 const Ejecutivos = () =>{
 
 
-
+console.log(window.location.href)
 
     return(
         <div className='h-screen'>
@@ -31,10 +31,6 @@ const Ejecutivos = () =>{
                     <h4 className='font-semibold'>Ejectivos</h4>
                     <ICONS.ChevronDoubleRightIconO className="h-3 mt-1.5 ml-1"/>
                 </div>
-                {/* <div onClick={()=>setCreate(true)}>
-                <h3 className='ml-11 mt-3 bg-blue-500 w-32 text-center font-semibold rounded-sm
-                 text-white hover:cursor-pointer'>Crear Ejecutivo</h3>
-                </div> */}
                  
                  <div className='flex justify-end mr-16'>
                     <p className="text-blue-500 hover:cursor-pointer">Export as PDF</p>
@@ -48,9 +44,7 @@ const Ejecutivos = () =>{
 
 
             <div className=' pt-4 w-screen p-16 flex flex-col justify-center  '>
-                {/* <div className='md:w-fit w-screen justify-center'> */}
                     <EjectivosTable />
-                {/* </div> */}
             </div>
             
             </div>

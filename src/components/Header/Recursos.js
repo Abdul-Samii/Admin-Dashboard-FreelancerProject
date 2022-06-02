@@ -50,33 +50,63 @@ const wrapperRef = useRef(null);
           <React.Fragment>
             <ul className=" w-44 space-y-4" ref={wrapperRef}>
                 
-                <li onClick={()=>navigate('/ejecutivos')} className="flex space-x-4 hover:cursor-pointer 
+                <li onClick={()=>{
+                  if(window.location.href!=="http://localhost:3000/"+"ejecutivos")
+                  {
+                  navigate('/ejecutivos')
+                  }
+                }} className="flex space-x-4 hover:cursor-pointer 
                   hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Ejecutivos</p>
                 </li>
                 
-                <li onClick={()=>navigate('/grupofamiliar')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>{
+                 if(window.location.href!=="http://localhost:3000/"+"grupofamiliar")
+                 { 
+                  navigate('/grupofamiliar')
+                 }
+                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Grupo Familiar</p>
                 </li>
 
-                <li onClick={()=>navigate('/vehiculosejecutivos')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>{
+                  if(window.location.href!=="http://localhost:3000/"+"vehiculosejecutivos")
+                  {
+                  navigate('/vehiculosejecutivos')
+                  }
+                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Vehículos de Ejecutivos</p>
                 </li>
 
-                <li onClick={()=>navigate('/protectores')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>{
+                  if(window.location.href!=="http://localhost:3000/"+"protectores")
+                  {
+                  navigate('/protectores')
+                  }
+                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Protectores</p>
                 </li>
                 
-                <li onClick={()=>navigate('/vehiculosprotectores')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>{
+                  if(window.location.href!=="http://localhost:3000/"+"vehiculosprotectores")
+                  {
+                  navigate('/vehiculosprotectores')
+                  }
+                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Vehículos de Protectores</p>
                 </li>
 
-                <li onClick={()=>navigate('/lugares')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>{
+                  if(window.location.href!=="http://localhost:3000/"+"lugares")
+                  {
+                  navigate('/lugares')
+                  }
+                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Lugares</p>
                 </li>

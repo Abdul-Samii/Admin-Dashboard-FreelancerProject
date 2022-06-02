@@ -8,11 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, CreateProtector, DeleteEjecutivo, DeleteProtector, EditEjecutivo, EditProtector } from '../modals';
-import EditFamilyModal from '../modals/EditFamilyModal';
-import CreateFamily from '../modals/CreateFamily';
-import EditFamilySub from '../modals/EditFamilySub';
-import DeleteFamily from '../modals/DeleteFamilyModal';
+import { CreateProtector, DeleteProtector, EditProtector } from '../modals';
+
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 

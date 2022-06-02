@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, CreateVehicle, CreateVehicleProtect, DeleteEjecutivo, DeleteVehicle, DeleteVehicleProtect, EditEjecutivo, EditVehicle, EditVehicleProtect } from '../modals';
+import {CreateVehicleProtect, DeleteVehicleProtect, EditVehicleProtect } from '../modals';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 interface Column {
@@ -25,7 +25,7 @@ const columns: Column[] = [
   { id: 'Placas', label: 'Placas', minWidth: 200 },
   { id: 'Tipo', label: 'Tipo', minWidth: 200 },
   { id: 'Creado', label: 'Creado', minWidth: 200 },
-  { id: 'Opciones', label: 'Opciones', minWidth: 300 },
+  { id: 'Opciones', label: 'Opciones', minWidth: 200 },
  
 ];
 
