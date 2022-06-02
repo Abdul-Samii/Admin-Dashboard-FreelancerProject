@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
+import { CreateEjecutivo, CreateProtector, DeleteEjecutivo, DeleteProtector, EditEjecutivo, EditProtector } from '../modals';
 import EditFamilyModal from '../modals/EditFamilyModal';
 import CreateFamily from '../modals/CreateFamily';
 import EditFamilySub from '../modals/EditFamilySub';
@@ -16,13 +16,12 @@ import DeleteFamily from '../modals/DeleteFamilyModal';
 
 
 
-export default function FamilyTable(props) {
+export default function ProtectoresTable() {
 
-  const FamName = props.name 
 
 
   interface Column {
-    id: FamName | 'Alias' | '# Familiares' | 'Opciones';
+    id: 'Protector' | 'Alias' | 'Creado' | 'Opciones';
     label: string;
     minWidth?: number;
     align?: 'right';
@@ -30,7 +29,7 @@ export default function FamilyTable(props) {
   }
   
   const columns: Column[] = [
-    { id: "Nombre", label: FamName, minWidth: 340 },
+    { id: "Protector", label: 'Protector', minWidth: 340 },
     { id: 'Alias', label: 'Alias', minWidth: 200 },
     { id: 'Creado', label: 'Creado', minWidth: 200 },
     { id: 'Opciones', label: 'Opciones', minWidth: 120 },
@@ -38,7 +37,7 @@ export default function FamilyTable(props) {
   ];
   
   interface Data {
-      Nombre: string,
+      Protector: string,
       Alias: string,
       Creado: string,
       Opciones: string,
@@ -46,12 +45,12 @@ export default function FamilyTable(props) {
   }
   
   function createData(
-      Nombre: string,
+      Protector: string,
       Alias: string,
       Creado:string,
       Opciones: string,
   ): Data {
-    return { Nombre, Alias,Creado,Opciones };
+    return { Protector, Alias,Creado,Opciones };
   }
   
   const rows = [
@@ -98,7 +97,7 @@ export default function FamilyTable(props) {
 
     <div onClick={()=>setCreate(true)} className="w-fit mb-10  -mt-10">
                 <h3 className=' mt-3 ml-5 bg-blue-500 w-32 text-center font-semibold rounded-sm
-                 text-white hover:cursor-pointer'>Crear Familiar</h3>
+                 text-white hover:cursor-pointer'>Crear Protector</h3>
     </div>
 
     <Paper sx={{ width: '100%' }}>
@@ -161,13 +160,13 @@ export default function FamilyTable(props) {
      
      <div className='justify-start flex flex-col'>
       {
-        Create&&<CreateFamily Create={Create}  setCreate={setCreate}/>
+        Create&&<CreateProtector Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditFamilySub Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditProtector Edit={Edit}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteFamily Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteProtector Delete={Delete} setDelete={setDelete} />
       }
       
     </div>

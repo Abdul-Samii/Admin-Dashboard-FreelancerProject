@@ -30,7 +30,7 @@ const EditFamilyModal = (props) =>{
 
                 <div className="pt-10">
 
-                    <FamilyTable/>
+                    <FamilyTable name="Nombre"/>
                 </div>
 
 

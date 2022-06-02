@@ -56,22 +56,22 @@ const wrapperRef = useRef(null);
                     <p className="text-sm mt-3 ml-3">Ejecutivos</p>
                 </li>
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/grupofamiliar')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Grupo Familiar</p>
                 </li>
 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/vehiculosejecutivos')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Vehículos de Ejecutivos</p>
                 </li>
 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/protectores')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Protectores</p>
                 </li>
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/vehiculosprotectores')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Vehículos de Protectores</p>
                 </li>

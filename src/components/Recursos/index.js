@@ -1,2 +1,5 @@
 export {default as EjectivosTable} from './EjectivosTable'
 export {default as FamilyTable} from './FamilyTable'
+export {default as VehiculosEjecutivoTable} from './VehiculosEjecutivoTable'
+export {default as ProtectoresTable} from './ProtectoresTable'
+export {default as VehiculosProtectTable} from './VehiculosProtectTable'

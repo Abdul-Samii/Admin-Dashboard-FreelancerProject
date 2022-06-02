@@ -1,7 +1,7 @@
 import React from "react";
 import { ICONS } from "../constants";
 
-const DeleteFamily = (props) =>{
+const DeleteVehicle = (props) =>{
     const {Delete,setDelete} = props
     const handleCancel = () =>{
         setDelete(false)
@@ -19,11 +19,11 @@ const DeleteFamily = (props) =>{
                 <div className="mt-10 h-fit pb-8 rounded-md bg-white border-2 shadow-lg py-10 z-50 w-fit px-4 absolute">
                     <div className="border-b-[1px] z-50  pb-4 -mt-4 flex justify-between">
                         <ICONS.ExclamationIconS className="h-6 hover:cursor-pointer pl-4 text-orange-600 "/>
-                        <h3 className="font-bold text-left text-xl">Eliminar familiar de Ejecutivo</h3>
+                        <h3 className="font-bold pl-7 text-xl">Eliminar Vehiculo</h3>
                         <ICONS.XCircleIconS className="h-6 hover:cursor-pointer pr-4" onClick={()=>handleCancel()}/>
                     </div>
-                    <p className="text-center text-lg -ml-3 py-2 px-5 ">
-                    Esta por de eliminar a un familiar vinculado a Ejecutivo.</p>
+                    <p className="text-center text-lg -ml-3 py-2 px-5">
+                    Esta por de eliminar a un vehiculo vinculado a Ejecutivo.</p>
 
                     
 
@@ -43,4 +43,4 @@ const DeleteFamily = (props) =>{
     )
 }
 
-export default DeleteFamily
+export default DeleteVehicle

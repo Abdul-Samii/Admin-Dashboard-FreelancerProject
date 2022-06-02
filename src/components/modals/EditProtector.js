@@ -1,35 +1,38 @@
 import React,{useState} from "react";
 import { ICONS } from "../constants";
 
-const CreateFamily = (props) =>{
-    const {Create,setCreate} = props
+const EditProtector = (props) =>{
+    const {Edit,setEdit} = props
     const [nombre,setNombre] = useState()
     const [alias,setAlias] = useState()
 
     const handleCancel = () =>{
-        setCreate(false)
+        setEdit(false)
     }
 
-    const handleCreate=()=>{
-        alert("[SUCCESS]. Created!!")
-        setCreate(false)
+    const handleEdit=()=>{
+        alert("[SUCCESS]. Edited!!")
+        setEdit(false)
     }
 
     return(
         <div>
         
                 <div className="flex flex-row items-end justify-center -mt-10 w-full z-50">
-                <div className="mt-10 h-fit pb-8 rounded-md bg-white border-2 shadow-lg py-10 z-50 w-fit px-12 absolute">
+                <div className="mt-10 h-fit pb-8 rounded-md bg-white border-2 shadow-lg py-10 z-50 w-fit px-4 absolute">
                     <div className="border-b-[1px] z-50  pb-4 -mt-4 flex justify-between">
-                        <h3 className="font-bold text-xl">Crear familiar de Ejecutivo</h3>
+                        <h3 className="font-bold pl-7 text-xl">Editar Protector</h3>
                         <ICONS.XCircleIconS className="h-6 hover:cursor-pointer pr-4" onClick={()=>handleCancel()}/>
                     </div>
+
+                <p className="mt-2 pb-2">Edita los datos protector verificando que el alias se unico.</p>
+
 
 
                 {/* INPUT */}
                     <div className="items-center flex flex-col border-b-[1px] pb-6">
                        {/* Nombre */}
-                        <div className='mt-1'>
+                        <div className='mt-2'>
                             <p className='font-medium'>Nombre:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
@@ -39,7 +42,7 @@ const CreateFamily = (props) =>{
 
 
                         {/* Alias */}
-                        <div className='mt-1'>
+                        <div className='mt-2'>
                             <div className="flex justify-between">
                                 <p className='font-medium'>Alias*:</p>
                                 <p className="font-medium text-red-600 hover:cursor-pointer">verificar</p>
@@ -53,11 +56,11 @@ const CreateFamily = (props) =>{
 
 
 
-                    <div className="flex justify-end space-x-4 mt-4">
+                    <div className="flex justify-end pr-5 space-x-4 mt-4">
                         <h3 onClick={()=>handleCancel()} className="w-20 py-1 rounded-md text-center font-semibold hover:cursor-pointer
                             hover:bg-green-700 active:bg-slate-50 bg-green-900 text-white">Cancelar</h3>
-                        <h3 onClick={()=>handleCreate()} className="bg-blue-500 w-20 py-1 rounded-md text-center font-semibold hover:cursor-pointer
-                            hover:bg-blue-400 text-white active:bg-slate-50">Crea</h3>
+                        <h3 onClick={()=>handleEdit()} className="bg-blue-500 w-20 py-1 rounded-md text-center font-semibold hover:cursor-pointer
+                            hover:bg-blue-400 text-white active:bg-slate-50">Actualizar</h3>
                     </div>
 
                 </div>
@@ -68,4 +71,4 @@ const CreateFamily = (props) =>{
     )
 }
 
-export default CreateFamily
+export default EditProtector

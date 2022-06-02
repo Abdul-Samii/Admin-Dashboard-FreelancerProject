@@ -7,6 +7,10 @@ import { CCTVDashboard, Diurno, Historial, Nocturno } from './pages/CCTV';
 import {clearToast} from './store/actions'
 import { Toast } from './components';
 import { connect } from 'react-redux';
+import GrupoFamiliar from './pages/Recursos/GrupoFamiliar';
+import VehicleEjectivos from './pages/Recursos/VehicleEjectivos';
+import Protectores from './pages/Recursos/Protectores';
+import VehicleProtectores from './pages/Recursos/VehicleProtectores';
 
 function App(props) {
 
@@ -29,6 +33,10 @@ function App(props) {
         <Route path="register" element={<Registration/>} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path='ejecutivos' element={<Ejecutivos/>} />
+        <Route path='grupofamiliar' element={<GrupoFamiliar/>}/>
+        <Route path='vehiculosejecutivos' element={<VehicleEjectivos/>}/>
+        <Route path='protectores' element={<Protectores/>}/>
+        <Route path='vehiculosprotectores' element={<VehicleProtectores/>}/>
         
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />

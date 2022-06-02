@@ -8,74 +8,62 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
+import { CreateEjecutivo, CreateVehicle, DeleteEjecutivo, DeleteVehicle, EditEjecutivo, EditVehicle } from '../modals';
 import EditFamilyModal from '../modals/EditFamilyModal';
-import CreateFamily from '../modals/CreateFamily';
-import EditFamilySub from '../modals/EditFamilySub';
-import DeleteFamily from '../modals/DeleteFamilyModal';
 
+interface Column {
+  id: 'Vehículo' | 'Alias' | 'Placas' | 'Tipo' | 'Ejectivo' | 'Creado' | 'Opciones';
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
+}
 
+const columns: Column[] = [
+  { id: 'Vehículo', label: 'Vehículo', minWidth: 300 },
+  { id: 'Alias', label: 'Alias', minWidth: 250 },
+  { id: 'Placas', label: 'Placas', minWidth: 200 },
+  { id: 'Tipo', label: 'Tipo', minWidth: 200 },
+  { id: 'Ejectivo', label: 'Ejectivo', minWidth: 200 },
 
-export default function FamilyTable(props) {
+  { id: 'Creado', label: 'Creado', minWidth: 200 },
+  { id: 'Opciones', label: 'Opciones', minWidth: 300 },
+ 
+];
 
-  const FamName = props.name 
+interface Data {
+    Vehículo: string,
+    Alias: string,
+    Placas:String,
+    Tipo:string,
+    Ejectivo:string,
+    Creado: string,
+    Opciones: string,
 
+}
 
-  interface Column {
-    id: FamName | 'Alias' | '# Familiares' | 'Opciones';
-    label: string;
-    minWidth?: number;
-    align?: 'right';
-    format?: (value: number) => string;
-  }
-  
-  const columns: Column[] = [
-    { id: "Nombre", label: FamName, minWidth: 340 },
-    { id: 'Alias', label: 'Alias', minWidth: 200 },
-    { id: 'Creado', label: 'Creado', minWidth: 200 },
-    { id: 'Opciones', label: 'Opciones', minWidth: 120 },
-   
-  ];
-  
-  interface Data {
-      Nombre: string,
-      Alias: string,
-      Creado: string,
-      Opciones: string,
-  
-  }
-  
-  function createData(
-      Nombre: string,
-      Alias: string,
-      Creado:string,
-      Opciones: string,
-  ): Data {
-    return { Nombre, Alias,Creado,Opciones };
-  }
-  
-  const rows = [
-    createData('staging',"TR1",'22/11/2021 10:35'),
-    createData('abhin/repo/api/allow_repo_updates',"TR2",'22/11/2021 10:35'),
-    createData('zdavis/BBCDEV-1577',"TR3",'22/11/2021 10:35'),
-    createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'22/11/2021 10:35'),
-    createData('jmooring/BBDEV-1603',"TG2",'22/11/2021 10:35'),
-  
-  ];
+function createData(
+    Vehículo: string,
+    Alias: string,
+    Placas: string,
+    Tipo:string,
+    Ejectivo:string,
+    Creado:string,
+    Opciones: string,
+): Data {
+  return { Vehículo, Alias, Placas,Tipo,Ejectivo,Creado,Opciones };
+}
 
+const rows = [
+  createData('staging',"TR1",'PCB4512','Vehiculo','Ahbin','22/11/2021  10:35'),
+  createData('abhin/repo/api/allow_repo_updates',"TR2",'PCB4512','Moto','Luis','22/11/2021  10:35'),
+  createData('zdavis/BBCDEV-1577',"TR3",'PCB4512','camioneta','Pepe','22/11/2021  10:35'),
+  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'PCB4512','Vehiculo','Esposa','22/11/2021  10:35'),
+  createData('jmooring/BBDEV-1603',"TG2",'PCB4512','Vehiculo','Ahbin','22/11/2021  10:35'),
 
+];
 
-
-
-
-
-
-
-
-
-
-
-
+export default function VehiculosEjecutivoTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -83,6 +71,7 @@ export default function FamilyTable(props) {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
+  const [EditFamily,setEditFamily] = useState(false)
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -96,9 +85,9 @@ export default function FamilyTable(props) {
   return (
     <div>
 
-    <div onClick={()=>setCreate(true)} className="w-fit mb-10  -mt-10">
-                <h3 className=' mt-3 ml-5 bg-blue-500 w-32 text-center font-semibold rounded-sm
-                 text-white hover:cursor-pointer'>Crear Familiar</h3>
+    <div onClick={()=>setCreate(true)} className="bg-red-400 w-fit mb-10  -mt-10">
+                <h3 className=' mt-3 bg-blue-500 w-fit px-2 text-center font-semibold rounded-sm
+                 text-white hover:cursor-pointer'>Crear vehiculo de Ejecutivo</h3>
     </div>
 
     <Paper sx={{ width: '100%' }}>
@@ -161,15 +150,17 @@ export default function FamilyTable(props) {
      
      <div className='justify-start flex flex-col'>
       {
-        Create&&<CreateFamily Create={Create}  setCreate={setCreate}/>
+        Create&&<CreateVehicle Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditFamilySub Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditVehicle Edit={Edit}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteFamily Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteVehicle Delete={Delete} setDelete={setDelete} />
       }
-      
+      {
+        EditFamily&&<EditFamilyModal EditFamily={EditFamily} setEditFamily={setEditFamily} />
+      }
     </div>
     </div>
   );
