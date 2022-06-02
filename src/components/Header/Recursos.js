@@ -25,7 +25,6 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const Recursos=()=>{
 
-
 let navigate = useNavigate()
 
   const [open,setOpen] = useState(false)
@@ -51,7 +50,7 @@ const wrapperRef = useRef(null);
             <ul className=" w-44 space-y-4" ref={wrapperRef}>
                 
                 <li onClick={()=>{
-                  if(window.location.href!=="http://localhost:3000/"+"ejecutivos")
+                  if(window.location.href!==window.location.protocol + '//' + window.location.host+"/ejecutivos")
                   {
                   navigate('/ejecutivos')
                   }
@@ -62,7 +61,7 @@ const wrapperRef = useRef(null);
                 </li>
                 
                 <li onClick={()=>{
-                 if(window.location.href!=="http://localhost:3000/"+"grupofamiliar")
+                 if(window.location.href!==window.location.protocol + '//' + window.location.host+"/grupofamiliar")
                  { 
                   navigate('/grupofamiliar')
                  }
@@ -72,7 +71,7 @@ const wrapperRef = useRef(null);
                 </li>
 
                 <li onClick={()=>{
-                  if(window.location.href!=="http://localhost:3000/"+"vehiculosejecutivos")
+                  if(window.location.href!==window.location.protocol + '//' + window.location.host+"/vehiculosejecutivos")
                   {
                   navigate('/vehiculosejecutivos')
                   }
@@ -82,7 +81,7 @@ const wrapperRef = useRef(null);
                 </li>
 
                 <li onClick={()=>{
-                  if(window.location.href!=="http://localhost:3000/"+"protectores")
+                  if(window.location.href!==window.location.protocol + '//' + window.location.host+"/protectores")
                   {
                   navigate('/protectores')
                   }
@@ -92,7 +91,7 @@ const wrapperRef = useRef(null);
                 </li>
                 
                 <li onClick={()=>{
-                  if(window.location.href!=="http://localhost:3000/"+"vehiculosprotectores")
+                  if(window.location.href!==window.location.protocol + '//' + window.location.host+"/vehiculosprotectores")
                   {
                   navigate('/vehiculosprotectores')
                   }
@@ -102,7 +101,7 @@ const wrapperRef = useRef(null);
                 </li>
 
                 <li onClick={()=>{
-                  if(window.location.href!=="http://localhost:3000/"+"lugares")
+                  if(window.location.href!==window.location.protocol + '//' + window.location.host+"/lugares")
                   {
                   navigate('/lugares')
                   }

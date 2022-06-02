@@ -28,7 +28,7 @@ const GrupoFamiliar = () =>{
 
 
                 <div className='flex ml-11 mt-4'>
-                    <h4 className='font-semibold'>Ejectivos</h4>
+                    <h4 className='font-semibold'>Grupo Familiar</h4>
                     <ICONS.ChevronDoubleRightIconO className="h-3 mt-1.5 ml-1"/>
                 </div>
                 {/* <div onClick={()=>setCreate(true)}>
