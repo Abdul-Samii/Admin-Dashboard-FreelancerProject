@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { ICONS } from "../constants";
-import { FamilyTable } from "../Recursos";
+import { FamilyTable } from "../RecursosTable/index.js";
 
 const EditFamilyModal = (props) =>{
     const {EditFamily,setEditFamily} = props

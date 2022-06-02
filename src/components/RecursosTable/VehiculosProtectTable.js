@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,73 +8,58 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, CreateLugar, CreateProtector, DeleteEjecutivo, DeleteLugar, DeleteProtector, EditEjecutivo, EditLugar, EditProtector } from '../modals';
-import EditFamilyModal from '../modals/EditFamilyModal';
-import CreateFamily from '../modals/CreateFamily';
-import EditFamilySub from '../modals/EditFamilySub';
-import DeleteFamily from '../modals/DeleteFamilyModal';
+import { CreateEjecutivo, CreateVehicle, CreateVehicleProtect, DeleteEjecutivo, DeleteVehicle, DeleteVehicleProtect, EditEjecutivo, EditVehicle, EditVehicleProtect } from '../modals';
+import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
+interface Column {
+  id: 'Vehículo' | 'Alias' | 'Placas' | 'Tipo' | 'Creado' | 'Opciones';
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
+}
 
+const columns: Column[] = [
+  { id: 'Vehículo', label: 'Vehículo', minWidth: 300 },
+  { id: 'Alias', label: 'Alias', minWidth: 250 },
+  { id: 'Placas', label: 'Placas', minWidth: 200 },
+  { id: 'Tipo', label: 'Tipo', minWidth: 200 },
+  { id: 'Creado', label: 'Creado', minWidth: 200 },
+  { id: 'Opciones', label: 'Opciones', minWidth: 300 },
+ 
+];
 
-export default function LugaresTable() {
+interface Data {
+    Vehículo: string,
+    Alias: string,
+    Placas:String,
+    Tipo:string,
+    Creado: string,
+    Opciones: string,
 
+}
 
+function createData(
+    Vehículo: string,
+    Alias: string,
+    Placas: string,
+    Tipo:string,
+    Creado:string,
+    Opciones: string,
+): Data {
+  return { Vehículo, Alias, Placas,Tipo,Creado,Opciones };
+}
 
-  interface Column {
-    id: 'Lugar' | 'Alias' | 'Creado' | 'Opciones';
-    label: string;
-    minWidth?: number;
-    align?: 'right';
-    format?: (value: number) => string;
-  }
-  
-  const columns: Column[] = [
-    { id: "Lugar", label: 'Lugar', minWidth: 340 },
-    { id: 'Alias', label: 'Alias', minWidth: 200 },
-    { id: 'Creado', label: 'Creado', minWidth: 200 },
-    { id: 'Opciones', label: 'Opciones', minWidth: 120 },
-   
-  ];
-  
-  interface Data {
-      Lugar: string,
-      Alias: string,
-      Creado: string,
-      Opciones: string,
-  
-  }
-  
-  function createData(
-      Lugar: string,
-      Alias: string,
-      Creado:string,
-      Opciones: string,
-  ): Data {
-    return { Lugar, Alias,Creado,Opciones };
-  }
-  
-  const rows = [
-    createData('staging',"TR1",'22/11/2021 10:35'),
-    createData('abhin/repo/api/allow_repo_updates',"TR2",'22/11/2021 10:35'),
-    createData('zdavis/BBCDEV-1577',"TR3",'22/11/2021 10:35'),
-    createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'22/11/2021 10:35'),
-    createData('jmooring/BBDEV-1603',"TG2",'22/11/2021 10:35'),
-  
-  ];
+const rows = [
+  createData('staging',"TR1",'PCB4512','Vehiculo','22/11/2021  10:35'),
+  createData('abhin/repo/api/allow_repo_updates',"TR2",'PCB4512','Moto','22/11/2021  10:35'),
+  createData('zdavis/BBCDEV-1577',"TR3",'PCB4512','camioneta','22/11/2021  10:35'),
+  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'PCB4512','Vehiculo','22/11/2021  10:35'),
+  createData('jmooring/BBDEV-1603',"TG2",'PCB4512','Vehiculo','22/11/2021  10:35'),
 
+];
 
-
-
-
-
-
-
-
-
-
-
-
-
+export default function VehiculosProtectTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -82,6 +67,14 @@ export default function LugaresTable() {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
+
+
+// CLICK OUTSIDE MODEL CLOSE
+const wrapperRef = useRef(null);
+ClickOutSide(wrapperRef,setEdit);
+ClickOutSide(wrapperRef,setDelete);
+ClickOutSide(wrapperRef,setCreate);
+
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -95,9 +88,9 @@ export default function LugaresTable() {
   return (
     <div>
 
-    <div onClick={()=>setCreate(true)} className="w-fit mb-10  -mt-10">
-                <h3 className=' mt-3 bg-blue-500 w-32 text-center font-semibold rounded-sm
-                 text-white hover:cursor-pointer'>Crear Lugar</h3>
+    <div onClick={()=>setCreate(true)} className="bg-red-400 w-fit mb-10  -mt-10">
+                <h3 className=' mt-3 bg-blue-500 w-fit px-2 text-center font-semibold rounded-sm
+                 text-white hover:cursor-pointer'>Crear vehiculo de Protectores</h3>
     </div>
 
     <Paper sx={{ width: '100%' }}>
@@ -158,17 +151,16 @@ export default function LugaresTable() {
       />
     </Paper>
      
-     <div className='justify-start flex flex-col'>
+     <div className='justify-start flex flex-col' ref={wrapperRef}>
       {
-        Create&&<CreateLugar Create={Create}  setCreate={setCreate}/>
+        Create&&<CreateVehicleProtect Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditLugar Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditVehicleProtect Edit={Edit}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteLugar Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteVehicleProtect Delete={Delete} setDelete={setDelete} />
       }
-      
     </div>
     </div>
   );

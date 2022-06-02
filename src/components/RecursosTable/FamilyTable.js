@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,20 +8,22 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, CreateProtector, DeleteEjecutivo, DeleteProtector, EditEjecutivo, EditProtector } from '../modals';
+import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
 import EditFamilyModal from '../modals/EditFamilyModal';
 import CreateFamily from '../modals/CreateFamily';
 import EditFamilySub from '../modals/EditFamilySub';
 import DeleteFamily from '../modals/DeleteFamilyModal';
+import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 
 
-export default function ProtectoresTable() {
+export default function FamilyTable(props) {
 
+  const FamName = props.name 
 
 
   interface Column {
-    id: 'Protector' | 'Alias' | 'Creado' | 'Opciones';
+    id: FamName | 'Alias' | '# Familiares' | 'Opciones';
     label: string;
     minWidth?: number;
     align?: 'right';
@@ -29,7 +31,7 @@ export default function ProtectoresTable() {
   }
   
   const columns: Column[] = [
-    { id: "Protector", label: 'Protector', minWidth: 340 },
+    { id: "Nombre", label: FamName, minWidth: 340 },
     { id: 'Alias', label: 'Alias', minWidth: 200 },
     { id: 'Creado', label: 'Creado', minWidth: 200 },
     { id: 'Opciones', label: 'Opciones', minWidth: 120 },
@@ -37,7 +39,7 @@ export default function ProtectoresTable() {
   ];
   
   interface Data {
-      Protector: string,
+      Nombre: string,
       Alias: string,
       Creado: string,
       Opciones: string,
@@ -45,12 +47,12 @@ export default function ProtectoresTable() {
   }
   
   function createData(
-      Protector: string,
+      Nombre: string,
       Alias: string,
       Creado:string,
       Opciones: string,
   ): Data {
-    return { Protector, Alias,Creado,Opciones };
+    return { Nombre, Alias,Creado,Opciones };
   }
   
   const rows = [
@@ -83,6 +85,22 @@ export default function ProtectoresTable() {
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
 
+// CLICK OUTSIDE MODEL CLOSE
+const wrapperRef = useRef(null);
+ClickOutSide(wrapperRef,setEdit);
+ClickOutSide(wrapperRef,setDelete);
+ClickOutSide(wrapperRef,setCreate);
+
+
+
+
+
+
+
+
+
+
+
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -97,7 +115,7 @@ export default function ProtectoresTable() {
 
     <div onClick={()=>setCreate(true)} className="w-fit mb-10  -mt-10">
                 <h3 className=' mt-3 ml-5 bg-blue-500 w-32 text-center font-semibold rounded-sm
-                 text-white hover:cursor-pointer'>Crear Protector</h3>
+                 text-white hover:cursor-pointer'>Crear Familiar</h3>
     </div>
 
     <Paper sx={{ width: '100%' }}>
@@ -158,15 +176,15 @@ export default function ProtectoresTable() {
       />
     </Paper>
      
-     <div className='justify-start flex flex-col'>
+     <div className='justify-start flex flex-col' ref={wrapperRef}>
       {
-        Create&&<CreateProtector Create={Create}  setCreate={setCreate}/>
+        Create&&<CreateFamily Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditProtector Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditFamilySub Edit={Edit}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteProtector Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteFamily Delete={Delete} setDelete={setDelete} />
       }
       
     </div>

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,54 +8,74 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
+import { CreateEjecutivo, CreateLugar, CreateProtector, DeleteEjecutivo, DeleteLugar, DeleteProtector, EditEjecutivo, EditLugar, EditProtector } from '../modals';
 import EditFamilyModal from '../modals/EditFamilyModal';
+import CreateFamily from '../modals/CreateFamily';
+import EditFamilySub from '../modals/EditFamilySub';
+import DeleteFamily from '../modals/DeleteFamilyModal';
+import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
-interface Column {
-  id: 'Ejectivos' | 'Alias' | '# Familiares' | 'Opciones';
-  label: string;
-  minWidth?: number;
-  align?: 'right';
-  format?: (value: number) => string;
-}
 
-const columns: Column[] = [
-  { id: 'Ejectivos', label: 'Ejectivos', minWidth: 300 },
-  { id: 'Alias', label: 'Alias', minWidth: 250 },
-  { id: 'Familiares', label: '# Familiares', minWidth: 200 },
-  { id: 'Creado', label: 'Creado', minWidth: 200 },
-  { id: 'Opciones', label: 'Opciones', minWidth: 300 },
- 
-];
 
-interface Data {
-    Ejectivos: string,
-    Alias: string,
-    Creado: string,
-    Opciones: string,
+export default function LugaresTable() {
 
-}
 
-function createData(
-    Ejectivos: string,
-    Alias: string,
-    Familiares: string,
-    Creado:string,
-    Opciones: string,
-): Data {
-  return { Ejectivos, Alias, Familiares,Creado,Opciones };
-}
 
-const rows = [
-  createData('staging',"TR1",'0','22/11/2021  10:35'),
-  createData('abhin/repo/api/allow_repo_updates',"TR2",'1','22/11/2021  10:35'),
-  createData('zdavis/BBCDEV-1577',"TR3",'2','22/11/2021  10:35'),
-  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'0','22/11/2021  10:35'),
-  createData('jmooring/BBDEV-1603',"TG2",'4','22/11/2021  10:35'),
+  interface Column {
+    id: 'Lugar' | 'Alias' | 'Creado' | 'Opciones';
+    label: string;
+    minWidth?: number;
+    align?: 'right';
+    format?: (value: number) => string;
+  }
+  
+  const columns: Column[] = [
+    { id: "Lugar", label: 'Lugar', minWidth: 340 },
+    { id: 'Alias', label: 'Alias', minWidth: 200 },
+    { id: 'Creado', label: 'Creado', minWidth: 200 },
+    { id: 'Opciones', label: 'Opciones', minWidth: 120 },
+   
+  ];
+  
+  interface Data {
+      Lugar: string,
+      Alias: string,
+      Creado: string,
+      Opciones: string,
+  
+  }
+  
+  function createData(
+      Lugar: string,
+      Alias: string,
+      Creado:string,
+      Opciones: string,
+  ): Data {
+    return { Lugar, Alias,Creado,Opciones };
+  }
+  
+  const rows = [
+    createData('staging',"TR1",'22/11/2021 10:35'),
+    createData('abhin/repo/api/allow_repo_updates',"TR2",'22/11/2021 10:35'),
+    createData('zdavis/BBCDEV-1577',"TR3",'22/11/2021 10:35'),
+    createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'22/11/2021 10:35'),
+    createData('jmooring/BBDEV-1603',"TG2",'22/11/2021 10:35'),
+  
+  ];
 
-];
 
-export default function EjectivosTable() {
+
+
+
+
+
+
+
+
+
+
+
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -63,7 +83,19 @@ export default function EjectivosTable() {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
-  const [EditFamily,setEditFamily] = useState(false)
+
+// CLICK OUTSIDE MODEL CLOSE
+const wrapperRef = useRef(null);
+ClickOutSide(wrapperRef,setEdit);
+ClickOutSide(wrapperRef,setDelete);
+ClickOutSide(wrapperRef,setCreate);
+
+
+
+
+
+
+
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -77,9 +109,9 @@ export default function EjectivosTable() {
   return (
     <div>
 
-    <div onClick={()=>setCreate(true)} className="bg-red-400 w-fit mb-10  -mt-10">
+    <div onClick={()=>setCreate(true)} className="w-fit mb-10  -mt-10">
                 <h3 className=' mt-3 bg-blue-500 w-32 text-center font-semibold rounded-sm
-                 text-white hover:cursor-pointer'>Crear Ejecutivo</h3>
+                 text-white hover:cursor-pointer'>Crear Lugar</h3>
     </div>
 
     <Paper sx={{ width: '100%' }}>
@@ -113,7 +145,6 @@ export default function EjectivosTable() {
                             [column.id] == 'Opciones'?
                             <div className='flex gap-2 -ml-2'>
                                 <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.userAddIconO onClick={()=>setEditFamily(true)} className="h-5 hover:cursor-pointer " color="black" />
                                 <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
                                 <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
@@ -141,19 +172,17 @@ export default function EjectivosTable() {
       />
     </Paper>
      
-     <div className='justify-start flex flex-col'>
+     <div className='justify-start flex flex-col' ref={wrapperRef}>
       {
-        Create&&<CreateEjecutivo Create={Create}  setCreate={setCreate}/>
+        Create&&<CreateLugar Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditEjecutivo Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditLugar Edit={Edit}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteEjecutivo Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteLugar Delete={Delete} setDelete={setDelete} />
       }
-      {
-        EditFamily&&<EditFamilyModal EditFamily={EditFamily} setEditFamily={setEditFamily} />
-      }
+      
     </div>
     </div>
   );
