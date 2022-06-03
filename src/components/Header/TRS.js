@@ -3,6 +3,7 @@ import { ICONS } from '../constants';
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
+import { useNavigate } from 'react-router-dom';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -21,6 +22,9 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const TRS=()=>{
 
+  const navigate = useNavigate()
+
+
   const [open,setOpen] = useState(false)
 
 
@@ -34,20 +38,17 @@ const TRS=()=>{
 
   return(
         <HtmlTooltip
-        // disableTouchListener
         open={open}
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>
             <ul className=" w-80 space-y-4" ref={wrapperRef}>
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
-                    {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
+                <li onClick={()=>navigate('/historialhovimiento')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <p className="text-sm mt-3 ml-3">Historial Control de movimiento</p>
                 </li>
                 
                 <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
-                    {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Historial Entrega y recepción de Turno</p>
                 </li>
 

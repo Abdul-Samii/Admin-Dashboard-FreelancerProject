@@ -12,6 +12,7 @@ import VehicleEjectivos from './pages/Recursos/VehicleEjectivos';
 import Protectores from './pages/Recursos/Protectores';
 import VehicleProtectores from './pages/Recursos/VehicleProtectores';
 import Lugares from './pages/Recursos/Lugares';
+import { HistorialMovimiento } from './pages/TRS';
 
 function App(props) {
 
@@ -39,6 +40,10 @@ function App(props) {
         <Route path='protectores' element={<Protectores/>}/>
         <Route path='vehiculosprotectores' element={<VehicleProtectores/>}/>
         <Route path='lugares' element={<Lugares/>}/>
+
+
+        {/* TRS */}
+        <Route path='historialhovimiento' element={<HistorialMovimiento/>} />
         
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />
