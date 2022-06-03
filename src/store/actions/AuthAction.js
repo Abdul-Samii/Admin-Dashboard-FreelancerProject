@@ -65,6 +65,7 @@ export const UserLogin = (data) => async dispatch => {
 // REGISTER
 export const UserRegister = (data) => async dispatch => {
     var response
+    console.log("POL",data)
     const progress =new ProgressBar({
         size:4,
         color:'blue'
@@ -78,7 +79,7 @@ export const UserRegister = (data) => async dispatch => {
             headers: { "content-type": 'multipart/form-data' }
         })
         const result = response.data
-        console.log(result.userData.tipo)
+        console.log(result)
 
         // if(result.message === 'Bienvenido a Emsecor'){
           

@@ -5,16 +5,16 @@ import authDecorator from '../assets/auth-decoration.png'
 import logo from '../assets/logo.png'
 import { Route, useNavigate,Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setToast, UserLogin } from '../store/actions'
+import { UserRegister } from '../store/actions'
 import { RedirectWithLogin, Toast } from '../components'
 
 const Registration = (props) =>{
 
-    const [username,setUsername] = useState()
-    const [name,setName] = useState()
-    const [surname,setSurname] = useState()
+    const [usuario,setUsuario] = useState()
+    const [nombres,setNombres] = useState()
+    const [apellidos,setApellidos] = useState()
     const [email,setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [contraseña, setContraseña] = useState()
     const [confirmPassword,setConfirmPassword] = useState()
 
     let navigate = useNavigate()
@@ -26,35 +26,21 @@ const Registration = (props) =>{
     const handleRegister=async dispatch=>{
         
         const obj={
-            username,
-            password
+            usuario,
+            nombres,
+            apellidos,
+            email,
+            contraseña,
+            
         }
-        if(username&&password&&name&&surname&&email)
+        if(usuario&&contraseña&&nombres&&apellidos&&email)
         {
-            if(password!==confirmPassword)
+            if(contraseña!==confirmPassword)
             {
                    alert("[ERROR]. Password donot match!")
             }
             else{
-            // await props.UserLogin(obj)
-            // token = window.localStorage.getItem('token')
-            // tipo = window.localStorage.getItem('tipo')
-            // if(token)
-            // {
-            //     if(tipo==='1')
-            //     {
-
-            //         navigate('/dashboard')
-            //     }
-            //     else if(tipo==='2')
-            //     {
-            //         navigate('/cctvdashboard')
-            //     }
-            //     else if(tipo==='3'){
-            //         navigate('/cctvdashboard')
-            //     }
-            // }
-                alert("[SUCCESS]. Reg completed")
+                props.UserRegister(obj);
         }
         }
         else{
@@ -88,8 +74,8 @@ const Registration = (props) =>{
                         <p className='font-medium'>Usuario</p>
                         <input
                             className='border-[1px] border-neutral-300 pl-2 rounded-md py-2 w-96 focus:border-blue-500 outline-none'
-                            value={username}
-                            onChange={(item)=>setUsername(item.target.value)}
+                            value={usuario}
+                            onChange={(item)=>setUsuario(item.target.value)}
                     />
                     </div>
 
@@ -99,8 +85,8 @@ const Registration = (props) =>{
                         <p className='font-medium'>Nombres</p>
                         <input
                             className='border-[1px] border-neutral-300 pl-2 rounded-md py-2 w-96 focus:border-blue-500 outline-none'
-                            value={name}
-                            onChange={(item)=>setName(item.target.value)}
+                            value={nombres}
+                            onChange={(item)=>setNombres(item.target.value)}
                     />
                     </div>
 
@@ -110,8 +96,8 @@ const Registration = (props) =>{
                         <p className='font-medium'>Apellidos</p>
                         <input
                             className='border-[1px] border-neutral-300 pl-2 rounded-md py-2 w-96 focus:border-blue-500 outline-none'
-                            value={surname}
-                            onChange={(item)=>setSurname(item.target.value)}
+                            value={apellidos}
+                            onChange={(item)=>setApellidos(item.target.value)}
                     />
                     </div>
 
@@ -135,8 +121,8 @@ const Registration = (props) =>{
                         <input
                             className='border-[1px] border-neutral-300 pl-2 rounded-md py-2 w-96 focus:border-blue-500 outline-none'
                             type='password'
-                            value={password}
-                            onChange={(item)=>setPassword(item.target.value)}
+                            value={contraseña}
+                            onChange={(item)=>setContraseña(item.target.value)}
                     />
                     </div>
 
@@ -188,4 +174,4 @@ const mapStateToProps=(props)=>{
 
 
 
-export default connect(mapStateToProps,{setToast}) (Registration)
+export default connect(mapStateToProps,{UserRegister}) (Registration)
