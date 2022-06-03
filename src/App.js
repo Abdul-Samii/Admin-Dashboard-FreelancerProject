@@ -43,7 +43,7 @@ function App(props) {
 
 
         {/* TRS */}
-        <Route path='historialhovimiento' element={<HistorialMovimiento/>} />
+        <Route path='historialmovimiento' element={<HistorialMovimiento/>} />
         
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />

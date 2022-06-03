@@ -1,0 +1,1 @@
+export {default as DeleteMovimiento} from './DeleteMovimiento'

@@ -8,11 +8,12 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
-import EditFamilyModal from '../modals/EditFamilyModal';
+import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../RecursosModals';
+import EditFamilyModal from '../RecursosModals/EditFamilyModal';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { DeleteMovimiento } from '../TRSModals';
 
 
 
@@ -271,20 +272,17 @@ ClickOutSide(wrapperRef,setEditFamily);
       />
     </Paper>
      
-     {/* <div className='justify-start flex flex-col' ref={wrapperRef}>
-      {
+     <div className='justify-start flex flex-col' ref={wrapperRef}>
+      {/* {
         Create&&<CreateEjecutivo Create={Create}  setCreate={setCreate}/>
       }
       {
         Edit&&<EditEjecutivo Edit={Edit}  setEdit={setEdit}/>
-      }
+      } */}
       {
-        Delete&&<DeleteEjecutivo Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteMovimiento Delete={Delete} setDelete={setDelete} />
       }
-      {
-        EditFamily&&<EditFamilyModal EditFamily={EditFamily} setEditFamily={setEditFamily} />
-      }
-    </div> */}
+    </div>
     </div>
   );
 }

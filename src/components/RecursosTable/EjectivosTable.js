@@ -8,8 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../modals';
-import EditFamilyModal from '../modals/EditFamilyModal';
+import { CreateEjecutivo, DeleteEjecutivo, EditEjecutivo } from '../RecursosModals';
+import EditFamilyModal from '../RecursosModals/EditFamilyModal';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 interface Column {

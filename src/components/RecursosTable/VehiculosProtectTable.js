@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import {CreateVehicleProtect, DeleteVehicleProtect, EditVehicleProtect } from '../modals';
+import {CreateVehicleProtect, DeleteVehicleProtect, EditVehicleProtect } from '../RecursosModals';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 interface Column {

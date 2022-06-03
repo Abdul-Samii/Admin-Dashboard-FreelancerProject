@@ -3,7 +3,7 @@ import { ICONS } from "../constants";
 
 const CreateLugar = (props) =>{
     const {Create,setCreate} = props
-    const [nombre,setNombre] = useState()
+    const [lugar,setLugar] = useState()
     const [alias,setAlias] = useState()
 
     const handleCancel = () =>{
@@ -37,7 +37,7 @@ const CreateLugar = (props) =>{
                             <p className='font-medium'>Lugar:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setNombre(item.target.value)}
+                                onChange={(item)=>setLugar(item.target.value)}
                         />
                         </div>
 

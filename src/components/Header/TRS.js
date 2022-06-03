@@ -44,7 +44,7 @@ const TRS=()=>{
           <React.Fragment>
             <ul className=" w-80 space-y-4" ref={wrapperRef}>
                 
-                <li onClick={()=>navigate('/historialhovimiento')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>navigate('/historialmovimiento')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <p className="text-sm mt-3 ml-3">Historial Control de movimiento</p>
                 </li>
                 

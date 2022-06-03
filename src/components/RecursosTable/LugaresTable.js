@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import { CreateLugar,DeleteLugar,EditLugar } from '../modals';
+import { CreateLugar,DeleteLugar,EditLugar } from '../RecursosModals';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 

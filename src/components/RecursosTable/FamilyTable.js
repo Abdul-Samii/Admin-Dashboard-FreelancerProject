@@ -8,9 +8,9 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { ICONS } from '../constants';
-import CreateFamily from '../modals/CreateFamily';
-import EditFamilySub from '../modals/EditFamilySub';
-import DeleteFamily from '../modals/DeleteFamilyModal';
+import CreateFamily from '../RecursosModals/CreateFamily';
+import EditFamilySub from '../RecursosModals/EditFamilySub';
+import DeleteFamily from '../RecursosModals/DeleteFamilyModal';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 
