@@ -14,6 +14,7 @@ import ViewBoardsIcon1 from "@heroicons/react/outline/ViewBoardsIcon"
 import ChevronRightIcon1 from "@heroicons/react/outline/ChevronRightIcon"
 import ChevronDoubleRightIcon1 from "@heroicons/react/outline/ChevronDoubleRightIcon"
 import ChevronDoubleRightIcon11 from "@heroicons/react/outline/UserAddIcon"
+import TruckIcon1 from "@heroicons/react/outline/TruckIcon"
 
 
 
@@ -54,6 +55,7 @@ const ViewBoardsIconO = (props) => <ViewBoardsIcon1 {...props}/>
 const ChevronRightIconO = (props) => <ChevronRightIcon1 {...props}/>
 const ChevronDoubleRightIconO = (props) => <ChevronDoubleRightIcon1 {...props}/>
 const userAddIconO = (props) => <ChevronDoubleRightIcon11 {...props}/>
+const TruckIconO = (props) => <TruckIcon1 {...props}/>
 
 
 const FlagIconS = (props) => <FlagIcon2 {...props}/>
@@ -93,6 +95,7 @@ export default {
     ChevronRightIconO,
     ChevronDoubleRightIconO,
     userAddIconO,
+    TruckIconO,
 
     FlagIconS,
     PlayIconS,

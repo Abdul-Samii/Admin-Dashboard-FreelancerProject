@@ -42,7 +42,7 @@ const Header = ({items}) =>{
 
 
 {/* Center */}
-<nav className='hidden justify-start md:flex h-14 rounded-full border-blue-200 ml-14 space-x-6'>
+<nav className='hidden justify-start md:flex h-14 rounded-full border-blue-200 ml-14 '>
         
         {(items=="all"||items=="recursos")&&<Recursos item={items}/>}
         {(items=="all"||items=="trs")&&<TRS item={items}/>}

@@ -18,7 +18,7 @@ import { DeleteMovimiento, EditMovimiento, LeaveMovimiento } from '../TRSModals'
 
 
 interface Column {
-  id: 'Ejectivo' | 'Salida' | '# Familiares' | 'Opciones';
+  id: 'Centralista de operaciones saliente' | 'Fetch Salida' | 'Centralista de operaciones entrante' | 'Fetcha Llegada' | 'Entrega y recepcion de turno';
   label: string;
   minWidth?: number;
   align?: 'right';
@@ -26,60 +26,47 @@ interface Column {
 }
 
 const columns: Column[] = [
-  { id: 'Ejectivo', label: 'Ejectivos', minWidth: 100 },
-  { id: 'Salida', label: 'Salida', minWidth: 100 },
-  { id: 'Llegada', label: 'Llegada', minWidth: 150 },
-  { id: 'Ejectivop', label: 'Ejecutivo', minWidth: 150 },
-  { id: 'Protectorv', label: 'Protector', minWidth: 200 },
-  { id: 'Salidah', label: 'Salida', minWidth: 150 },
-  { id: 'Llegadah', label: 'Llegada', minWidth: 200 },
-  { id: 'Protector', label: 'Protector', minWidth: 100 },
-  { id: 'Observation', label: 'Observation', minWidth: 200 },
+  { id: 'saliente', label: 'Centralista de operaciones saliente', minWidth: 100 },
+  { id: 'Salida', label: 'Fetch Salida', minWidth: 100 },
+  { id: 'entrante', label: 'Centralista de operaciones entrante', minWidth: 150 },
+  { id: 'Llegada', label: 'Fetcha Llegada', minWidth: 150 },
+  { id: 'Entrega', label: 'Entrega y recepcion de turno', minWidth: 200 },
 
-
-  { id: 'Opciones', label: 'Opciones', minWidth: 200 },
+  { id: 'Opciones', label: 'Opciones', minWidth: 100 },
  
 ];
 
 interface Data {
-    Ejectivo: string,
+    saliente: string,
     Salida: string,
-    Llegada: string,
-    Ejectivop:string,
-    Protectorv:string,
-    Salidah:string,
-    Llegadah:string,
-    Protector:string,
-    Observation:string,
+    entrante: string,
+    Llegada:string,
+    Entrega:string,
     Opciones: string,
 
 }
 
 function createData(
-    Ejectivo: string,
+    saliente: string,
     Salida: string,
-    Llegada: string,
-    Ejectivop:string,
-    Protectorv:String,
-    Salidah:string,
-    Llegadah:string,
-    Protector:string,
-    Observation:string,
+    entrante: string,
+    Llegada:string,
+    Entrega:String,
     Opciones: string,
 ): Data {
-  return { Ejectivo, Salida, Llegada,Ejectivop,Protectorv,Salidah,Llegadah,Protector,Observation,Opciones };
+  return { saliente, Salida, entrante,Llegada,Entrega,Opciones };
 }
 
 const rows = [
-  createData('TR1','TR5','TR3','BMW','Plata','22/11/2021  10:35','22/11/2021  10:35','K4','obs demo'),
-  createData('TR2','TR3','TR2','BMW','Plata','22/11/2021  10:35','22/11/2021  10:35','K4','obs demo'),
-  createData('TR3','TR7','TR5','BMW','Plata','22/11/2021  10:35','22/11/2021  10:35','K4','obs demo'),
-  createData('TR8','TR8','TR1','BMW','Plata','22/11/2021  10:35','22/11/2021  10:35','K4','obs demo'),
-  createData('TR7','TR4','TR7','BMW','Plata','22/11/2021  10:35','22/11/2021  10:35','K4','obs demo'),
+  createData('TR1','22/11/2021  10:35','TR1','22/11/2021  10:35','Diurno'),
+  createData('TR2','22/11/2021  10:35','TR1','22/11/2021  10:35','Nocturno'),
+  createData('TR3','22/11/2021  10:35','TR1','22/11/2021  10:35','Diurno'),
+  createData('TR8','22/11/2021  10:35','TR1','22/11/2021  10:35','Nocturno'),
+  createData('TR7','22/11/2021  10:35','TR1','22/11/2021  10:35','Diurno'),
 
 ];
 
-export default function HistorialMovimientoTable() {
+export default function HistorialTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -169,51 +156,6 @@ ClickOutSide(wrapperRef,setDelete);
       <TableContainer sx={{ maxHeight: 700 }}>
         <Table  aria-label=" table">
           <TableHead>
-          <TableRow>
-              <TableCell align="center" colSpan={2}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                  
-              >
-                <p className="text-lg">Lugares</p>
-              </TableCell>
-
-              <TableCell align="center" colSpan={3}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                >
-                <p className="text-lg">Vehiculo</p>
-              </TableCell>
-
-              <TableCell align="center" colSpan={1}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                >
-                <p className=' ml-20 text-lg'>Hora</p>
-              </TableCell>
-
-
-              <TableCell align="center" colSpan={1}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                >
-                <p className=' ml-20 text-lg'></p>
-              </TableCell>
-
-              <TableCell align="center" colSpan={1}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                >
-                <p className=' ml-20 text-lg'></p>
-              </TableCell>
-
-              <TableCell align="center" colSpan={1}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                >
-                <p className=' ml-20 text-lg bg-red-500 '></p>
-              </TableCell>
-              <TableCell align="center" colSpan={1}
-                  style={{ top: 0,fontWeight:'bold',backgroundColor:'#F8F9FA' }}
-                >
-                <p className=' ml-20 text-lg'></p>
-              </TableCell>
-              
-            </TableRow>
             
             <TableRow>
               {columns.map((column) => (
@@ -222,7 +164,7 @@ ClickOutSide(wrapperRef,setDelete);
                   align={column.align}
                   style={{ top: 0, minWidth: column.minWidth,backgroundColor:'#F8F9FA',fontWeight:'bold' }}
                 >
-                  <p className='text-gray-600'>{column.label}</p>
+                  <p className='text-gray-600 text-center'>{column.label}</p>
                 </TableCell>
               ))}
             </TableRow>
@@ -236,18 +178,15 @@ ClickOutSide(wrapperRef,setDelete);
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={column.id} align={column.align} className="">
                           {
                             [column.id] == 'Opciones'?
                             <div className='flex gap-2 -ml-2'>
-                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="black" />
-                                <p onClick={()=>setLeave(true)} className='text-white px-2 rounded-md bg-blue-600 hover:cursor-pointer'>Ver</p>
-                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                <p onClick={()=>setLeave(true)} className='text-white px-2 rounded-md bg-blue-600 hover:cursor-pointer ml-12'>Ver</p>
 
                             </div>
                             :
-                            value
+                            <p className='text-center'>{value}</p>
                           }
                         </TableCell>
                       );

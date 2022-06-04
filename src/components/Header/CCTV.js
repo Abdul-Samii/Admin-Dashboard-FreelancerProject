@@ -47,7 +47,17 @@ const CCTV=({item})=>{
           <React.Fragment>
             <ul className=" w-80 space-y-4" ref={wrapperRef}>
                 
-                <li onClick={()=>navigate('/cctv/historial')} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>{
+
+                item=='all'?
+              (window.location.href!==window.location.protocol + '//' + window.location.host+"/admin/historial")&&
+                 navigate('/admin/historial')
+                  
+                 :
+                 (window.location.href!==window.location.protocol + '//' + window.location.host+"/cctv/historial")&&
+                 navigate('/cctv/historial')
+
+                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm  mt-3 ml-3">Historial entrega y recepción de Turno</p>
                 </li>
@@ -97,9 +107,9 @@ const CCTV=({item})=>{
       >
 
 
-        <div  onClick={()=>toogleTooltip()}  className="flex hover:bg-blue-500 hover:cursor-pointer hover:text-white 
-              space-x-2 p-3 -mt-1 md:mt-0 md:rounded-full">
-            <ICONS.BookOpenIconO className="md:h-8 h-5 mt-[1.5px] md:mt-0"/>
+        <div  onClick={()=>toogleTooltip()}  className="flex hover:bg-blue-500 hover:underline hover:cursor-pointer hover:text-white 
+              space-x-2 p-3 -mt-1 md:mt-0 md:rounded-full ">
+            <ICONS.BookOpenIconO className="md:h-7 h-5 mt-[1.5px] md:mt-0"/>
             <h2 className="md:text-xl ">CCTV</h2>
             <ICONS.ChevronDownIconO className="h-3 mt-2"/>
         </div>

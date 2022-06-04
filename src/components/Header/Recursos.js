@@ -115,9 +115,9 @@ const wrapperRef = useRef(null);
         }
       >
         <div 
-          className="flex hover:bg-blue-500  hover:cursor-pointer hover:text-white 
-            space-x-2 p-3 -mt-1 md:mt-0 md:rounded-full ">
-            <ICONS.HomeIconO className="md:h-8 h-5 mt-[1.5px] md:mt-0"/>
+          className="flex hover:bg-blue-600 md:rounded-full hover:underline  hover:cursor-pointer hover:text-white 
+            space-x-2 p-3 -mt-1 md:mt-0 ">
+            <ICONS.UserGroupIconO className="md:h-7 h-5 mt-[1.5px] md:mt-0"/>
             <h2 className="md:text-xl">Recursos</h2>
             <ICONS.ChevronDownIconO className="h-3 mt-2"/>
         </div>
