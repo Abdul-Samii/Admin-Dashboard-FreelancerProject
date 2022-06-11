@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { DeleteEjecutivoRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const DeleteEjecutivo = (props) =>{
@@ -8,7 +10,10 @@ const DeleteEjecutivo = (props) =>{
     }
 
     const handleDelete=()=>{
-        alert("[SUCCESS]. Deleted!!")
+        const obj={
+            id:props.userID
+        }
+        props.DeleteEjecutivoRecord(obj)
         setDelete(false)
     }
 
@@ -47,4 +52,9 @@ const DeleteEjecutivo = (props) =>{
     )
 }
 
-export default DeleteEjecutivo
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{DeleteEjecutivoRecord})(DeleteEjecutivo)

@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -47,21 +47,34 @@ function createData(
   return { Ejectivos, Alias, Familiares,Creado,Opciones };
 }
 
-const rows = [
-  createData('staging',"TR1",'0','22/11/2021  10:35'),
-  createData('abhin/repo/api/allow_repo_updates',"TR2",'1','22/11/2021  10:35'),
-  createData('zdavis/BBCDEV-1577',"TR3",'2','22/11/2021  10:35'),
-  createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'0','22/11/2021  10:35'),
-  createData('jmooring/BBDEV-1603',"TG2",'4','22/11/2021  10:35'),
+// const rows = [
+//   createData('staging',"TR1",'0','22/11/2021  10:35'),
+//   createData('abhin/repo/api/allow_repo_updates',"TR2",'1','22/11/2021  10:35'),
+//   createData('zdavis/BBCDEV-1577',"TR3",'2','22/11/2021  10:35'),
+//   createData('tkells/BBCDEV-1631-fix-require-account=access',"TF3",'0','22/11/2021  10:35'),
+//   createData('jmooring/BBDEV-1603',"TG2",'4','22/11/2021  10:35'),
 
-];
+// ];
 
 export default function EjectivosTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [data,setData] = useState([])
+  const [userID,setUserID] = useState()
+  
+const handleGetEjecutivos=async()=>{
+  data = await fetch('https://cloudbitakor.com/api/1.0/ejecutivo/', { 
+    method: 'get', 
+    headers: new Headers({
+      "Authorization":"Token "+window.localStorage.getItem('token')
+    })
+  }).then(response => response.json())
+  .then(data => setData(data));
+}
 
-
-
+useEffect(()=>{
+  handleGetEjecutivos();
+},[data])
 
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
@@ -75,6 +88,8 @@ ClickOutSide(wrapperRef,setEdit);
 ClickOutSide(wrapperRef,setDelete);
 ClickOutSide(wrapperRef,setCreate);
 ClickOutSide(wrapperRef,setEditFamily);
+
+
 
 
 
@@ -113,27 +128,47 @@ ClickOutSide(wrapperRef,setEditFamily);
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
-                            [column.id] == 'Opciones'?
+                            [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
-                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
+                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color={data.is_active?"red":"green"}/>
                                 <ICONS.userAddIconO onClick={()=>setEditFamily(true)} className="h-5 hover:cursor-pointer " color="black" />
-                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
-                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                
+                                <ICONS.PencilIconS onClick={()=>{
+                                  setUserID(data.id)
+                                  setEdit(true)
+                                
+                                }} className="h-5 hover:cursor-pointer " color="#86AD6C" />
+
+                                <ICONS.ArchiveIconS onClick={()=>{
+                                  setUserID(data.id)
+                                  setDelete(true)
+                                  
+                                  }} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
-                            :
-                            value
-                          }
+                      }
+                      {
+                            [column.id] == 'Ejectivos'&&
+                            data.nombres
+                      }
+                       {
+                            [column.id] == 'Alias'&&
+                            data.alias
+                      }
+                                             {
+                            [column.id] == 'Creado'&&
+                            data.created
+                      }
                         </TableCell>
                       );
                     })}
@@ -146,7 +181,7 @@ ClickOutSide(wrapperRef,setEditFamily);
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={data.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -159,10 +194,10 @@ ClickOutSide(wrapperRef,setEditFamily);
         Create&&<CreateEjecutivo Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditEjecutivo Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditEjecutivo Edit={Edit} userID={userID}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteEjecutivo Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteEjecutivo Delete={Delete} userID={userID} setDelete={setDelete} />
       }
       {
         EditFamily&&<EditFamilyModal EditFamily={EditFamily} setEditFamily={setEditFamily} />

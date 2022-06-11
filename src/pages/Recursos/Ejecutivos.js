@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import { AdminAuthorized, EjectivosTable, Header, ICONS, RedirectWithoutLogin } from '../../components'
 
-const Ejecutivos = () =>{
+const Ejecutivos = (props) =>{
 
 
-console.log(window.location.href)
+// window.onload = function(props){
+//     alert("hihi")
+//     props.GetEjecutivo();
+// }
+// // useEffect(()=>{
+// //     handleGetEjecutivo()
+// // },[])
+
+
 
     return(
         <div className='h-screen'>
@@ -44,7 +53,7 @@ console.log(window.location.href)
 
 
             <div className=' pt-4 w-screen p-16 flex flex-col justify-center  '>
-                    <EjectivosTable />
+                    <EjectivosTable  />
             </div>
             
             </div>
@@ -53,5 +62,9 @@ console.log(window.location.href)
         </div>
     )
 }
-
-export default Ejecutivos
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{})(Ejecutivos)

@@ -1,5 +1,7 @@
 import React,{useState} from "react";
+import { CreateNewEjecutivo } from "../../store/actions";
 import { ICONS } from "../constants";
+import {connect} from 'react-redux'
 
 const CreateEjecutivo = (props) =>{
     const {Create,setCreate} = props
@@ -11,7 +13,11 @@ const CreateEjecutivo = (props) =>{
     }
 
     const handleCreate=()=>{
-        alert("[SUCCESS]. Created!!")
+        const obj={
+            nombres:nombre,
+            alias
+        }
+        props.CreateNewEjecutivo(obj)
         setCreate(false)
     }
 
@@ -69,4 +75,9 @@ const CreateEjecutivo = (props) =>{
     )
 }
 
-export default CreateEjecutivo
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{CreateNewEjecutivo})(CreateEjecutivo)

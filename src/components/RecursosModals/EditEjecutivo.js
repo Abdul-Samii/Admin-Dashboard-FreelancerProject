@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 import { ICONS } from "../constants";
+import {connect} from 'react-redux';
+import { UpdateEjecutivoRecord } from "../../store/actions";
 
 const EditEjecutivo = (props) =>{
     const {Edit,setEdit} = props
@@ -11,7 +13,12 @@ const EditEjecutivo = (props) =>{
     }
 
     const handleEdit=()=>{
-        alert("[SUCCESS]. Edited!!")
+        const obj={
+            id:props.userID,
+            nombres:nombre,
+            alias
+        }
+        props.UpdateEjecutivoRecord(obj)
         setEdit(false)
     }
 
@@ -69,4 +76,9 @@ const EditEjecutivo = (props) =>{
     )
 }
 
-export default EditEjecutivo
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{UpdateEjecutivoRecord})(EditEjecutivo)
