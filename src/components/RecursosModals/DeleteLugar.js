@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { DeleteLugaresRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const DeleteLugar = (props) =>{
@@ -8,7 +10,10 @@ const DeleteLugar = (props) =>{
     }
 
     const handleDelete=()=>{
-        alert("[SUCCESS]. Deleted!!")
+        const obj={
+            id:props.userID
+        }
+        props.DeleteLugaresRecord(obj)
         setDelete(false)
     }
 
@@ -43,4 +48,9 @@ const DeleteLugar = (props) =>{
     )
 }
 
-export default DeleteLugar
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{DeleteLugaresRecord})(DeleteLugar)

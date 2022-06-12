@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -64,14 +64,6 @@ export default function LugaresTable() {
 
 
 
-
-
-
-
-
-
-
-
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -79,14 +71,30 @@ export default function LugaresTable() {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
+  const [data,setData] = useState([])
+  const [userID,setUserID] = useState()
+  const [lugar,setLugar] = useState()
+  const [alias,setAlias] = useState()
+
+  const handleGetLugares=async()=>{
+    data = await fetch('https://cloudbitakor.com/api/1.0/lugares/', { 
+      method: 'get', 
+      headers: new Headers({
+        "Authorization":"Token "+window.localStorage.getItem('token')
+      })
+    }).then(response => response.json())
+    .then(data => setData(data));
+  }
+  useEffect(()=>{
+    handleGetLugares();
+  },[data])
+
 
 // CLICK OUTSIDE MODEL CLOSE
 const wrapperRef = useRef(null);
 ClickOutSide(wrapperRef,setEdit);
 ClickOutSide(wrapperRef,setDelete);
 ClickOutSide(wrapperRef,setCreate);
-
-
 
 
 
@@ -128,26 +136,45 @@ ClickOutSide(wrapperRef,setCreate);
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
-                            [column.id] == 'Opciones'?
+                            [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
-                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
-                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color={data.is_active?"red":"green"}/>
+                                <ICONS.PencilIconS onClick={()=>{
+                                  setUserID(data.id)
+                                  setLugar(data.lugar)
+                                  setAlias(data.alias)
+                                  setEdit(true)
+                                  }} className="h-5 hover:cursor-pointer " color="#86AD6C" />
+                                <ICONS.ArchiveIconS onClick={()=>{
+                                 setUserID(data.id)
+                                 setDelete(true)
+                                
+                                }} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
-                            :
-                            value
                           }
+                        {
+                            [column.id] == 'Lugar'&&
+                            data.lugar
+                        }
+                       {
+                            [column.id] == 'Alias'&&
+                            data.alias
+                        }
+                         {
+                            [column.id] == 'Creado'&&
+                            data.created
+                        }
                         </TableCell>
                       );
                     })}
@@ -173,10 +200,10 @@ ClickOutSide(wrapperRef,setCreate);
         Create&&<CreateLugar Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditLugar Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditLugar Edit={Edit} userID={userID} lugar={lugar} alias={alias}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteLugar Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteLugar Delete={Delete} userID={userID} setDelete={setDelete} />
       }
       
     </div>

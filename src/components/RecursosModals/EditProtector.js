@@ -1,17 +1,24 @@
 import React,{useState} from "react";
+import { connect } from "react-redux";
+import { UpdateProtectorRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const EditProtector = (props) =>{
     const {Edit,setEdit} = props
-    const [nombre,setNombre] = useState()
-    const [alias,setAlias] = useState()
+    const [nombre,setNombre] = useState(props.nombres)
+    const [alias,setAlias] = useState(props.alias)
 
     const handleCancel = () =>{
         setEdit(false)
     }
 
     const handleEdit=()=>{
-        alert("[SUCCESS]. Edited!!")
+        const obj={
+            id:props.userID,
+            nombres:nombre,
+            alias
+        }
+        props.UpdateProtectorRecord(obj)
         setEdit(false)
     }
 
@@ -36,6 +43,7 @@ const EditProtector = (props) =>{
                             <p className='font-medium'>Nombre:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={nombre}
                                 onChange={(item)=>setNombre(item.target.value)}
                         />
                         </div>
@@ -49,6 +57,7 @@ const EditProtector = (props) =>{
                             </div>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={alias}
                                 onChange={(item)=>setAlias(item.target.value)}
                         />
                         </div>
@@ -71,4 +80,9 @@ const EditProtector = (props) =>{
     )
 }
 
-export default EditProtector
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{UpdateProtectorRecord})(EditProtector)

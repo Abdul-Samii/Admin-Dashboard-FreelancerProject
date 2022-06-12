@@ -79,7 +79,8 @@ useEffect(()=>{
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
   const [EditFamily,setEditFamily] = useState(false)
-
+  const [nombre,setNombre] = useState()
+  const [alias,setAlias] = useState()
 
 // CLICK OUTSIDE MODEL CLOSE
 const wrapperRef = useRef(null);
@@ -143,6 +144,8 @@ ClickOutSide(wrapperRef,setEditFamily);
                                 <ICONS.userAddIconO onClick={()=>setEditFamily(true)} className="h-5 hover:cursor-pointer " color="black" />
                                 
                                 <ICONS.PencilIconS onClick={()=>{
+                                  setNombre(data.nombres)
+                                  setAlias(data.alias)
                                   setUserID(data.id)
                                   setEdit(true)
                                 
@@ -193,7 +196,7 @@ ClickOutSide(wrapperRef,setEditFamily);
         Create&&<CreateEjecutivo Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditEjecutivo Edit={Edit} userID={userID}  setEdit={setEdit}/>
+        Edit&&<EditEjecutivo Edit={Edit} nombre={nombre} alias={alias} userID={userID}  setEdit={setEdit}/>
       }
       {
         Delete&&<DeleteEjecutivo Delete={Delete} userID={userID} setDelete={setDelete} />

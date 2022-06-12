@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,7 +12,7 @@ import {CreateVehicle, DeleteVehicle, EditVehicle } from '../RecursosModals';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 
 interface Column {
-  id: 'Vehículo' | 'Alias' | 'Placas' | 'Tipo' | 'Ejectivo' | 'Creado' | 'Opciones';
+  id: 'Vehículo' | 'Alias' | 'Placas' | 'Tipo' | 'Ejecutivo' | 'Creado' | 'Opciones';
   label: string;
   minWidth?: number;
   align?: 'right';
@@ -24,7 +24,7 @@ const columns: Column[] = [
   { id: 'Alias', label: 'Alias', minWidth: 250 },
   { id: 'Placas', label: 'Placas', minWidth: 200 },
   { id: 'Tipo', label: 'Tipo', minWidth: 200 },
-  { id: 'Ejectivo', label: 'Ejectivo', minWidth: 200 },
+  { id: 'Ejecutivo', label: 'Ejecutivo', minWidth: 200 },
 
   { id: 'Creado', label: 'Creado', minWidth: 200 },
   { id: 'Opciones', label: 'Opciones', minWidth: 200 },
@@ -36,7 +36,7 @@ interface Data {
     Alias: string,
     Placas:String,
     Tipo:string,
-    Ejectivo:string,
+    Ejecutivo:string,
     Creado: string,
     Opciones: string,
 
@@ -47,11 +47,11 @@ function createData(
     Alias: string,
     Placas: string,
     Tipo:string,
-    Ejectivo:string,
+    Ejecutivo:string,
     Creado:string,
     Opciones: string,
 ): Data {
-  return { Vehículo, Alias, Placas,Tipo,Ejectivo,Creado,Opciones };
+  return { Vehículo, Alias, Placas,Tipo,Ejecutivo,Creado,Opciones };
 }
 
 const rows = [
@@ -71,6 +71,24 @@ export default function VehiculosEjecutivoTable() {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
+  const [data,setData] = useState([])
+
+
+  const handleGetVehiculoE=async()=>{
+    data = await fetch('https://cloudbitakor.com/api/1.0/vehiculoejecutivo/', { 
+      method: 'get', 
+      headers: new Headers({
+        "Authorization":"Token "+window.localStorage.getItem('token')
+      })
+    }).then(response => response.json())
+    .then(data => setData(data));
+  }
+  useEffect(()=>{
+    handleGetVehiculoE();
+  },[data])
+
+
+
 
   // CLICK OUTSIDE MODEL CLOSE
 const wrapperRef = useRef(null);
@@ -115,25 +133,47 @@ ClickOutSide(wrapperRef,setCreate);
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
-                            [column.id] == 'Opciones'?
+                            [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
                                 <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
                                 <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
                                 <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
-                            :
-                            value
+                          }
+                          {
+                            [column.id] == 'Vehiculo'&&
+                            data.nombres
+                          }
+                          {
+                            [column.id] == 'Alias'&&
+                            data.alias
+                          }
+                          {
+                            [column.id] == 'Placas'&&
+                            data.placas
+                          }
+                          {
+                            [column.id] == 'Tipo'&&
+                            data.tipo
+                          }
+                          {
+                            [column.id] == 'Ejecutivo'&&
+                            data.ejecutivo.nombres
+                          }
+                          {
+                            [column.id] == 'Creado'&&
+                            data.created
                           }
                         </TableCell>
                       );

@@ -1,17 +1,24 @@
 import React,{useState} from "react";
+import { connect } from "react-redux";
+import { UpdateLugarRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const EditLugar = (props) =>{
     const {Edit,setEdit} = props
-    const [nombre,setNombre] = useState()
-    const [alias,setAlias] = useState()
+    const [lugar,setLugar] = useState(props.lugar)
+    const [alias,setAlias] = useState(props.alias)
 
     const handleCancel = () =>{
         setEdit(false)
     }
 
     const handleEdit=()=>{
-        alert("[SUCCESS]. Edited!!")
+        const obj={
+            id:props.userID,
+            lugar,
+            alias
+        }
+        props.UpdateLugarRecord(obj)
         setEdit(false)
     }
 
@@ -38,7 +45,8 @@ const EditLugar = (props) =>{
                             <p className='font-medium'>Lugar:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setNombre(item.target.value)}
+                                value={lugar}
+                                onChange={(item)=>setLugar(item.target.value)}
                         />
                         </div>
 
@@ -51,6 +59,7 @@ const EditLugar = (props) =>{
                             </div>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={alias}
                                 onChange={(item)=>setAlias(item.target.value)}
                         />
                         </div>
@@ -73,4 +82,9 @@ const EditLugar = (props) =>{
     )
 }
 
-export default EditLugar
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{UpdateLugarRecord})(EditLugar)

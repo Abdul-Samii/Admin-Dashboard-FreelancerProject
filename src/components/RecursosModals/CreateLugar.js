@@ -1,6 +1,7 @@
 import React,{useState} from "react";
+import { CreateNewLugar } from "../../store/actions";
 import { ICONS } from "../constants";
-
+import {connect} from 'react-redux'
 const CreateLugar = (props) =>{
     const {Create,setCreate} = props
     const [lugar,setLugar] = useState()
@@ -11,7 +12,11 @@ const CreateLugar = (props) =>{
     }
 
     const handleCreate=()=>{
-        alert("[SUCCESS]. Created!!")
+        const obj={
+            lugar,
+            alias
+        }
+        props.CreateNewLugar(obj)
         setCreate(false)
     }
 
@@ -72,4 +77,9 @@ const CreateLugar = (props) =>{
     )
 }
 
-export default CreateLugar
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{CreateNewLugar})(CreateLugar)

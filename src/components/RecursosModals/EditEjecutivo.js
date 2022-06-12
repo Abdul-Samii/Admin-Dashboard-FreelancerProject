@@ -5,8 +5,8 @@ import { UpdateEjecutivoRecord } from "../../store/actions";
 
 const EditEjecutivo = (props) =>{
     const {Edit,setEdit} = props
-    const [nombre,setNombre] = useState()
-    const [alias,setAlias] = useState()
+    const [nombre,setNombre] = useState(props.nombre)
+    const [alias,setAlias] = useState(props.alias)
 
     const handleCancel = () =>{
         setEdit(false)
@@ -41,6 +41,7 @@ const EditEjecutivo = (props) =>{
                             <p className='font-medium'>Nombre:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={nombre}
                                 onChange={(item)=>setNombre(item.target.value)}
                         />
                         </div>
@@ -54,6 +55,7 @@ const EditEjecutivo = (props) =>{
                             </div>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={alias}
                                 onChange={(item)=>setAlias(item.target.value)}
                         />
                         </div>

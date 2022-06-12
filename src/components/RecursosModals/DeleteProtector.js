@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { DeleteProtectorRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const DeleteProtector = (props) =>{
@@ -8,7 +10,10 @@ const DeleteProtector = (props) =>{
     }
 
     const handleDelete=()=>{
-        alert("[SUCCESS]. Deleted!!")
+        const obj={
+            id:props.userID
+        }
+        props.DeleteProtectorRecord(obj)
         setDelete(false)
     }
 
@@ -44,4 +49,9 @@ const DeleteProtector = (props) =>{
     )
 }
 
-export default DeleteProtector
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{DeleteProtectorRecord})(DeleteProtector)

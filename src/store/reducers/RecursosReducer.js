@@ -3,6 +3,7 @@ import { types } from "../actionTypes";
 const initialState = {
   isLoading: false,
   ejecutivo:{},
+  lugares:{},
 };
 
 export default (state = initialState, {type,payload}) => {
@@ -34,6 +35,57 @@ export default (state = initialState, {type,payload}) => {
     case types.UPDATE_EJECUTIVO_SUCCESS:
         return { ...state, isLoading: false }
     case types.UPDATE_EJECUTIVO_FAILED:
+      return { ...state, isLoading: false }
+
+    case types.GET_LUGARES_START:
+        return { ...state, isLoading: true }
+    case types.GET_LUGARES_SUCCESS:
+        return { ...state, isLoading: false , lugares:payload}
+    case types.GET_LUGARES_FAILED:
+      return { ...state, isLoading: false }
+
+    case types.POST_LUGARES_START:
+        return { ...state, isLoading: true }
+    case types.POST_LUGARES_SUCCESS:
+        return { ...state, isLoading: false , lugares:payload}
+    case types.POST_LUGARES_FAILED:
+      return { ...state, isLoading: false }
+    
+    case types.DELETE_LUGARES_START:
+        return { ...state, isLoading: true }
+    case types.DELETE_LUGARES_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.DELETE_LUGARES_FAILED:
+      return { ...state, isLoading: false }
+    
+    case types.UPDATE_LUGARES_START:
+        return { ...state, isLoading: true }
+    case types.UPDATE_LUGARES_SUCCESS:
+        return { ...state, isLoading: false }
+    case types.UPDATE_LUGARES_FAILED:
+      return { ...state, isLoading: false }
+
+
+
+    case types.POST_PROTECTOR_START:
+        return { ...state, isLoading: true }
+    case types.POST_PROTECTOR_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.POST_PROTECTOR_FAILED:
+      return { ...state, isLoading: false }
+
+    case types.DELETE_PROTECTOR_START:
+        return { ...state, isLoading: true }
+    case types.DELETE_PROTECTOR_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.DELETE_PROTECTOR_FAILED:
+      return { ...state, isLoading: false }
+    
+    case types.UPDATE_PROTECTOR_START:
+        return { ...state, isLoading: true }
+    case types.UPDATE_PROTECTOR_SUCCESS:
+        return { ...state, isLoading: false }
+    case types.UPDATE_PROTECTOR_FAILED:
       return { ...state, isLoading: false }
 
 

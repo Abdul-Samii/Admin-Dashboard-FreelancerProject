@@ -108,3 +108,187 @@ export const UpdateEjecutivoRecord = (data) => async dispatch=>{
         dispatch({type:types.UPDATE_EJECUTIVO_FAILED});
     }
 }
+
+
+
+
+//Get lugares
+export const GetLugares = () => async dispatch=>{
+    try{
+        dispatch({type:types.GET_LUGARES_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.get('/lugares/',{headers:{"Authorization":Token}});
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.GET_LUGARES_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.GET_LUGARES_FAILED});
+    }
+}
+
+
+//Create Lugar
+export const CreateNewLugar = (data) => async dispatch=>{
+
+    try{
+        dispatch({type:types.POST_LUGARES_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.post('/lugares/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    }});
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.POST_LUGARES_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.POST_LUGARES_FAILED});
+    }
+}
+
+//Delete Lugares
+export const DeleteLugaresRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.DELETE_LUGARES_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await axios.delete('https://cloudbitakor.com/api/1.0/lugares/',{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+    data:data
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.DELETE_LUGARES_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.DELETE_LUGARES_FAILED});
+    }
+}
+
+
+//Update LUGAR
+export const UpdateLugarRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.UPDATE_LUGARES_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.patch('/lugares/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.UPDATE_LUGARES_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.UPDATE_LUGARES_FAILED});
+    }
+}
+
+
+
+
+//Create Protector
+export const CreateNewProtector = (data) => async dispatch=>{
+
+    try{
+        dispatch({type:types.POST_PROTECTOR_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.post('/protector/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    }});
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.POST_PROTECTOR_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.POST_PROTECTOR_FAILED});
+    }
+}
+
+
+//Delete Protector
+export const DeleteProtectorRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.DELETE_PROTECTOR_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await axios.delete('https://cloudbitakor.com/api/1.0/protector/',{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+    data:data
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.DELETE_PROTECTOR_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.DELETE_PROTECTOR_FAILED});
+    }
+}
+
+
+//Update Protector
+export const UpdateProtectorRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.UPDATE_PROTECTOR_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.patch('/protector/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.UPDATE_PROTECTOR_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.UPDATE_PROTECTOR_FAILED});
+    }
+}

@@ -1,4 +1,6 @@
 import React,{useState} from "react";
+import { connect } from "react-redux";
+import { CreateNewProtector } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const CreateProtector = (props) =>{
@@ -11,7 +13,11 @@ const CreateProtector = (props) =>{
     }
 
     const handleCreate=()=>{
-        alert("[SUCCESS]. Created!!")
+        const obj={
+            nombres:nombre,
+            alias
+        }
+        props.CreateNewProtector(obj)
         setCreate(false)
     }
 
@@ -72,4 +78,9 @@ const CreateProtector = (props) =>{
     )
 }
 
-export default CreateProtector
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{CreateNewProtector})(CreateProtector)

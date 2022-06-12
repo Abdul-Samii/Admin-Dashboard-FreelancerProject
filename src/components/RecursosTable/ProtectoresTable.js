@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -80,6 +80,27 @@ export default function ProtectoresTable() {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
+  const [data,setData] = useState([])
+  const [userID,setUserID] = useState()
+  const [nombres,setNombres] = useState()
+  const [alias,setAlias] = useState()
+
+
+  const handleGetProtectores=async()=>{
+    data = await fetch('https://cloudbitakor.com/api/1.0/protector/', { 
+      method: 'get', 
+      headers: new Headers({
+        "Authorization":"Token "+window.localStorage.getItem('token')
+      })
+    }).then(response => response.json())
+    .then(data => setData(data));
+  }
+  useEffect(()=>{
+    handleGetProtectores();
+  },[data])
+
+
+
 
 
 // CLICK OUTSIDE MODEL CLOSE
@@ -125,25 +146,46 @@ ClickOutSide(wrapperRef,setCreate);
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
-                            [column.id] == 'Opciones'?
+                            [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
                                 <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
-                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                <ICONS.PencilIconS onClick={()=>{
+                                  setNombres(data.nombres)
+                                  setAlias(data.alias)
+                                  setUserID(data.id)
+                                  setEdit(true)
+                                  
+                                  }} className="h-5 hover:cursor-pointer " color="#86AD6C" />
+                                <ICONS.ArchiveIconS onClick={()=>{
+                                  
+                                  setUserID(data.id)
+                                  setDelete(true)
+                                  
+                                  }} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
-                            :
-                            value
+                          }
+                           {
+                            [column.id] == 'Protector'&&
+                            data.nombres
+                          }
+                          {
+                            [column.id] == 'Alias'&&
+                            data.alias
+                          }
+                          {
+                            [column.id] == 'Creado'&&
+                            data.created
                           }
                         </TableCell>
                       );
@@ -170,10 +212,10 @@ ClickOutSide(wrapperRef,setCreate);
         Create&&<CreateProtector Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditProtector Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditProtector Edit={Edit} userID={userID} nombres={nombres} alias={alias}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteProtector Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteProtector Delete={Delete} userID={userID} setDelete={setDelete} />
       }
       
     </div>
