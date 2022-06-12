@@ -23,8 +23,8 @@ const DeleteMovimiento = (props) =>{
                         <ICONS.XCircleIconS className="h-6 hover:cursor-pointer pr-4" onClick={()=>handleCancel()}/>
                     </div>
                     <p className=" text-justify text-lg -ml-3 py-2 px-7">
-                    Sed ut persoiciatis unde omnis iste natus error sit voluptatem 
-                    accusantium doloremque laudantium , totam </p>
+                    Al eliminar este evento, sera de forma 
+definitiva y sin posibilidad de recuperación.</p>
 
                       
 

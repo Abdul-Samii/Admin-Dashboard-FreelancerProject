@@ -71,7 +71,6 @@ const handleGetEjecutivos=async()=>{
   }).then(response => response.json())
   .then(data => setData(data));
 }
-
 useEffect(()=>{
   handleGetEjecutivos();
 },[data])

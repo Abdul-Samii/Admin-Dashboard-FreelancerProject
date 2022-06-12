@@ -13,7 +13,8 @@ import EditFamilyModal from '../RecursosModals/EditFamilyModal';
 import { ClickOutSide } from '../clickOutside/ClickOutSide';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { DeleteMovimiento, EditMovimiento, LeaveMovimiento } from '../TRSModals';
+import { DeleteMovimiento, EditMovimiento, LeaveMovimiento, PDFMovimiento } from '../TRSModals';
+import ReactToPrint, { useReactToPrint } from 'react-to-print';
 
 
 
@@ -83,12 +84,14 @@ export default function HistorialMovimientoTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  const componentRef = useRef();
 
 
 
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [leave,setLeave] = useState(false)
+  const [pdf,setPDF] = useState(false)
   const [openDesde,setOpenDesde] = useState(false)
   const [openHasta,setOpenHasta] = useState(false)
   const [Desde, setDesde] = useState(new Date());
@@ -111,6 +114,9 @@ ClickOutSide(wrapperRef,setDelete);
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   return (
     <div>
@@ -149,7 +155,7 @@ ClickOutSide(wrapperRef,setDelete);
             <ICONS.ChevronDownIconO className="h-3 z-50 ml-36 mt-2 text-gray-500"/>
         </div>
         <div className='flex justify-end mt-32 mb-4'>
-                    <p className="text-blue-500 hover:cursor-pointer">Export as PDF</p>
+                    <p onClick={()=>setPDF(!pdf)} className="text-blue-500 hover:cursor-pointer">Export as PDF</p>
                     <ICONS.ChevronDownIconO className="h-3 mt-1.5 mr-4" color="blue"/>
                     <input
                         placeholder='Buscar'
@@ -279,6 +285,10 @@ ClickOutSide(wrapperRef,setDelete);
       {
         Delete&&<DeleteMovimiento Delete={Delete} setDelete={setDelete} />
       }
+      {
+        pdf&&<PDFMovimiento pdf={pdf} ref={componentRef} handlePrint={handlePrint} setPDF={setPDF}/>
+      }
+
     </div>
     </div>
   );

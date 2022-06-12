@@ -1,151 +1,146 @@
-import React,{useState} from "react";
-import { ICONS } from "../constants";
+import React, { useState } from 'react'
 
 const EditMovimiento = (props) =>{
-    const {Edit,setEdit} = props
     const [ejecutivo,setEjecutivo] = useState()
-    const [grupoFamiliar,setGrupoFamiliar] = useState()
+    const [vehiculoEjecutivo,setVehiculoEjecutivo] = useState()
     const [protector,setProtector] = useState()
     const [vehiculoProtector,setVehiculoProtector] = useState()
     const [lugarSalida,setLugarSalida] = useState()
     const [horaSalida,setHoraSalida] = useState()
-    const [lugarLlegadaO,setLugarLlegadaO] = useState()
-    const [lugarLlegada,setLugarLlegada] = useState()
-    const [observacion,setObservacion] = useState()
 
-    const handleCancel = () =>{
+    const {edit,setEdit} = props
+
+    const handleCancel=()=>{
         setEdit(false)
     }
 
     const handleEdit=()=>{
-        alert("[SUCCESS]. Edited!!")
         setEdit(false)
     }
+
+
     return(
-        <div>
-        
-                <div className="flex flex-row items-end justify-center mt-20 w-full z-50">
-                <div className="mt-10 h-fit pb-8 rounded-md bg-white border-2 shadow-lg py-10 z-50 w-fit px-8 absolute">
-                    <div className="border-b-[1px] z-50  pb-4 -mt-4 flex justify-between">
-                        <h3 className="font-bold text-xl">Editar Evento:</h3>
-                        <ICONS.XCircleIconS className="h-6 hover:cursor-pointer pr-4" onClick={()=>handleCancel()}/>
+        <div className='bg-white shadow-lg h-[70vh] ml-44  py-18 w-[155vh] z-50 border-2 -mt-[60vh]'>
+            <h1 className='font-bold text-3xl ml-24 mt-12'>Editor Evento:</h1>
+            <div className='flex justify-around -ml-96'>
+            <div className='space-y-4'>
+                    {/* EJECUTIVO */}
+                    <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Ejecutivo : </p>
+                            <select name="Select" value={ejecutivo} onChange={(item)=>setEjecutivo(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                <option value="TR1">TR1</option>
+                                <option value="TR2">TR3</option>
+                            </select>
                     </div>
 
-
-                {/* INPUT */}
-                    <div className="items-center flex flex-col border-b-[1px] pb-6">
-                       {/* Ejecutivo */}
-                        <div className='mt-3'>
-                            <p className='font-medium'>Ejecutivo</p>
-                            <select name="Select" value={ejecutivo} onChange={(item)=>setEjecutivo(item.target.value)} className="border-2 w-96">
-                                <option value="TR1">TR1</option>
-                                <option value="TR2">TR2</option>
+                    {/* VEHICULO EJECUTIVO */}
+                    <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Vehiculo Ejecutivo : </p>
+                            <select name="Select" value={vehiculoEjecutivo} onChange={(item)=>setVehiculoEjecutivo(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                <option value="TR1">UI101</option>
+                                <option value="TR2">UI102</option>
                             </select>
-                           
-                        </div>
+                    </div>        
 
 
-                        {/* Grupo Familiar */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Grupo Familiar</p>
-                            <select name="Select" value={grupoFamiliar} onChange={(item)=>setGrupoFamiliar(item.target.value)} className="border-2 w-96">
-                                <option value="TR1">TR1</option>
-                                <option value="TR2">TR2</option>
+                     {/* PROTECTOR */}
+                     <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Protector : </p>
+                            <select name="Select" value={protector} onChange={(item)=>setProtector(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                <option value="TR1">K2</option>
+                                <option value="TR2">K1</option>
                             </select>
-                        </div>
+                    </div>
 
-
-                        {/* Protector */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Protector</p>
-                            <select name="Select" value={protector} onChange={(item)=>setProtector(item.target.value)} className="border-2 w-96">
-                                <option value="TR1">K1</option>
-                                <option value="TR2">K2</option>
+                    {/* VEHICULO PROTECTOR */}
+                     <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Vehiculo Protector : </p>
+                            <select name="Select" value={vehiculoProtector} onChange={(item)=>setVehiculoProtector(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                <option value="TR1">UI102</option>
+                                <option value="TR2">UI101</option>
                             </select>
-                        </div>
+                    </div>  
 
-
-                        {/* Vehiculo Protector */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Vehiculo Protector</p>
-                            <select name="Select" value={vehiculoProtector} onChange={(item)=>setVehiculoProtector(item.target.value)} className="border-2 w-96">
-                                <option value="TR1">UI01</option>
-                                <option value="TR2">UI02</option>
-                            </select>
-                        </div>
-
-
-                        {/* Lugar Salida */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Lugar Salida</p>
-                            <select name="Select" value={lugarSalida} onChange={(item)=>setLugarSalida(item.target.value)} className="border-2 w-96">
+                    {/* LUGAR SALIDA */}
+                     <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Lugar Salida : </p>
+                            <select name="Select" value={lugarSalida} onChange={(item)=>setLugarSalida(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
                                 <option value="TR1">Scala</option>
-                                <option value="TR2">Necala</option>
+                                <option value="TR2">Demo</option>
                             </select>
-                        </div>
+                    </div> 
+                     
+
+                     {/* HORA SALIDA */}
+                     <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>HORA Salida : </p>
+                                <select name="Select" value={horaSalida} onChange={(item)=>setHoraSalida(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                    <option value="TR2">{new Date().toLocaleString()}</option>
+                                    <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-1))).toLocaleString()}</option>
+                                    <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-2))).toLocaleString()}</option>
+                                    <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-3))).toLocaleString()}</option>
+                                </select>
+                    </div>      
 
 
-                        {/* Hora Salida */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Hora Salida</p>
-                            <select name="Select" value={horaSalida} onChange={(item)=>setHoraSalida(item.target.value)} className="border-2 w-96">
-                                <option value="TR2">{new Date().toLocaleString()}</option>
-                                <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-1))).toLocaleString()}</option>
-                                <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-2))).toLocaleString()}</option>
-                                <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-3))).toLocaleString()}</option>
+                    {/*Observecion */}
+        <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Observación : </p>
+                            <textarea 
+                            
+                            className="absolute border-2 w-[60vh] rounded-md"/>
+                    </div>
+            </div>
+
+
+            <div className='-ml-[50vh]'>
+                 {/*Grupo Familiar */}
+                 <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Grupo Familiar : </p>
+                            <select name="Select" value={lugarSalida} onChange={(item)=>setLugarSalida(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                <option value="TR1">Scala</option>
+                                <option value="TR2">Demo</option>
                             </select>
-                        </div>
+                    </div> 
 
-
-                        {/* Lugar de Llegada (Opcional) */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Lugar de Llegada (Opcional)</p>
-                            <select name="Select" value={lugarLlegadaO} onChange={(item)=>setLugarLlegadaO(item.target.value)} className="border-2 w-96">
-                                <option value="TR1">Casa Saturno</option>
-                                <option value="TR2">Lasa stan</option>
-                            </select>
-                        </div>
-
-
-                        {/* Lugar de Llegada  */}
-                        <div className='mt-3'>
-                                <p className='font-medium'>Lugar de Llegada</p>
-                            <select name="Select" value={lugarLlegada} onChange={(item)=>setLugarLlegada(item.target.value)} className="border-2 w-96">
-                            <option value="TR2">{new Date().toLocaleString()}</option>
-                                <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-1))).toLocaleString()}</option>
-                                <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-2))).toLocaleString()}</option>
-                                <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-3))).toLocaleString()}</option>
-                            </select>
-                        </div>
-
-                       {/* Observación  */}
-                        <div className='mt-1'>
-                            <p className='font-medium'>Observación </p>
-                            <input
-                                className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setObservacion(item.target.value)}
-                        />
-                        </div>
-
+                {/*Observecion Vehicule */}
+                 <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>Observación vehiculo : </p>
+                            <input className="absolute border-[1px] rounded-md w-72 border-gray-400"/>
                     </div>
 
+                    {/* LUGAR DE Llegada */}
+                    <div className='flex space-x-44 mt-24'>
+                                <p className='font-medium'>Lugar de Llegada : </p>
+                            <select name="Select" value={lugarSalida} onChange={(item)=>setLugarSalida(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                <option value="TR1">Scala</option>
+                                <option value="TR2">Demo</option>
+                            </select>
+                    </div> 
 
-                    
+
+                    {/* HORA LlEGADA */}
+                     <div className='mt-3 flex space-x-44'>
+                                <p className='font-normal text-lg'>HORA Llegada : </p>
+                                <select name="Select" value={horaSalida} onChange={(item)=>setHoraSalida(item.target.value)} className="absolute border-[1px] rounded-md w-72 border-gray-400">
+                                    <option value="TR2">{new Date().toLocaleString()}</option>
+                                    <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-1))).toLocaleString()}</option>
+                                    <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-2))).toLocaleString()}</option>
+                                    <option value="TR1">{(new Date(new Date().setDate(new Date().getDate()-3))).toLocaleString()}</option>
+                                </select>
+                    </div> 
+
+            </div>
 
 
+            </div>
 
-                    <div className="flex justify-end pr-5 space-x-4 mt-4">
-                        <h3 onClick={()=>handleCancel()} className="w-20 py-1 rounded-md text-center font-semibold hover:cursor-pointer
-                            hover:bg-green-700 active:bg-slate-50 bg-green-900 text-white">Cancelar</h3>
-                        <h3 onClick={()=>handleEdit()} className="bg-blue-500 w-20 py-1 rounded-md text-center font-semibold hover:cursor-pointer
-                            hover:bg-blue-400 text-white active:bg-slate-50">Actualizar</h3>
-                    </div>
-
-                </div>
-                </div>
-            
+            <div className='flex justify-center mt-16 space-x-4 pb-4'>
+                <h3 onClick={()=>handleCancel()} className='bg-red-700 hover:cursor-pointer hover:bg-red-600 text-white text-lg font-semibold rounded-lg py-1 px-3'>Cancelar</h3>
+                <h3 onClick={()=>handleEdit()} className='bg-blue-600 hover:cursor-pointer hover:bg-blue-500  text-white text-lg font-semibold rounded-lg py-1 px-3'>Actualizar</h3>
+            </div>
         
-</div>
+        </div>
     )
 }
 
