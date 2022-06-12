@@ -103,6 +103,7 @@ ClickOutSide(wrapperRef,setOpenDesde);
 ClickOutSide(wrapperRef,setOpenHasta);
 ClickOutSide(wrapperRef,setEdit);
 ClickOutSide(wrapperRef,setDelete);
+ClickOutSide(wrapperRef,setPDF);
 
 
 
@@ -155,7 +156,7 @@ ClickOutSide(wrapperRef,setDelete);
             <ICONS.ChevronDownIconO className="h-3 z-50 ml-36 mt-2 text-gray-500"/>
         </div>
         <div className='flex justify-end mt-32 mb-4'>
-                    <p onClick={()=>setPDF(!pdf)} className="text-blue-500 hover:cursor-pointer">Export as PDF</p>
+                    <p onClick={()=>setPDF(true)} className="text-blue-500 hover:cursor-pointer">Export as PDF</p>
                     <ICONS.ChevronDownIconO className="h-3 mt-1.5 mr-4" color="blue"/>
                     <input
                         placeholder='Buscar'
