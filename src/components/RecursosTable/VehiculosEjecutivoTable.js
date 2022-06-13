@@ -72,6 +72,13 @@ export default function VehiculosEjecutivoTable() {
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
   const [data,setData] = useState([])
+  const [vehicleID,setVehicleID] = useState()
+
+  const [nombre,setNombre] = useState()
+  const [alias,setAlias] = useState()
+  const [placas,setPlacas] = useState()
+  const [tipo,setTipo] = useState()
+  const [ejecutivoID,setEjecutivoID] = useState()
 
 
   const handleGetVehiculoE=async()=>{
@@ -95,7 +102,6 @@ const wrapperRef = useRef(null);
 ClickOutSide(wrapperRef,setEdit);
 ClickOutSide(wrapperRef,setDelete);
 ClickOutSide(wrapperRef,setCreate);
-
 
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -146,8 +152,20 @@ ClickOutSide(wrapperRef,setCreate);
                             [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
                                 <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
-                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                <ICONS.PencilIconS onClick={()=>{
+                                  setNombre(data.nombre)
+                                  setAlias(data.alias)
+                                  setPlacas(data.placas)
+                                  setTipo(data.tipo)
+                                  setEjecutivoID(data.ejecutivo.id)
+                                  setEdit(true)
+                                  
+                                  }} className="h-5 hover:cursor-pointer " color="#86AD6C" />
+                                <ICONS.ArchiveIconS onClick={()=>{
+                                  setVehicleID(data.id)
+                                  setDelete(true)
+                                  
+                                  }} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
                           }
@@ -200,10 +218,10 @@ ClickOutSide(wrapperRef,setCreate);
         Create&&<CreateVehicle Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditVehicle Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditVehicle Edit={Edit} nombre={nombre} alias={alias} placas={placas} tipo={tipo} ejecutivoID={ejecutivoID}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteVehicle Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteVehicle vehicleID={vehicleID} Delete={Delete} setDelete={setDelete} />
       }
     </div>
     </div>

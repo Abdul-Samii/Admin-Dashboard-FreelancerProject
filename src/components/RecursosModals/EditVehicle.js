@@ -1,10 +1,32 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
+import { connect } from "react-redux";
+import { UpdateVehicleEjecutivoRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const EditVehicle = (props) =>{
     const {Edit,setEdit} = props
-    const [nombre,setNombre] = useState()
-    const [alias,setAlias] = useState()
+    const [nombre,setNombre] = useState(props.nombre)
+    const [alias,setAlias] = useState(props.alias)
+    const [placas,setPlacas] = useState(props.placas)
+    const [tipo,setTipo] = useState(props.tipo)
+    const [ejecutivoData,setEjecutivoData] = useState()
+    const [ejecutivoID,setEjecutivoID] = useState(props.ejecutivoID)
+
+
+    const handleGetEjecutivos=async()=>{
+        ejecutivoData = await fetch('https://cloudbitakor.com/api/1.0/ejecutivo/', { 
+          method: 'get', 
+          headers: new Headers({
+            "Authorization":"Token "+window.localStorage.getItem('token')
+          })
+        }).then(response => response.json())
+        .then(data => setEjecutivoData(data));
+      }
+      useEffect(()=>{
+        handleGetEjecutivos();
+      },[ejecutivoData])
+
+
 
     const handleCancel = () =>{
         setEdit(false)
@@ -35,6 +57,7 @@ const EditVehicle = (props) =>{
                             <p className='font-medium'>Nombre del vehiculo:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={nombre}
                                 onChange={(item)=>setNombre(item.target.value)}
                         />
                         </div>
@@ -45,7 +68,8 @@ const EditVehicle = (props) =>{
                                 <p className='font-medium'>Placas (optional):</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                value={placas}
+                                onChange={(item)=>setPlacas(item.target.value)}
                         />
                         </div>
 
@@ -55,6 +79,7 @@ const EditVehicle = (props) =>{
                                 <p className='font-medium'>Alias *:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={alias}
                                 onChange={(item)=>setAlias(item.target.value)}
                         />
                         </div>
@@ -65,7 +90,8 @@ const EditVehicle = (props) =>{
                                 <p className='font-medium'>Tipo::</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                value={tipo}
+                                onChange={(item)=>setTipo(item.target.value)}
                         />
                         </div>
 
@@ -73,10 +99,18 @@ const EditVehicle = (props) =>{
                         {/* PROPIETARIO */}
                         <div className='mt-3'>
                                 <p className='font-medium'>PROPIETARIO*:</p>
-                            <input
-                                className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
-                        />
+                                <select
+                                value={ejecutivoID}
+                                onChange={ (item)=>setEjecutivoID(item.target.value)}
+                                className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'>
+                                    {
+                                        ejecutivoData&&ejecutivoData.map((item,index)=>{
+                                            return(
+                                                <option value={item.id}>{item.nombres}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
                         </div>
 
                     </div>
@@ -98,4 +132,9 @@ const EditVehicle = (props) =>{
     )
 }
 
-export default EditVehicle
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{UpdateVehicleEjecutivoRecord})(EditVehicle)

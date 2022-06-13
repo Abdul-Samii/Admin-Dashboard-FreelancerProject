@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { DeleteVehicleProtectorRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const DeleteVehicleProtect = (props) =>{
@@ -8,7 +10,10 @@ const DeleteVehicleProtect = (props) =>{
     }
 
     const handleDelete=()=>{
-        alert("[SUCCESS]. Deleted!!")
+        const obj={
+            id:props.vehicleID
+        }
+        props.DeleteVehicleProtectorRecord(obj)
         setDelete(false)
     }
 
@@ -43,4 +48,9 @@ const DeleteVehicleProtect = (props) =>{
     )
 }
 
-export default DeleteVehicleProtect
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{DeleteVehicleProtectorRecord})(DeleteVehicleProtect)

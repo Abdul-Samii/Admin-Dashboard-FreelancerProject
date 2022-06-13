@@ -1,17 +1,50 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
+import { connect } from "react-redux";
+import { CreateNewVehicleEjecutivo } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const CreateVehicle = (props) =>{
     const {Create,setCreate} = props
     const [nombre,setNombre] = useState()
     const [alias,setAlias] = useState()
+    const [placas,setPlacas] = useState()
+    const [tipo,setTipo] = useState()
+    const [ejecutivoData,setEjecutivoData] = useState()
+    const [ejecutivoID,setEjecutivoID] = useState()
+
+
+
+
+
+    const handleGetEjecutivos=async()=>{
+        ejecutivoData = await fetch('https://cloudbitakor.com/api/1.0/ejecutivo/', { 
+          method: 'get', 
+          headers: new Headers({
+            "Authorization":"Token "+window.localStorage.getItem('token')
+          })
+        }).then(response => response.json())
+        .then(data => setEjecutivoData(data));
+      }
+      useEffect(()=>{
+        handleGetEjecutivos();
+      },[ejecutivoData])
+
+
+
 
     const handleCancel = () =>{
         setCreate(false)
     }
 
     const handleCreate=()=>{
-        alert("[SUCCESS]. Created!!")
+        const obj={
+            nombres:nombre,
+            id_ejecutivo:ejecutivoID,
+            placas,
+            alias,
+            tipo
+        }
+        props.CreateNewVehicleEjecutivo(obj)
         setCreate(false)
     }
 
@@ -46,7 +79,7 @@ const CreateVehicle = (props) =>{
                                 <p className='font-medium'>Placas (optional):</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                onChange={(item)=>setPlacas(item.target.value)}
                         />
                         </div>
 
@@ -66,7 +99,7 @@ const CreateVehicle = (props) =>{
                                 <p className='font-medium'>Tipo::</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                onChange={(item)=>setTipo(item.target.value)}
                         />
                         </div>
 
@@ -74,10 +107,17 @@ const CreateVehicle = (props) =>{
                         {/* PROPIETARIO */}
                         <div className='mt-3'>
                                 <p className='font-medium'>PROPIETARIO*:</p>
-                            <input
-                                className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
-                        />
+                                <select
+                                onChange={ (item)=>setEjecutivoID(item.target.value)}
+                                className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'>
+                                    {
+                                        ejecutivoData&&ejecutivoData.map((item,index)=>{
+                                            return(
+                                                <option value={item.id}>{item.nombres}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
                         </div>
 
                     </div>
@@ -99,4 +139,9 @@ const CreateVehicle = (props) =>{
     )
 }
 
-export default CreateVehicle
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{CreateNewVehicleEjecutivo})(CreateVehicle)

@@ -1,20 +1,28 @@
 import React,{useState} from "react";
+import { connect } from "react-redux";
+import { UpdateVehicleProtectorRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const EditVehicleProtect = (props) =>{
     const {Edit,setEdit} = props
-    const [nombre,setNombre] = useState()
-    const [alias,setAlias] = useState()
-
+    const [nombres,setNombre] = useState(props.nombre)
+    const [alias,setAlias] = useState(props.alias)
+    const [placas,setPlacas] = useState(props.placas)
+    const [tipo,setTipo] = useState(props.tipo)
     const handleCancel = () =>{
         setEdit(false)
     }
-
     const handleEdit=()=>{
-        alert("[SUCCESS]. Edited!!")
+        const obj={
+            id:props.vehicleID,
+            nombres,
+            alias,
+            placas,
+            tipo
+        }
+        props.UpdateVehicleProtectorRecord(obj)
         setEdit(false)
     }
-
     return(
         <div>
         
@@ -35,6 +43,7 @@ const EditVehicleProtect = (props) =>{
                             <p className='font-medium'>Nombre del vehiculo:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={nombres}
                                 onChange={(item)=>setNombre(item.target.value)}
                         />
                         </div>
@@ -45,7 +54,8 @@ const EditVehicleProtect = (props) =>{
                                 <p className='font-medium'>Placas (optional):</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                value={placas}
+                                onChange={(item)=>setPlacas(item.target.value)}
                         />
                         </div>
 
@@ -55,6 +65,7 @@ const EditVehicleProtect = (props) =>{
                                 <p className='font-medium'>Alias *:</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
+                                value={alias}
                                 onChange={(item)=>setAlias(item.target.value)}
                         />
                         </div>
@@ -65,7 +76,8 @@ const EditVehicleProtect = (props) =>{
                                 <p className='font-medium'>Tipo::</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                value={tipo}
+                                onChange={(item)=>setTipo(item.target.value)}
                         />
                         </div>
                     </div>
@@ -87,4 +99,9 @@ const EditVehicleProtect = (props) =>{
     )
 }
 
-export default EditVehicleProtect
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{UpdateVehicleProtectorRecord})(EditVehicleProtect)

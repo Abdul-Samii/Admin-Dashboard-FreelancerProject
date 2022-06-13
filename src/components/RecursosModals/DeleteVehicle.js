@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { DeleteVehicleEjecutivoRecord } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const DeleteVehicle = (props) =>{
@@ -8,8 +10,12 @@ const DeleteVehicle = (props) =>{
     }
 
     const handleDelete=()=>{
-        alert("[SUCCESS]. Deleted!!")
+        const obj={
+            id:props.vehicleID
+        }
+        props.DeleteVehicleEjecutivoRecord(obj)
         setDelete(false)
+
     }
 
     return(
@@ -43,4 +49,9 @@ const DeleteVehicle = (props) =>{
     )
 }
 
-export default DeleteVehicle
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{DeleteVehicleEjecutivoRecord})(DeleteVehicle)

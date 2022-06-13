@@ -292,3 +292,164 @@ export const UpdateProtectorRecord = (data) => async dispatch=>{
         dispatch({type:types.UPDATE_PROTECTOR_FAILED});
     }
 }
+
+
+
+//Create Vehicle Ejecutivo
+export const CreateNewVehicleEjecutivo = (data) => async dispatch=>{
+
+    try{
+        dispatch({type:types.POST_VEHICLE_EJECUTIVO_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.post('/vehiculoejecutivo/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    }});
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.POST_VEHICLE_EJECUTIVO_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.POST_VEHICLE_EJECUTIVO_FAILED});
+    }
+}
+
+
+//Delete Vehicle Ejecutivo
+export const DeleteVehicleEjecutivoRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.DELETE_VEHICLE_EJECUTIVO_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await axios.delete('https://cloudbitakor.com/api/1.0/vehiculoejecutivo/',{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+    data:data
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.DELETE_VEHICLE_EJECUTIVO_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.DELETE_VEHICLE_EJECUTIVO_FAILED});
+    }
+}
+
+
+//Update Vehicle Ejecutivo
+export const UpdateVehicleEjecutivoRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.UPDATE_VEHICLE_EJECUTIVO_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.patch('/vehiculoejecutivo/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.UPDATE_VEHICLE_EJECUTIVO_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.UPDATE_VEHICLE_EJECUTIVO_FAILED});
+    }
+}
+
+
+
+
+//Create Vehicle Protector
+export const CreateNewVehicleProtector = (data) => async dispatch=>{
+
+    try{
+        dispatch({type:types.POST_VEHICLE_PROTECTOR_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.post('/vehiculoprotector/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    }});
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.POST_VEHICLE_PROTECTOR_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.POST_VEHICLE_PROTECTOR_FAILED});
+    }
+}
+
+
+//Delete Vehicle Ejecutivo
+export const DeleteVehicleProtectorRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.DELETE_VEHICLE_PROTECTOR_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await axios.delete('https://cloudbitakor.com/api/1.0/vehiculoprotector/',{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+    data:data
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.DELETE_VEHICLE_PROTECTOR_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.DELETE_VEHICLE_PROTECTOR_FAILED});
+    }
+}
+
+
+//Update Vehicle Ejecutivo
+export const UpdateVehicleProtectorRecord = (data) => async dispatch=>{
+    try{
+        dispatch({type:types.UPDATE_VEHICLE_PROTECTOR_START});
+        progress.start()
+        let token = window.localStorage.getItem('token');
+        const Token =  'Token '+token;
+        const response = await httpRequest.patch('/vehiculoprotector/',data,{headers:{"Authorization":Token,
+        "content-type": 'multipart/form-data'
+    },
+},);
+        const result = response.data;
+        console.log("*********jjj*** ",result)
+        progress.finish()
+        dispatch({type:types.UPDATE_VEHICLE_PROTECTOR_SUCCESS,payload:result});
+
+    }
+    catch(err)
+    {
+        progress.finish()
+        console.log("Error in input : -------------------------------------------------------------",err);
+        dispatch({type:types.UPDATE_VEHICLE_PROTECTOR_FAILED});
+    }
+}

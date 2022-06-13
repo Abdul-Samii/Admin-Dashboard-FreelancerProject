@@ -89,6 +89,52 @@ export default (state = initialState, {type,payload}) => {
       return { ...state, isLoading: false }
 
 
+
+    case types.POST_VEHICLE_EJECUTIVO_START:
+        return { ...state, isLoading: true }
+    case types.POST_VEHICLE_EJECUTIVO_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.POST_VEHICLE_EJECUTIVO_FAILED:
+      return { ...state, isLoading: false }
+
+    case types.DELETE_VEHICLE_EJECUTIVO_START:
+        return { ...state, isLoading: true }
+    case types.DELETE_VEHICLE_EJECUTIVO_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.DELETE_VEHICLE_EJECUTIVO_FAILED:
+      return { ...state, isLoading: false }
+    
+    case types.UPDATE_VEHICLE_EJECUTIVO_START:
+        return { ...state, isLoading: true }
+    case types.UPDATE_VEHICLE_EJECUTIVO_SUCCESS:
+        return { ...state, isLoading: false }
+    case types.UPDATE_VEHICLE_EJECUTIVO_FAILED:
+      return { ...state, isLoading: false }
+
+
+
+    case types.POST_VEHICLE_PROTECTOR_START:
+        return { ...state, isLoading: true }
+    case types.POST_VEHICLE_PROTECTOR_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.POST_VEHICLE_PROTECTOR_FAILED:
+      return { ...state, isLoading: false }
+
+    case types.DELETE_VEHICLE_PROTECTOR_START:
+        return { ...state, isLoading: true }
+    case types.DELETE_VEHICLE_PROTECTOR_SUCCESS:
+        return { ...state, isLoading: false}
+    case types.DELETE_VEHICLE_PROTECTOR_FAILED:
+      return { ...state, isLoading: false }
+    
+    case types.UPDATE_VEHICLE_PROTECTOR_START:
+        return { ...state, isLoading: true }
+    case types.UPDATE_VEHICLE_PROTECTOR_SUCCESS:
+        return { ...state, isLoading: false }
+    case types.UPDATE_VEHICLE_PROTECTOR_FAILED:
+      return { ...state, isLoading: false }
+
+
     default:
       return state;
   }

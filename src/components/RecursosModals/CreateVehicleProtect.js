@@ -1,17 +1,27 @@
 import React,{useState} from "react";
+import { connect } from "react-redux";
+import { CreateNewVehicleProtector } from "../../store/actions";
 import { ICONS } from "../constants";
 
 const CreateVehicleProtect = (props) =>{
     const {Create,setCreate} = props
     const [nombre,setNombre] = useState()
     const [alias,setAlias] = useState()
+    const [placas,setPlacas] = useState()
+    const [tipo,setTipo] = useState()
 
     const handleCancel = () =>{
         setCreate(false)
     }
 
     const handleCreate=()=>{
-        alert("[SUCCESS]. Created!!")
+        const obj={
+            nombre,
+            alias,
+            placas,
+            tipo
+        }
+        props.CreateNewVehicleProtector(obj)
         setCreate(false)
     }
 
@@ -46,7 +56,7 @@ const CreateVehicleProtect = (props) =>{
                                 <p className='font-medium'>Placas (optional):</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                onChange={(item)=>setPlacas(item.target.value)}
                         />
                         </div>
 
@@ -66,7 +76,7 @@ const CreateVehicleProtect = (props) =>{
                                 <p className='font-medium'>Tipo::</p>
                             <input
                                 className='border-[1px] border-neutral-300 pl-2 rounded-md py-1 w-96 focus:border-blue-500 outline-none'
-                                onChange={(item)=>setAlias(item.target.value)}
+                                onChange={(item)=>setTipo(item.target.value)}
                         />
                         </div>
 
@@ -90,4 +100,9 @@ const CreateVehicleProtect = (props) =>{
     )
 }
 
-export default CreateVehicleProtect
+const mapStateToProps = (props) =>{
+    return{
+        ejecutivo:props.recursos.ejecutivo
+}
+}
+export default connect(mapStateToProps,{CreateNewVehicleProtector})(CreateVehicleProtect)

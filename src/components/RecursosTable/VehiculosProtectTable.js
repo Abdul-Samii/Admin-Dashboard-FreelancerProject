@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -67,6 +67,28 @@ export default function VehiculosProtectTable() {
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
   const [Create,setCreate] = useState(false)
+  const [data,setData] = useState([])
+  const [vehicleID,setVehicleID] = useState()
+  const [nombre,setNombre] = useState()
+  const [placas,setPlacas] = useState()
+  const [alias,setAlias] = useState()
+  const [tipo,setTipo] = useState()
+
+
+  const handleGetVehiculoE=async()=>{
+    data = await fetch('https://cloudbitakor.com/api/1.0/vehiculoprotector/', { 
+      method: 'get', 
+      headers: new Headers({
+        "Authorization":"Token "+window.localStorage.getItem('token')
+      })
+    }).then(response => response.json())
+    .then(data => setData(data));
+  }
+  useEffect(()=>{
+    handleGetVehiculoE();
+  },[data])
+
+
 
 
 // CLICK OUTSIDE MODEL CLOSE
@@ -111,25 +133,53 @@ ClickOutSide(wrapperRef,setCreate);
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
-                            [column.id] == 'Opciones'?
+                            [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
                                 <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color="red"/>
-                                <ICONS.PencilIconS onClick={()=>setEdit(true)} className="h-5 hover:cursor-pointer " color="#86AD6C" />
-                                <ICONS.ArchiveIconS onClick={()=>setDelete(true)} className="h-5 hover:cursor-pointer" color="#A70045"/>
+                                <ICONS.PencilIconS onClick={()=>{
+                                  setVehicleID(data.id)
+                                  setPlacas(data.placas)
+                                  setAlias(data.alias)
+                                  setTipo(data.tipo)
+                                  setEdit(true)
+                                  
+                                  }} className="h-5 hover:cursor-pointer " color="#86AD6C" />
+                                <ICONS.ArchiveIconS onClick={()=>{
+                                  setVehicleID(data.id)
+                                  setDelete(true)
+                                  }} className="h-5 hover:cursor-pointer" color="#A70045"/>
 
                             </div>
-                            :
-                            value
+                          }
+                          {
+                            [column.id] == 'Vehiculo'&&
+                            data.nombres
+                          }
+                          {
+                            [column.id] == 'Alias'&&
+                            data.alias
+                          }
+                          {
+                            [column.id] == 'Placas'&&
+                            data.placas
+                          }
+                          {
+                            [column.id] == 'Tipo'&&
+                            data.tipo
+                          }
+                          {
+                            [column.id] == 'Creado'&&
+                            data.created
                           }
                         </TableCell>
                       );
@@ -156,10 +206,10 @@ ClickOutSide(wrapperRef,setCreate);
         Create&&<CreateVehicleProtect Create={Create}  setCreate={setCreate}/>
       }
       {
-        Edit&&<EditVehicleProtect Edit={Edit}  setEdit={setEdit}/>
+        Edit&&<EditVehicleProtect vehicleID={vehicleID} Edit={Edit} nombre={nombre} alias={alias} placas={placas} tipo={tipo}  setEdit={setEdit}/>
       }
       {
-        Delete&&<DeleteVehicleProtect Delete={Delete} setDelete={setDelete} />
+        Delete&&<DeleteVehicleProtect vehicleID={vehicleID} Delete={Delete} setDelete={setDelete} />
       }
     </div>
     </div>
