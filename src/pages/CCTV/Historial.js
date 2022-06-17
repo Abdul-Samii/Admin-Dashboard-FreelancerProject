@@ -1,5 +1,5 @@
 import React from 'react'
-import { CCTVAuthorized, Header, RedirectWithoutLogin } from '../../components'
+import { CCTVAuthorized, Header, HistorialTable, RecepcionTurnoTable, RedirectWithoutLogin } from '../../components'
 
 const Historial = () =>{
     return(
@@ -14,6 +14,9 @@ const Historial = () =>{
             <Header items="cctv"/>
             <RedirectWithoutLogin/>
 
+            </div>
+            <div className=' pt-4 w-screen p-16 flex flex-col justify-center'>
+                    <HistorialTable/>
             </div>
             {/* } */}
         </div>

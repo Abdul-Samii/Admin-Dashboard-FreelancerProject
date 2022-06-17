@@ -1,26 +1,26 @@
 import React from 'react'
-import { AdminAuthorized, Header, ICONS, RedirectWithoutLogin,CCTVAuthorized } from '../../components'
+import { AdminAuthorized, CCTVAuthorized, Header, ICONS, RedirectWithoutLogin } from '../../components'
 import logo from '../../assets/logo.png'
 import { MetaTags } from 'react-meta-tags'
 import { useLocation } from 'react-router-dom'
 
 
 
-const ViewRecepcion = () =>{
+const ViewEntrega = () =>{
     const location = useLocation();
 
     return(
         <div className='bg-slate-50 h-full'>
 
-            {/* <RedirectWithoutLogin/>
+            <RedirectWithoutLogin/>
             {
-                AdminAuthorized()==-1&&CCTVAuthorized() == -1?
+                CCTVAuthorized()==-1?
                 <div className='z-50 h-screen bg-white flex flex-col justify-center'>
                     <h1 className='font-bold text-3xl text-center'>No tiene permisos para acceder a esta página</h1>
                 </div>
-            : */}
+            :
             <div>
-            <Header items="all"/>
+            <Header items="cctv"/>
             <div className='flex items-center bg-slate-100 shadow-sm py-2'>
                     <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
                     <p className=' ml-1'>CCTV</p>
@@ -203,9 +203,9 @@ GUARDIA EMSECOR</h2>
                 </div>
             </div>
             </div>
-    {/* } */}
+    }
         </div>
     )
 }
 
-export default ViewRecepcion
+export default ViewEntrega

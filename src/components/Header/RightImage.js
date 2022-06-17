@@ -47,12 +47,12 @@ const handleLogout=()=>{
                 
                 <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/>
-                    <p className="text-sm mt-3 ml-3">Edit Profile</p>
+                    <p className="text-sm mt-3 ml-3">Perfil</p>
                 </li>
                 
                 <li onClick={()=>handleLogout()} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/>
-                    <p className="text-sm mt-3 ml-3">Sign Out</p>
+                    <p className="text-sm mt-3 ml-3">Cerrar sesión</p>
                 </li>
                 
 

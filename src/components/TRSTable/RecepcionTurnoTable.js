@@ -33,7 +33,7 @@ const columns: Column[] = [
   { id: 'Salida', label: 'Fetcha Salida', minWidth: 100 },
   { id: 'entrantes', label: 'Centralista de operaciones entrantes', minWidth: 100 },
   { id: 'Llegadah', label: 'Fetcha Llegada', minWidth: 150 },
-  { id: 'recepcion', label: 'recepcion', minWidth: 100 },
+  { id: 'recepcion', label: 'Entrega y recepción de turno', minWidth: 100 },
 
   { id: 'Opciones', label: 'Opciones', minWidth: 200 },
  

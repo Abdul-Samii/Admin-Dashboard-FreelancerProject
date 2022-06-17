@@ -14,6 +14,7 @@ import { ClickOutSide } from '../clickOutside/ClickOutSide';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { DeleteMovimiento, EditMovimiento, LeaveMovimiento } from '../TRSModals';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -71,7 +72,7 @@ export default function HistorialTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
 
-
+  const navigate = useNavigate()
 
   const [Edit,setEdit] = useState(false)
   const [Delete,setDelete] = useState(false)
@@ -182,7 +183,14 @@ ClickOutSide(wrapperRef,setDelete);
                           {
                             [column.id] == 'Opciones'?
                             <div className='flex gap-2 -ml-2'>
-                                <p onClick={()=>setLeave(true)} className='text-white px-2 rounded-md bg-blue-600 hover:cursor-pointer ml-12'>Ver</p>
+                                <p onClick={()=>
+                                    {
+                                      if(window.location.href!==window.location.protocol + '//' + window.location.host+"/viewrecepcion")
+                                    { 
+                                    
+                                      navigate('/viewrecepcion',{state:{shift:"Nocturno"}})
+                                    }
+                                    }} className='text-white px-2 rounded-md bg-blue-600 hover:cursor-pointer ml-12'>Ver</p>
 
                             </div>
                             :
