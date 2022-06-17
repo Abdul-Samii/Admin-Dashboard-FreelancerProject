@@ -54,7 +54,13 @@ const TRS=()=>{
                     <p className="text-sm mt-3 ml-3">Historial Control de movimiento</p>
                 </li>
                 
-                <li className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                <li onClick={()=>
+                  {
+                    if(window.location.href!==window.location.protocol + '//' + window.location.host+"/recepcionturno")
+                 { 
+                    navigate('/recepcionturno')
+                 }
+                  }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <p className="text-sm mt-3 ml-3">Historial Entrega y recepción de Turno</p>
                 </li>
 

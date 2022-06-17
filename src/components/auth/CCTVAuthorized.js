@@ -12,7 +12,7 @@ const CCTVAuthorized = () =>{
            ) 
         
     }
-    else if(tipo!=="3")
+    else if(tipo!=="2")
     {
         return -1
     }

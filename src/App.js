@@ -1,5 +1,5 @@
 import './App.css';
-import {RedirectWithoutLogin } from './components';
+import {EditRecepcion, RedirectWithoutLogin, ViewRecepcion } from './components';
 import { Dashboard, Login, Registration } from './pages';
 import { Routes, Route } from "react-router-dom";
 import Ejecutivos from './pages/Recursos/Ejecutivos';
@@ -12,7 +12,7 @@ import VehicleEjectivos from './pages/Recursos/VehicleEjectivos';
 import Protectores from './pages/Recursos/Protectores';
 import VehicleProtectores from './pages/Recursos/VehicleProtectores';
 import Lugares from './pages/Recursos/Lugares';
-import { HistorialMovimiento } from './pages/TRS';
+import { HistorialMovimiento, RecepcionTurno } from './pages/TRS';
 import HistorialCCTV from './pages/CCTVAdmin/HistorialCCTV';
 
 function App(props) {
@@ -45,6 +45,9 @@ function App(props) {
 
         {/* TRS */}
         <Route path='historialmovimiento' element={<HistorialMovimiento/>} />
+        <Route path='recepcionturno' element={<RecepcionTurno/>} />
+        <Route path='editrecepcion' element={<EditRecepcion/>} />
+        <Route path='viewrecepcion' element={<ViewRecepcion/>} />
         
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />
