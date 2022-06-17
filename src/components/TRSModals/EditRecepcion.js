@@ -14,7 +14,7 @@ const EditRecepcion = () =>{
             {
                 AdminAuthorized()==-1?
                 <div className='z-50 h-screen bg-white flex flex-col justify-center'>
-                    <h1 className='font-bold text-3xl text-center'>No tiene permisos para acceder a esta página</h1>
+                    <h1 className='font-bold text-xl mt-2 -ml-28'>No tiene permisos para acceder a esta página</h1>
                 </div>
             :
             <div>
@@ -38,8 +38,8 @@ const EditRecepcion = () =>{
                 <div className='bg-white px-4 border-2 hover:shadow-xl hover:border-2 shadow-sm w-1/2 h-fit pb-8'>
 
                     <div className='flex justify-evenly -ml-20'>
-                        <img src={logo} className="h-10"/> 
-                        <h2 className='font-bold mt-2'>ACTA ENTREGA RECEPCION DE 
+                        <img src={logo} className="h-14 -ml-14"/> 
+                        <h2 className='font-bold text-xl mt-2 -ml-28'>ACTA ENTREGA RECEPCION DE 
 GUARDIA EMSECOR</h2>
                     </div>
 

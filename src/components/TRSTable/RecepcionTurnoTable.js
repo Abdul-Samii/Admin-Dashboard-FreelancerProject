@@ -212,7 +212,7 @@ let shift;
                                     {
                                         if(window.location.href!==window.location.protocol + '//' + window.location.host+"/editrecepcion")
                                     { 
-                                        [column.id]=='recepcion'&&navigate('/editrecepcion')
+                                      navigate('/editrecepcion',{state:{shift:shift}})
                                     }
                                     }} className="h-5 hover:cursor-pointer " color="black" />
                                 <p onClick={()=>

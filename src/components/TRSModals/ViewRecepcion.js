@@ -21,6 +21,7 @@ const ViewRecepcion = () =>{
             : */}
             <div>
             <Header items="all"/>
+                
             <div className='flex items-center bg-slate-100 shadow-sm py-2'>
                     <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
                     <p className=' ml-1'>CCTV</p>
@@ -36,12 +37,14 @@ const ViewRecepcion = () =>{
                     <ICONS.ChevronDoubleRightIconO className="h-3 mt-1.5 ml-1"/>
             </div>
 
+            <div className='flex justify-evenly'>
+            <ICONS.ChevronDoubleLeftIconO className='h-14 mt-[32vh] text-gray-400 hover:cursor-pointer'/>
             <div className='flex justify-center'>
-                <div className='bg-white px-4 border-2 hover:shadow-xl hover:border-2 shadow-sm w-1/2 h-fit pb-8'>
+                <div className='bg-white px-4 border-2 hover:shadow-xl hover:border-2 shadow-sm w-fit h-fit py-8 pb-8'>
 
-                    <div className='flex justify-evenly -ml-20'>
-                        <img src={logo} className="h-10"/> 
-                        <h2 className='font-bold mt-2'>ACTA ENTREGA RECEPCION DE 
+                    <div className='flex justify-evenly'>
+                        <img src={logo} className="h-14 -ml-14"/> 
+                        <h2 className='font-bold text-xl mt-2 -ml-28'>ACTA ENTREGA RECEPCION DE 
 GUARDIA EMSECOR</h2>
                     </div>
 
@@ -59,19 +62,19 @@ GUARDIA EMSECOR</h2>
                                 
                             <div>
                                 <ol style={{listStyleType:'number'}} className="pl-6">
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad A</p>
                                         
                                     </li>
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad B</p>
                                         
                                     </li>
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad C</p>
                                         
                                     </li>
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad D</p>
                                        
                                     </li>
@@ -85,19 +88,19 @@ GUARDIA EMSECOR</h2>
                                 
                             <div>
                                 <ol style={{listStyleType:'number'}} className="pl-6">
-                                <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad A</p>
                                         
                                     </li>
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad B</p>
                                         
                                     </li>
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad C</p>
                                        
                                     </li>
-                                    <li className='w-full border-[1px] border-gray-500 rounded-md '>
+                                    <li className='w-full py-1 border-[1px] border-gray-500 rounded-md '>
                                         <p>Agente de Seguridad D</p>
                                         
                                     </li>
@@ -117,22 +120,22 @@ GUARDIA EMSECOR</h2>
                                         <h2 className='font-semibold text-gray-500 text-center ml-4'>NOVEDADE ESPECIALES</h2>
                             <div>
                                 <ol className="pl-2">
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                     <div className='flex'>
                                         <p><b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</p>
                                        
                                         </div></li>
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                        <div className='flex'>
                                         <p><b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</p>
                                         
                                         </div></li>
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                        <div className='flex'>
                                         <p><b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</p>
                                        
                                         </div></li>
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                        <div className='flex'>
                                         <p><b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</p>
                                         
@@ -147,7 +150,7 @@ GUARDIA EMSECOR</h2>
                                    
                             <div>
                                 <ol className="pl-2">
-                                <li className='w-full px-2 text-blue-500 border-[1px] border-gray-500 mt-0.5'>
+                                <li className='w-full px-2 py-2 text-blue-500 border-[1px] border-gray-500 mt-0.5'>
                                        <div className='flex'>
                                         <p><b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</p>
                                         
@@ -159,18 +162,18 @@ GUARDIA EMSECOR</h2>
                                             <ICONS.ChevronDownIconO className='h-4 text-black'/>
                                             
                                         </div>
-                                        <div className=' px-2 text-blue-500  flex border-[1px] border-blue-500 mt-0.5'>
+                                        <div className=' px-2 py-2 text-blue-500  flex border-[1px] border-blue-500 mt-0.5'>
                                                 <p>But I must explain to you how all this mistaken idea of</p>
                                                       
                                                 
                                         </div>
                                         </div>        
                                 </li>
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                         <b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</li>
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                         <b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</li>
-                                    <li className='w-full px-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
+                                    <li className='w-full px-2 py-2 text-gray-500 border-[1px] border-gray-500 mt-0.5'>
                                         <b className='text-black'>16:04</b> But I must explain to you how all this mistaken idea of</li>
                                 </ol>
                             </div>
@@ -180,7 +183,7 @@ GUARDIA EMSECOR</h2>
 
                     {/* FOOTER SECTION */}
                     <div>
-                        <div className='flex mt-12 px-2 space-x-1'>
+                        <div className='flex mt-12 px-2 space-x-1 pt-20'>
                             <div className='border-[1px] h-20 w-1/2 text-center border-gray-500'>
                             <p>CENTRALISTA DE OPERACIONES SALIENTE:</p>
                             <p>Nombre del Agente</p>
@@ -201,6 +204,8 @@ GUARDIA EMSECOR</h2>
                     </div>
 
                 </div>
+            </div>
+            <ICONS.ChevronDoubleRightIconO className='h-14 mt-[32vh] text-gray-400 hover:cursor-pointer'/>
             </div>
             </div>
     {/* } */}
