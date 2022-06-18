@@ -50,8 +50,8 @@ const TRS=()=>{
                  { 
                     navigate('/historialmovimiento')
                  }
-                  }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
-                    <p className="text-sm mt-3 ml-3">Historial Control de movimiento</p>
+                  }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                    <p className="text-sm mt-3 ml-3 ">Historial Control de movimiento</p>
                 </li>
                 
                 <li onClick={()=>
@@ -60,7 +60,7 @@ const TRS=()=>{
                  { 
                     navigate('/recepcionturno')
                  }
-                  }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                  }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     <p className="text-sm mt-3 ml-3">Historial Entrega y recepción de Turno</p>
                 </li>
 
@@ -71,8 +71,8 @@ const TRS=()=>{
 
 
         <div onClick={()=>toogleTooltip()} 
-           className="flex hover:bg-blue-500 hover:underline hover:cursor-pointer hover:text-white space-x-2 
-            p-3 -mt-1 md:mt-0 md:rounded-full">
+           className="flex border-blue-500  hover:border-b-4 hover:cursor-pointer space-x-2 
+            p-3 -mt-1 md:mt-0">
             <ICONS.TruckIconO className="md:h-7 h-5 mt-[1.5px] md:mt-0"/>
             <h2 className="md:text-xl">TRS</h2>
             <ICONS.ChevronDownIconO className="h-3 mt-2"/>

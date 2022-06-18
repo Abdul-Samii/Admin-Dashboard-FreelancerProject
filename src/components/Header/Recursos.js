@@ -54,7 +54,7 @@ const wrapperRef = useRef(null);
                   {
                   navigate('/ejecutivos')
                   }
-                }} className="flex space-x-4 hover:cursor-pointer 
+                }} className="flex space-x-4 hover:border-l-4 border-blue-500  hover:cursor-pointer 
                   hover:bg-slate-200 h-10 ">
                     {/* <ICONS.PencilAltIconS className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Ejecutivos</p>
@@ -65,7 +65,7 @@ const wrapperRef = useRef(null);
                  { 
                   navigate('/grupofamiliar')
                  }
-                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Grupo Familiar</p>
                 </li>
@@ -75,7 +75,7 @@ const wrapperRef = useRef(null);
                   {
                   navigate('/vehiculosejecutivos')
                   }
-                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Vehículos de Ejecutivos</p>
                 </li>
@@ -85,7 +85,7 @@ const wrapperRef = useRef(null);
                   {
                   navigate('/protectores')
                   }
-                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Protectores</p>
                 </li>
@@ -95,7 +95,7 @@ const wrapperRef = useRef(null);
                   {
                   navigate('/vehiculosprotectores')
                   }
-                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Vehículos de Protectores</p>
                 </li>
@@ -105,7 +105,7 @@ const wrapperRef = useRef(null);
                   {
                   navigate('/lugares')
                   }
-                }} className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                }} className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
                     {/* <ICONS.LogoutIconO className="h-4 mt-3 ml-3" color="blue"/> */}
                     <p className="text-sm mt-3 ml-3">Lugares</p>
                 </li>
@@ -115,7 +115,7 @@ const wrapperRef = useRef(null);
         }
       >
         <div 
-          className="flex hover:bg-blue-600 md:rounded-full hover:underline  hover:cursor-pointer hover:text-white 
+          className="flex border-blue-500  hover:border-b-4  hover:cursor-pointer
             space-x-2 p-3 -mt-1 md:mt-0 ">
             <ICONS.UserGroupIconO className="md:h-7 h-5 mt-[1.5px] md:mt-0"/>
             <h2 className="md:text-xl">Recursos</h2>

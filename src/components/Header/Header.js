@@ -7,6 +7,7 @@ import Notification from "./Notification";
 import Recursos from "./Recursos";
 import RightImage from "./RightImage";
 import TRS from "./TRS";
+import Usuarios from "./Usuarios";
 
   
 
@@ -28,13 +29,14 @@ const Header = ({items}) =>{
     return(
         
 <div >
-        <div className='flex sticky top-0 z-50 h-20 bg-white items-center p-2 lg:px-5 shadow-md'>
+        <div className='flex sticky top-0 z-50 h-20 bg-white border-b-2 border-blue-400 items-center p-2 lg:px-5 shadow-md'>
 
 {/* Left */}
         <div className='flex items-center '>
             <img
                 src={logo}
-                className="h-16 w-32 ml-6 -mt-1"
+                className="h-16 w-32 ml-6 -mt-1 hover:cursor-pointer"
+                onClick={()=>navigate('/')}
             />
         </div>
 
@@ -42,11 +44,12 @@ const Header = ({items}) =>{
 
 
 {/* Center */}
-<nav className='hidden justify-start md:flex h-14 rounded-full border-blue-200 ml-14 '>
+<nav className='hidden flex-grow  md:flex h-14 rounded-full border-blue-200 ml-14 '>
         
         {(items=="all"||items=="recursos")&&<Recursos item={items}/>}
         {(items=="all"||items=="trs")&&<TRS item={items}/>}
         {(items=="all"||items=="cctv")&&<CCTV item={items}/>}
+        {(items=="all")&&<Usuarios item={items}/>}
 </nav>
 
 

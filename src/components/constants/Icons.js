@@ -17,6 +17,7 @@ import ChevronDoubleRightIcon11 from "@heroicons/react/outline/UserAddIcon"
 import TruckIcon1 from "@heroicons/react/outline/TruckIcon"
 import Printer1 from "@heroicons/react/outline/PrinterIcon"
 import ChevronDoubleLeftIcon1 from "@heroicons/react/outline/ChevronDoubleLeftIcon"
+import CollectionIcon1 from "@heroicons/react/outline/CollectionIcon"
 
 
 import  FlagIcon2  from "@heroicons/react/solid/FlagIcon"
@@ -55,10 +56,11 @@ const BookOpenIconO = (props) => <BookOpenIcon1 {...props}/>
 const ViewBoardsIconO = (props) => <ViewBoardsIcon1 {...props}/>
 const ChevronRightIconO = (props) => <ChevronRightIcon1 {...props}/>
 const ChevronDoubleRightIconO = (props) => <ChevronDoubleRightIcon1 {...props}/>
-const userAddIconO = (props) => <ChevronDoubleRightIcon11 {...props}/>
+const UserAddIconO = (props) => <ChevronDoubleRightIcon11 {...props}/>
 const TruckIconO = (props) => <TruckIcon1 {...props}/>
 const PrinterO = (props) => <Printer1 {...props}/>
 const ChevronDoubleLeftIconO = (props) => <ChevronDoubleLeftIcon1 {...props}/>
+const CollectionIconO = (props) => <CollectionIcon1 {...props}/>
 
 
 const FlagIconS = (props) => <FlagIcon2 {...props}/>
@@ -98,10 +100,11 @@ export default {
     ViewBoardsIconO,
     ChevronRightIconO,
     ChevronDoubleRightIconO,
-    userAddIconO,
+    UserAddIconO,
     TruckIconO,
     PrinterO,
     ChevronDoubleLeftIconO,
+    CollectionIconO,
 
     FlagIconS,
     PlayIconS,

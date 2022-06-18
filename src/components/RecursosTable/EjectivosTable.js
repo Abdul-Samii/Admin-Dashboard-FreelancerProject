@@ -37,15 +37,15 @@ interface Data {
 
 }
 
-function createData(
-    Ejectivos: string,
-    Alias: string,
-    Familiares: string,
-    Creado:string,
-    Opciones: string,
-): Data {
-  return { Ejectivos, Alias, Familiares,Creado,Opciones };
-}
+// function createData(
+//     Ejectivos: string,
+//     Alias: string,
+//     Familiares: string,
+//     Creado:string,
+//     Opciones: string,
+// ): Data {
+//   return { Ejectivos, Alias, Familiares,Creado,Opciones };
+// }
 
 // const rows = [
 //   createData('staging',"TR1",'0','22/11/2021  10:35'),
@@ -63,13 +63,13 @@ export default function EjectivosTable() {
   const [userID,setUserID] = useState()
   
 const handleGetEjecutivos=async()=>{
-  data = await fetch('https://cloudbitakor.com/api/1.0/ejecutivo/', { 
+  const dataTemp = await fetch('https://cloudbitakor.com/api/1.0/ejecutivo/', { 
     method: 'get', 
     headers: new Headers({
       "Authorization":"Token "+window.localStorage.getItem('token')
     })
   }).then(response => response.json())
-  .then(data => setData(data));
+  .then(dataTemp => setData(dataTemp));
 }
 useEffect(()=>{
   handleGetEjecutivos();
@@ -132,16 +132,15 @@ ClickOutSide(wrapperRef,setEditFamily);
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={data.code}>
+                  <TableRow role="checkbox" tabIndex={-1} key={data.code}>
                     {columns.map((column) => {
-                      const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {
                             [column.id] == 'Opciones'&&
                             <div className='flex gap-2 -ml-2'>
                                 <ICONS.CheckCircleIconS className="h-5 hover:cursor-pointer" color={data.is_active?"red":"green"}/>
-                                <ICONS.userAddIconO onClick={()=>setEditFamily(true)} className="h-5 hover:cursor-pointer " color="black" />
+                                <ICONS.UserAddIconO onClick={()=>setEditFamily(true)} className="h-5 hover:cursor-pointer " color="black" />
                                 
                                 <ICONS.PencilIconS onClick={()=>{
                                   setNombre(data.nombres)
