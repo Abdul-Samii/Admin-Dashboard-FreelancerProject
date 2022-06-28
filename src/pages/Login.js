@@ -18,7 +18,6 @@ const Login = (props) =>{
     var token
     var tipo
 
-
     const handleLogin=async()=>{
         
 
@@ -43,7 +42,7 @@ const Login = (props) =>{
                     navigate('/cctvdashboard')
                 }
                 else if(tipo==='3'){
-                    navigate('/cctvdashboard')
+                    navigate('/trsdashboard')
                 }
             }
         }

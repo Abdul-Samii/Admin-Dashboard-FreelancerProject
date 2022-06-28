@@ -21,7 +21,7 @@ const RedirectWithLogin = () =>{
         }
         else if(tipo==='3'){
             return(
-                <Navigate to="/cctvdashboard" replace={true}/> 
+                <Navigate to="/trsdashboard" replace={true}/> 
            ) 
         }
     }

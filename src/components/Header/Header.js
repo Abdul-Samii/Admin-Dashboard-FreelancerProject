@@ -29,7 +29,7 @@ const Header = ({items}) =>{
     return(
         
 <div >
-        <div className='flex sticky top-0 z-50 h-20 bg-white border-b-2 border-blue-400 items-center p-2 lg:px-5 shadow-md'>
+        <div className='flex sticky top-0 z-50 h-20 bg-white border-b-2 border-blue-300 items-center p-2 lg:px-5 shadow-md'>
 
 {/* Left */}
         <div className='flex items-center '>

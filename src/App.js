@@ -14,6 +14,7 @@ import VehicleProtectores from './pages/Recursos/VehicleProtectores';
 import Lugares from './pages/Recursos/Lugares';
 import { HistorialMovimiento, RecepcionTurno } from './pages/TRS';
 import HistorialCCTV from './pages/CCTVAdmin/HistorialCCTV';
+import { TRSDashboard } from './pages/TRSUSER';
 
 function App(props) {
 
@@ -49,6 +50,8 @@ function App(props) {
         <Route path='editrecepcion' element={<EditRecepcion/>} />
         <Route path='viewrecepcion' element={<ViewRecepcion/>} />
         
+        {/* TRSUSER */}
+        <Route path='trsdashboard' element={<TRSDashboard/>}/>
 
         <Route path='cctvdashboard' element={<CCTVDashboard/>} />
         <Route path='cctv/diurno' element={<Diurno/>} />

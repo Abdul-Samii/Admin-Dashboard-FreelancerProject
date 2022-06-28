@@ -28,7 +28,7 @@ export const UserLogin = (data) => async dispatch => {
           
              window.localStorage.setItem('token',result.userData.token)
              window.localStorage.setItem('userid',  result.userData.user_id)
-             window.localStorage.setItem('tipo',  result.userData.tipo)
+             window.localStorage.setItem('tipo',  3)
                 console.log("test ",window.localStorage.getItem('token'))
             dispatch(setToast('success', result.message))
             progress.finish()

@@ -44,6 +44,12 @@ const TRS=()=>{
           <React.Fragment>
             <ul className=" w-80 space-y-4" ref={wrapperRef}>
                 
+
+              <li className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                    <p className="text-sm mt-3 ml-3 ">Control de movimiento</p>
+                </li>
+
+
                 <li onClick={()=>
                   {
                     if(window.location.href!==window.location.protocol + '//' + window.location.host+"/historialmovimiento")
@@ -54,6 +60,11 @@ const TRS=()=>{
                     <p className="text-sm mt-3 ml-3 ">Historial Control de movimiento</p>
                 </li>
                 
+
+                <li className="flex space-x-4 hover:border-l-4 border-blue-500 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                    <p className="text-sm mt-3 ml-3 ">Entrega y recepción de turno</p>
+                </li>
+
                 <li onClick={()=>
                   {
                     if(window.location.href!==window.location.protocol + '//' + window.location.host+"/recepcionturno")
