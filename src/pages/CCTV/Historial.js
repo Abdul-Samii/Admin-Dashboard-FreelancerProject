@@ -15,7 +15,7 @@ const Historial = () =>{
             <RedirectWithoutLogin/>
 
             </div>
-            <div className=' pt-4 w-screen p-16 flex flex-col justify-center'>
+            <div className='pt-4 w-screen p-16 flex flex-col justify-center'>
                     <HistorialTable/>
             </div>
             {/* } */}

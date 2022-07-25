@@ -37,7 +37,7 @@ const ViewEntrega = () =>{
             </div>
 
             <div className='flex justify-center'>
-                <div className='bg-white px-4 border-2 hover:shadow-xl hover:border-2 shadow-sm w-1/2 h-fit pb-8'>
+                <div className='bg-white border-2 px-4 hover:shadow-xl hover:border-2 shadow-sm w-1/2 h-fit pb-8'>
 
                     <div className='flex justify-evenly -ml-20'>
                         <img src={logo} className="h-10"/> 

@@ -21,7 +21,7 @@ export const UserLogin = (data) => async dispatch => {
         })
         const result = response.data
         console.log(result.userData.tipo)
-        if(result.message === 'Bienvenido a Emsecor'){
+        if(result.message ==='Bienvenido a Emsecor'){
           
             
           // console.log(result)

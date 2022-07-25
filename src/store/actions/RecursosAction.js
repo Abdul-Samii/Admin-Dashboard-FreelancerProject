@@ -441,7 +441,7 @@ export const UpdateVehicleProtectorRecord = (data) => async dispatch=>{
     },
 },);
         const result = response.data;
-        console.log("*********jjj*** ",result)
+        console.log("*******jjj*** ",result)
         progress.finish()
         dispatch({type:types.UPDATE_VEHICLE_PROTECTOR_SUCCESS,payload:result});
 

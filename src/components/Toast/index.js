@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
   import 'react-toastify/dist/ReactToastify.css';
   
  const Toast=(props)=>{
-   console.log("yooo",props)
+   console.log("yooo ",props)
    const {message} = props
    useEffect(() => {
    toast(message)

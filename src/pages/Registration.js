@@ -37,7 +37,7 @@ const Registration = (props) =>{
         {
             if(contraseña!==confirmPassword)
             {
-                   alert("[ERROR]. Password donot match!")
+                   alert("[ERROR].Password donot match!")
             }
             else{
                 props.UserRegister(obj);

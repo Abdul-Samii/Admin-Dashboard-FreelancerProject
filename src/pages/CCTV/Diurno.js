@@ -25,7 +25,7 @@ const Diurno = () =>{
                     <ICONS.ChevronRightIconO className='h-3  ml-1'/>
                     <p className=' ml-1'>Entrega y recepciónde turno</p>
                     <ICONS.ChevronRightIconO className='h-3  ml-1'/>
-                    <p className=' ml-1'>Diurno</p>
+                    <p className='ml-1'>Diurno</p>
 
             </div>
 

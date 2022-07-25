@@ -8,7 +8,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   ))(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
       backgroundColor: 'white',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color: 'rgba(0,0,0,0.87)',
       maxWidth: 620,
       fontSize: theme.typography.pxToRem(12),
       border: '1px solid #dadde9',
@@ -38,7 +38,7 @@ const DropDown=()=>{
         
         title={
           <React.Fragment>
-            <ul className=" w-40 space-y-4">
+            <ul className="space-y-4 w-40">
                 
                 <li onClick={()=>{
                     setSelectedPeriod("TR2")

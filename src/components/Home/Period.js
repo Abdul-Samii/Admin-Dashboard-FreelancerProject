@@ -41,13 +41,13 @@ const Period=()=>{
         enterDelay={0} leaveDelay={200}
         title={
           <React.Fragment>
-            <ul className=" w-40 space-y-4" useRef={wrapperRef}>
+            <ul className="w-40 space-y-4" useRef={wrapperRef}>
                 
                 <li onClick={()=>{
                     handlePeriod("Hoy dia")
                     toogleTooltip()
                 }
-                } className="flex space-x-4 hover:cursor-pointer hover:bg-slate-200 h-10 ">
+                } className="flex hover:cursor-pointer space-x-4 hover:bg-slate-200 h-10 ">
                     <p className="text-sm  mt-3 ml-3">Hoy dia</p>
                 </li>
 

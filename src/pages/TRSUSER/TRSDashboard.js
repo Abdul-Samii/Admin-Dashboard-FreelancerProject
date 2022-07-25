@@ -14,7 +14,7 @@ const TRSDashboard = () =>{
             :
             <div>
             <Header items="trs"/>
-            <div className='flex items-center bg-slate-100 shadow-sm py-2'>
+            <div className='flex bg-slate-100 items-center shadow-sm py-2'>
                  <ICONS.HomeIconS className="h-6 ml-10 text-gray-600"/>
             </div>
 

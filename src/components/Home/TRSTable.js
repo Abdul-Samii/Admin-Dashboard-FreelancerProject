@@ -78,7 +78,7 @@ export default function TRSTable(props) {
                   key={column.id}
                   align={column.align}
                   style={column.id=="ESTADO"?{ top: 57, maxWidth: '90vh',textAlign:'end',paddingRight:'4vh',backgroundColor:'#F8F9FA',fontWeight:'bold' }
-                  :{ top: 57, maxWidth: '90vh',backgroundColor:'#F8F9FA',fontWeight:'bold' }}
+                  :{ top: 57, maxWidth: "90vh",backgroundColor:'#F8F9FA',fontWeight:'bold' }}
                 >
                   {column.label}
                 </TableCell>

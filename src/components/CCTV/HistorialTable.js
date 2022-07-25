@@ -190,7 +190,7 @@ ClickOutSide(wrapperRef,setDelete);
                                     
                                       navigate('/viewrecepcion',{state:{shift:"Nocturno"}})
                                     }
-                                    }} className='text-white px-2 rounded-md bg-blue-600 hover:cursor-pointer ml-12'>Ver</p>
+                                    }} className='text-white rounded-md px-2 bg-blue-600 hover:cursor-pointer ml-12'>Ver</p>
 
                             </div>
                             :

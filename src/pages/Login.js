@@ -55,7 +55,7 @@ const Login = (props) =>{
 
 
     return(
-        <div className='bg-white  flex h-screen w-screen justify-center overflow-hidden'>
+        <div className='bg-white h-screen w-screen flex justify-center overflow-hidden'>
             <RedirectWithLogin />
             {/* LOGIN CARD */}
             <div className='flex bg-white shadow-md border-2 lg:px-52 -mt-32 md:mt-0   flex-col justify-center'>
